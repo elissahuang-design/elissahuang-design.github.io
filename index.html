@@ -93,13 +93,14 @@ p { margin: 0; }
 body[data-view="home"]:not(.past-hero) .brand { opacity: 0; visibility: hidden; }
 
 /* ---------- home ---------- */
-.hero { padding-block: clamp(48px, 8vw, 104px) clamp(40px, 6vw, 72px); }
+/* The hero is the one big moment: large serif greeting, a wide intro, then straight into the work. */
+.hero { padding-block: clamp(40px, 6vw, 80px) clamp(8px, 2vw, 24px); }
 
 .hero .kicker { display: block; margin-bottom: 18px; color: var(--ink); }
-.hero h1 { font-size: var(--step-4); letter-spacing: -0.02em; max-width: 18ch; }
+.hero h1 { font-size: clamp(3rem, 9vw, 7.5rem); line-height: 1; letter-spacing: -0.03em; }
 .hero .tagline { margin-top: 14px; font-family: var(--f-display); font-weight: 700; font-size: clamp(1.5rem, 3.4vw, 2.25rem); line-height: 1.15; }
-.hero .intro { margin-top: 24px; font-size: 1.3125rem; line-height: 1.6; max-width: 32em; }
-.hero .meta { margin-top: 24px; display: flex; gap: 10px 14px; flex-wrap: wrap; align-items: center; }
+.hero .intro { margin-top: clamp(20px, 3vw, 36px); font-size: clamp(1.25rem, 2.2vw, 1.75rem); line-height: 1.5; max-width: 34em; }
+.hero .meta { margin-top: clamp(20px, 3vw, 32px); display: flex; gap: 10px 14px; flex-wrap: wrap; align-items: center; }
 .hero .roles { gap: 0; }
 .roles .label { color: var(--muted); }
 .roles .label:not(:last-child)::after { content: "\2022"; margin-inline: 0.8em; }
@@ -159,7 +160,12 @@ body[data-view="home"]:not(.past-hero) .brand { opacity: 0; visibility: hidden; 
 
 /* ---------- case studies ---------- */
 .cs-cover { margin-top: clamp(24px, 4vw, 48px); }
-.cs-cover .photo { aspect-ratio: 16 / 9; }
+.cs-cover .photo, .cs-cover .clip { aspect-ratio: 16 / 9; }
+/* Card with a playable thumbnail: the title link stretches over the card so the pause button isn't nested inside a link. */
+.work.has-clip { position: relative; }
+.work.has-clip h3 a { color: inherit; text-decoration: none; }
+.work.has-clip h3 a::after { content: ""; position: absolute; inset: 0; z-index: 1; }
+.work.has-clip .clip-toggle { z-index: 2; }
 .cs-hero { padding-block: clamp(32px, 5vw, 56px) 40px; display: grid; gap: 20px; }
 .cs-cover + .cs-hero { padding-top: 40px; }
 /* Story on the left at reading width, the facts as a narrow sidebar on the right. */
@@ -168,7 +174,7 @@ body[data-view="home"]:not(.past-hero) .brand { opacity: 0; visibility: hidden; 
 .cs-body .facts div { padding: 12px 0 14px; border-bottom: 1px solid var(--line); }
 .back { font-family: var(--f-display); font-weight: 600; font-size: 0.6875rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); text-decoration: none; }
 .back:hover { color: var(--ink); }
-.cs-hero h1 { font-size: var(--step-4); letter-spacing: -0.02em; }
+.cs-hero h1 { font-size: clamp(2.5rem, 6.5vw, 4.5rem); letter-spacing: -0.02em; }
 .cs-hero .dek { font-size: var(--step-1); line-height: 1.45; max-width: 38ch; }
 .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 0; border-top: 1px solid var(--ink); margin-top: 12px; }
 .facts div { padding: 14px 16px 16px 0; display: grid; gap: 4px; align-content: start; min-width: 0; }
@@ -275,6 +281,21 @@ figcaption { font-family: var(--f-mono); font-size: 0.8125rem; color: var(--mute
 .src-out span { color: var(--muted); }
 .store-link { display: inline-block; font-family: var(--f-display); font-weight: 700; font-size: 0.8125rem; letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none; color: var(--paper); background: var(--ink); padding: 12px 18px; border-radius: 999px; }
 .store-link:hover { background: var(--muted); }
+/* Screen recordings: the phone screen on its project's gradient, playing silently on a loop. */
+.clip { position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; background: center / cover no-repeat; }
+.clip-gold { background-image: url(images/bg-gold.webp); }
+.clip-lilac { background-image: url(images/bg-lilac.webp); }
+/* Phone frame: black bezel, thin rim, corner radius as a share of the device's own size. */
+.device { background: #111; border-radius: 13% / 6%; padding: clamp(4px, 0.9vw, 8px); box-shadow: 0 0 0 1px #4a4a4a, 0 30px 60px -30px rgba(0, 0, 0, .55); }
+.device video { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 11% / 5%; background: #000; }
+.clip.landscape { aspect-ratio: 16 / 9; }
+.clip.landscape .device { width: 78%; border-radius: 6% / 13%; padding: clamp(5px, 1vw, 12px); }
+.clip.landscape .device video { height: auto; border-radius: 5% / 11%; }
+.clip.portrait .device { height: 88%; }
+.clip.portrait .device video { width: auto; }
+.clip-toggle { position: absolute; right: 14px; bottom: 14px; font: 600 0.6875rem var(--f-display); letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--ink); background: rgba(255, 255, 255, .88); border: 0; border-radius: 999px; padding: 7px 12px; cursor: pointer; }
+.cs-demo { margin-bottom: 8px; }
 .store-badges { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 4px; }
 .store-badges a { display: block; border-radius: 8px; }
 .store-badges img { display: block; height: 40px; width: auto; }
@@ -386,7 +407,7 @@ figcaption { font-family: var(--f-mono); font-size: 0.8125rem; color: var(--mute
   .aside { margin-top: 0; }
 }
 @media (max-width: 720px) {
-  .cs-cover .photo { aspect-ratio: 4 / 3; }
+  .cs-cover .photo, .cs-cover .clip { aspect-ratio: 4 / 3; }
   .work { grid-template-columns: minmax(0, 1fr); gap: 28px; }
   .work .thumb { order: -1; }
   .explore-grid, .result, .factors, .scope, .modals, .gallery, .sources { grid-template-columns: minmax(0, 1fr); }
@@ -431,7 +452,7 @@ figcaption { font-family: var(--f-mono); font-size: 0.8125rem; color: var(--mute
           <div class="txt">
             <h3>Trading card grading before shipment</h3>
             <div class="tags"><span class="tag">eBay</span><span class="tag">Product design</span></div>
-            <p>I led eBay's card grading add-on from its first version, architected it to hold the services that came after it, and extended it into Best Offer.</p>
+            <p>Led eBay's card grading service from first version to launch, aligned eleven teams on one experience, and set up the foundation later services were built on.</p>
           </div>
           <div class="thumb photo"><img src="images/grading-flow-v2.webp" alt="eBay item page, PSA grading modal, and the choice to send the card to the PSA Vault or home"></div>
         </a>
@@ -439,23 +460,26 @@ figcaption { font-family: var(--f-mono); font-size: 0.8125rem; color: var(--mute
           <div class="txt">
             <h3>AI assistant for project briefs</h3>
             <div class="tags"><span class="tag">eBay</span><span class="tag">AI tools</span></div>
-            <p>I designed and built Claude skills that gather a project's scattered decisions from Slack, meetings, email and docs into one brief, and flag related projects before they become surprises.</p>
+            <p>Designed and built an AI project assistant that consolidates decisions from Slack, meetings, email and docs into one brief, and surfaces cross-team dependencies at kickoff.</p>
           </div>
           <div class="thumb photo"><img src="images/ai-design-skills.webp" alt="GitHub repository of eBay design skills for AI assistants"></div>
         </a>
-        <a class="work" href="#price-guide">
+        <div class="work has-clip">
           <div class="txt">
-            <h3>Price Guide for trading cards</h3>
+            <h3><a href="#price-guide">Price Guide for trading cards</a></h3>
             <div class="tags"><span class="tag">eBay</span><span class="tag">Product design</span></div>
-            <p>Collectors want to know what a card is worth. I architected the foundation of eBay's Price Guide and led the features built on it, like comparing a card across grades and parallels.</p>
+            <p>Architected the foundation of eBay's Price Guide and led the features that scaled it across card scanning, the item page and My Collection.</p>
           </div>
-          <div class="thumb photo"><img src="images/price-guide.webp" alt="Market data for a trading card: median sold price chart, PSA population report, and prices across parallels"></div>
-        </a>
+          <div class="thumb clip clip-lilac portrait">
+            <div class="device"><video src="images/price-guide-loop.mp4" poster="images/price-guide-loop-poster.webp" muted loop playsinline autoplay preload="metadata" aria-label="Screen recording of scanning a graded card and browsing its Price Guide"></video></div>
+            <button class="clip-toggle" type="button">Pause</button>
+          </div>
+        </div>
         <a class="work" href="#reading-app">
           <div class="txt">
             <h3>Chinese reading app for kids</h3>
             <div class="tags"><span class="tag">Personal</span><span class="tag">Product design</span></div>
-            <p>My kids speak Chinese but couldn't read it. I architected a curriculum that teaches characters backward from a book we already own, tested it on paper, then built the app.</p>
+            <p>Designed and built a Chinese reading app for my kids, with a curriculum that teaches characters backward from books we already own.</p>
           </div>
           <div class="thumb photo"><img src="images/reading-app.webp" alt="Chinese reading app on iPhone: the lesson map with a pink bear, and a lesson asking which tile is the character for what"></div>
         </a>
@@ -502,8 +526,10 @@ figcaption { font-family: var(--f-mono); font-size: 0.8125rem; color: var(--mute
       <h1>Trading card grading before shipment</h1>
       <div class="cs-body">
         <div class="story-text">
-        <p>Trading card collectors often send cards to an independent company like PSA to be graded. An expert scores the card's condition from 1 to 10 and seals it in a tamper-proof plastic case, and a high grade can make a card worth far more. Buyers who wanted a graded card used to buy it, wait for it to arrive, then mail it to PSA themselves. I led the design of the add-on that sends it straight to PSA instead. There was no consistent pattern for services like this, and the framework meant to fix that was still being planned. I adapted the common checkbox so our work wouldn't conflict with that framework, and architected an enrollment modal that could grow. When the eBay Vault option launched later, it slotted right in.</p>
-        <p>The hardest part wasn't any one screen. It was mapping every touchpoint and every state a graded order can land in, across pages owned by different teams, and aligning those teams on one experience. Along the way I spotted a layout problem outside my scope, made it visible with a few concepts, and the owning team made it a priority. Grading shipped with adoption far above a typical add-on and strong incremental revenue. It also became a foundation: several later projects were built on its expansion, including value-added services in the cart.</p>
+        <p>Trading card collectors rely on professional grading services like PSA to authenticate and assess a card’s condition. A high grade can significantly increase its value, but the traditional process required buyers to receive their cards and independently arrange grading and shipping.</p>
+        <p>I led the design of an integrated grading experience that allowed buyers to send their purchases directly to PSA. Beyond simplifying the customer journey, the challenge was designing a solution that could scale alongside eBay’s evolving value-added services strategy. With a broader framework still in development, I made design decisions that balanced immediate product needs with long-term flexibility, creating a foundation that could accommodate future services such as eBay Vault.</p>
+        <p>The complexity extended well beyond the initial purchase experience. I mapped the end-to-end journey, identified dependencies and edge cases across multiple surfaces, and aligned cross-functional teams around a cohesive experience. This work also surfaced broader usability opportunities outside the original scope, helping influence priorities across adjacent product teams.</p>
+        <p>The experience launched with adoption significantly above typical add-on services and generated strong incremental revenue. More importantly, it established a scalable foundation that informed subsequent initiatives, including the expansion of value-added services into the cart.</p>
       </div>
         <dl class="facts">
         <div><dt class="label">Role</dt><dd>Lead designer</dd></div>
@@ -558,9 +584,11 @@ figcaption { font-family: var(--f-mono); font-size: 0.8125rem; color: var(--mute
       <h1>AI assistant for project briefs</h1>
       <div class="cs-body">
         <div class="story-text">
-        <p>Design work comes with a lot of writing that isn't design. There's usually a PRD already, but I'd still be asked for a design brief or project summary: the same information, shorter, in one place. Meanwhile, the decisions that actually shaped a project were scattered across Slack threads, Zoom calls, email and docs, each with different people in them.</p>
-        <p>When eBay connected Claude to those internal tools, I built a set of Claude skills that do the gathering for me. They pull a project's context from Slack, Zoom, Outlook and Google Drive, turn it into a brief, and track which decisions are made and which are still open. They also look for adjacent projects, so conflicts and dependencies show up at kickoff instead of halfway through. The first skill took a few hours, most of it spent refining the format.</p>
-        <p>It became my project assistant. In a beta with two other designers, both called it extremely time-saving and insightful. I also packaged a toolkit of design skills that let an AI assistant work in Figma alongside you, running accessibility audits and preflight checks and updating mocks, plus Figma plugins now used by designers beyond my team, including Payments.</p>
+        <p>Design work often involves significant effort beyond designing the product itself. While requirements are typically documented, project context, decisions, and dependencies are frequently fragmented across conversations, meetings, and documents. This creates unnecessary overhead for designers and makes it harder to build a shared understanding, particularly when projects span multiple teams.</p>
+        <p>When eBay introduced Claude integrations with internal tools, I saw an opportunity to streamline how designers gather and synthesize information. I developed a set of reusable AI skills that consolidate context across Slack, Zoom, Outlook, and Google Drive, generate structured design briefs, distinguish resolved decisions from open questions, and identify related initiatives and potential dependencies early in the process.</p>
+        <p>What began as a way to improve my own workflow evolved into a project assistant that supports more informed kickoffs and reduces repetitive documentation. Early testing with two other designers highlighted substantial time savings and surfaced insights they might otherwise have missed.</p>
+        <p>I extended this approach into design execution, creating a reusable toolkit that enables AI-assisted workflows in Figma, from accessibility reviews and design preflight checks to updating existing designs. I also developed Figma plugins adopted by designers beyond my immediate team, including Payments.</p>
+        <p>Together, these efforts reflect a broader focus on improving how design teams operate: reducing repetitive work, making knowledge more accessible, identifying dependencies earlier, and creating more space for meaningful product thinking.</p>
       </div>
         <dl class="facts">
         <div><dt class="label">Role</dt><dd>Solo: concept, design and build</dd></div>
@@ -580,16 +608,21 @@ figcaption { font-family: var(--f-mono); font-size: 0.8125rem; color: var(--mute
 <article data-view="price-guide" hidden>
   <div class="wrap">
     <figure class="cs-cover">
-      <div class="photo"><img src="images/price-guide.webp" alt="Market data for a trading card: median sold price chart, PSA population report, and prices across parallels"></div>
+      <div class="clip clip-lilac portrait">
+        <div class="device"><video src="images/price-guide-loop.mp4" poster="images/price-guide-loop-poster.webp" muted loop playsinline autoplay preload="metadata" aria-label="Screen recording of scanning a graded card and browsing its Price Guide"></video></div>
+        <button class="clip-toggle" type="button">Pause</button>
+      </div>
     </figure>
     <div class="cs-hero">
       <div class="tags"><span class="tag">eBay</span><span class="tag">Product design</span></div>
       <h1>Price Guide for trading cards</h1>
       <div class="cs-body">
         <div class="story-text">
-        <p>Trading card collectors want to know what a card is worth before they buy, sell, or just to keep track of their collection. There's no sticker price. Value depends on recent sales, and it shifts with the card's condition and version. So most collectors piece it together by hand, scrolling through past sales on eBay or using other sites built on eBay's own data.</p>
-        <p>It started with a workshop that surfaced the core features collectors wanted. A price guide was one of them, alongside other tools they'd find useful, and the findings became the roadmap. I architected the foundation of Price Guide, including how it would scale beyond a single page, and led the features built on it: leading with the median price so one odd sale can't skew the value, and comparing a card across conditions and across parallels. Parallels are versions of the same card printed with a different color or finish, often in limited numbers, and a rare one can sell for many times the regular version.</p>
-        <p>Price Guide now scales across several touchpoints, from card scanning and the item page to My Collection, and has one of the highest customer satisfaction ratings. Collectors single out the comparisons as what they value most.</p>
+        <p>Understanding a trading card’s market value is essential for collectors making buying, selling, and collection decisions. Unlike products with fixed prices, card values fluctuate based on recent sales, condition, and variations. Collectors often had to piece together this information manually, navigating historical transactions or relying on third-party tools built on eBay’s data.</p>
+        <p>The initiative began with a workshop to identify collectors’ unmet needs and opportunities across the collecting journey. The insights shaped a broader product roadmap, with Price Guide emerging as a foundational capability.</p>
+        <p>I led the design strategy and established the experience architecture for Price Guide, considering how it could scale across multiple surfaces and support future capabilities. Rather than presenting transaction data alone, we focused on helping collectors make sense of market value. This included prioritizing median pricing to reduce the influence of outliers and designing comparisons across card conditions and parallels, where subtle variations can significantly affect value.</p>
+        <p>The resulting experience expanded beyond a standalone destination into card scanning, item pages, and My Collection, providing consistent access to pricing insights throughout the collecting journey.</p>
+        <p>Price Guide has become one of the highest-rated experiences for customer satisfaction, with collectors particularly valuing the comparison capabilities. Beyond the initial launch, the work established a reusable foundation for bringing market intelligence into multiple parts of the eBay collecting experience.</p>
       </div>
         <dl class="facts">
         <div><dt class="label">Role</dt><dd>Lead designer</dd></div>
@@ -644,8 +677,11 @@ figcaption { font-family: var(--f-mono); font-size: 0.8125rem; color: var(--mute
       <h1>Chinese reading app for kids</h1>
       <div class="cs-body">
         <div class="story-text">
-        <p>My kids speak Chinese but couldn't read it. The apps I tried taught the language from scratch, needed reading skills just to navigate, and followed fixed lesson plans, like teaching all the numbers first. So I tested a simple method on paper (this is, where is, what is this), then architected and built an app that teaches characters backward from the books we already own, in an order that turns them into real sentences quickly.</p>
-        <p>One of my kids has learned about 50 characters and started reading a real book, and my three-year-old opens lessons alone. It's two kids in one family, not a study, but it's the best feedback I've had on anything I've designed.</p>
+        <p>My kids could speak Chinese, but they couldn't read it. Most learning apps I tried were designed for children learning the language from scratch. They often required reading skills just to navigate and followed fixed curricula, teaching characters in a predetermined order without a clear path toward reading something meaningful.</p>
+        <p>I questioned that approach. Instead of teaching characters in a fixed sequence and hoping children could eventually read a book, what if we started with the book and worked backward?</p>
+        <p>I developed a simple three-step learning method—introduce, recall, recognize—and tested it on paper before building the app. From there, I designed a system that breaks books into their component characters and determines a learning sequence based on frequency, usefulness, and opportunities to form words and sentences. The goal wasn't simply to recognize more characters, but to make each new character useful as quickly as possible, reinforcing what children already knew while building toward reading an actual book.</p>
+        <p>That thinking shaped the entire experience, from how lessons are generated to how young children navigate independently. Rather than treating curriculum, interaction design, and learning progression as separate problems, I designed them as parts of one connected system.</p>
+        <p>The early results have been encouraging. One of my kids has learned around 50 characters and started reading a real book, while my three-year-old can navigate lessons independently. It's a small experiment with two children, not a formal study, but seeing them progress from recognizing individual characters to reading something meaningful has been some of the most rewarding feedback I've received as a designer.</p>
       </div>
         <dl class="facts">
         <div><dt class="label">Role</dt><dd>Solo: curriculum, design and build</dd></div>
@@ -692,9 +728,9 @@ figcaption { font-family: var(--f-mono); font-size: 0.8125rem; color: var(--mute
       <h1>Ad-free backgammon game</h1>
       <div class="cs-body">
         <div class="story-text">
-          <p>I heard about backgammon on a podcast and wanted to learn. Every app I downloaded was packed with ads, so I made my own. One thing led to another.</p>
-          <p>I took an existing bot engine and changed it to support different difficulty levels, then added different ways to play and several board designs. It was my first time using a Flutter game engine, and AI helped me through most of it.</p>
-          <p>Nobody asked for it. It's what happens when I get curious and have the tools to follow through.</p>
+          <p>I first became curious about backgammon after hearing about it on a podcast. I wanted to learn, but every app I tried was filled with ads and distractions. So I decided to build my own.</p>
+          <p>What started as a simple, ad-free alternative quickly turned into an opportunity to experiment. I adapted an existing bot engine to support different difficulty levels, explored multiple ways to play, and designed a variety of boards to make the experience feel more personal. It was my first time working with a Flutter game engine, and I used AI to help me learn, troubleshoot, and build as I went.</p>
+          <p>There was no roadmap, deadline, or business goal. Just curiosity, a problem I wanted to solve, and the tools to see how far I could take it.</p>
           <p class="store-badges">
             <a href="https://apps.apple.com/us/app/backgammon-rounds/id6811302161" target="_blank" rel="noopener"><img src="images/badge-app-store.png" alt="Download Backgammon Rounds on the App Store" width="135" height="40"></a>
             <a href="https://play.google.com/store/apps/details?id=com.invisibleremark.backgammonrounds" target="_blank" rel="noopener"><img src="images/badge-google-play.png" alt="Get Backgammon Rounds on Google Play" width="135" height="40"></a>
@@ -708,6 +744,14 @@ figcaption { font-family: var(--f-mono); font-size: 0.8125rem; color: var(--mute
         </dl>
       </div>
     </div>
+
+    <figure class="cs-demo">
+      <div class="clip clip-gold landscape">
+        <div class="device"><video src="images/backgammon-demo.mp4" poster="images/backgammon-demo-poster.webp" muted loop playsinline autoplay preload="metadata" aria-label="Screen recording of a game against the computer"></video></div>
+        <button class="clip-toggle" type="button">Pause</button>
+      </div>
+      <figcaption>A game against the computer: pick a side, roll, move your checkers, then watch the bot take its turn.</figcaption>
+    </figure>
 
     <nav class="next" aria-label="Next story"><span class="label">Next</span><a href="#grading">Trading card grading before shipment →</a></nav>
   </div>
@@ -748,6 +792,16 @@ figcaption { font-family: var(--f-mono); font-size: 0.8125rem; color: var(--mute
   } else {
     document.body.classList.add('past-hero');
   }
+
+  // ---------- screen recordings ----------
+  var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('.clip').forEach(function (clip) {
+    var video = clip.querySelector('video'), btn = clip.querySelector('.clip-toggle');
+    function sync() { btn.textContent = video.paused ? 'Play' : 'Pause'; }
+    if (calm) { video.removeAttribute('autoplay'); video.pause(); }
+    video.addEventListener('play', sync); video.addEventListener('pause', sync); sync();
+    btn.addEventListener('click', function () { if (video.paused) video.play(); else video.pause(); });
+  });
 
   // ---------- copy email ----------
   document.getElementById('copy-email').addEventListener('click', function () {
