@@ -118,6 +118,7 @@ body[data-view="home"]:not(.past-hero) .brand { opacity: 0; visibility: hidden; 
 .work .txt { display: grid; gap: 12px; align-content: start; min-width: 0; }
 .work h3 { font-size: 1.875rem; line-height: 1.15; }
 .work p { color: var(--muted); max-width: 34em; font-size: 1.0625rem; }
+.work p.evidence { font-family: var(--f-display); font-weight: 600; font-size: 0.75rem; letter-spacing: 0.06em; color: var(--ink); }
 .work .go { font-family: var(--f-display); font-weight: 600; font-size: 0.6875rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 5px; justify-self: start; margin-top: 4px; }
 .work:hover h3 { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 6px; }
 .tags { display: flex; flex-wrap: wrap; gap: 6px; }
@@ -166,6 +167,7 @@ body[data-view="home"]:not(.past-hero) .brand { opacity: 0; visibility: hidden; 
 .work.has-clip h3 a { color: inherit; text-decoration: none; }
 .work.has-clip h3 a::after { content: ""; position: absolute; inset: 0; z-index: 1; }
 .work.has-clip .clip-toggle { z-index: 2; }
+.thumb.clip.landscape { aspect-ratio: 4 / 3; }
 .cs-hero { padding-block: clamp(32px, 5vw, 56px) 40px; display: grid; gap: 20px; }
 .cs-cover + .cs-hero { padding-top: 40px; }
 /* Story on the left at reading width, the facts as a narrow sidebar on the right. */
@@ -214,6 +216,42 @@ figcaption { font-family: var(--f-mono); font-size: 0.8125rem; color: var(--mute
 .result div { border-top: 1px solid var(--ink); padding-top: 12px; display: grid; gap: 6px; }
 .result strong { font-family: var(--f-display); font-size: var(--step-1); line-height: 1.2; }
 .result span { color: var(--muted); font-size: 1rem; }
+
+/* impact, process and decisions under each case study */
+.cs-more { display: grid; gap: 0; padding-block: 8px 24px; }
+.cs-sec { display: grid; grid-template-columns: minmax(140px, 200px) minmax(0, 1fr); gap: 14px 56px; padding-block: 36px; border-top: 1px solid var(--ink); }
+.cs-sec > .label { padding-top: 6px; }
+.sec-body { display: grid; gap: 16px; min-width: 0; }
+.sec-body > p { margin: 0; max-width: 38em; font-size: var(--step-1); line-height: 1.55; }
+.impact { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 24px; }
+.impact div { display: grid; gap: 6px; align-content: start; }
+.impact strong { font-family: var(--f-body); font-weight: 400; font-size: var(--step-2); line-height: 1.1; letter-spacing: -0.01em; }
+.impact span { color: var(--muted); font-size: 1rem; line-height: 1.45; }
+.hard { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 40px; }
+.hard div { display: grid; gap: 6px; align-content: start; }
+.hard h3, .dec-list h3 { font-size: var(--step-1); font-weight: 600; line-height: 1.3; margin: 0; }
+.hard p { margin: 0; line-height: 1.55; }
+.dec-list { margin: 0; padding: 0; list-style: none; counter-reset: dec; display: grid; }
+.dec-list li { counter-increment: dec; display: grid; gap: 10px; padding-block: 24px; border-bottom: 1px solid var(--line); max-width: 44em; }
+.dec-list li:first-child { padding-top: 4px; }
+.dec-list li:last-child { border-bottom: 0; padding-bottom: 0; }
+.dec-list h3::before { content: counter(dec, decimal-leading-zero); display: block; font-family: var(--f-mono); font-size: 0.8125rem; font-weight: 500; color: var(--muted); margin-bottom: 6px; }
+.dec-list p { margin: 0; line-height: 1.6; font-size: 1.0625rem; }
+.dec-list .res { background: var(--surface); border-radius: 8px; padding: 12px 16px; }
+.dec-list .res .label { display: block; margin-bottom: 4px; }
+.process { margin: 0; padding: 0; list-style: none; counter-reset: step; display: grid; gap: 14px; max-width: 44em; }
+.process li { counter-increment: step; display: grid; grid-template-columns: 2.2em minmax(0, 1fr); font-size: 1.0625rem; line-height: 1.5; }
+.process li::before { content: counter(step, decimal-leading-zero); font-family: var(--f-mono); font-size: 0.8125rem; color: var(--muted); padding-top: 4px; }
+.process b, .change b { font-weight: 600; }
+.change { margin: 0; padding-left: 1.1em; display: grid; gap: 10px; max-width: 44em; font-size: 1.0625rem; line-height: 1.55; }
+.inline-fig { margin-top: 4px; max-width: 44em; }
+.inline-fig .photo { border-radius: 10px; }
+.dec-list .inline-fig { margin-top: 6px; }
+.fig-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 6px; }
+.fig-row figure { display: grid; gap: 8px; align-content: start; }
+.fig-row .photo { border-radius: 10px; }
+@media (max-width: 760px) { .fig-row { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 760px) { .cs-sec { grid-template-columns: minmax(0, 1fr); gap: 14px; padding-block: 28px; } .hard { grid-template-columns: minmax(0, 1fr); } }
 
 .next { border-top: 1px solid var(--ink); margin-top: 40px; padding-block: 32px 64px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; align-items: baseline; }
 .next a { font-family: var(--f-body); font-weight: 400; font-size: var(--step-2); text-decoration: none; letter-spacing: -0.01em; }
@@ -421,6 +459,757 @@ figcaption { font-family: var(--f-mono); font-size: 0.8125rem; color: var(--mute
   .tiles { grid-template-columns: repeat(2, 76px); }
   .bigchar { font-size: 5.5rem; }
 }
+
+/* ---- deck components, scoped to .dk ---- */
+.dk * { box-sizing: border-box; }
+.dk h1, .dk h2, .dk h3 { margin: 0; text-wrap: balance; }
+.dk p { margin: 0; }
+.dk .wrap { max-width: 1120px; margin: 0 auto; padding: 0 var(--gutter); }
+.dk .hero { padding: clamp(56px, 10vw, 120px) 0 56px; display: grid; gap: 24px; }
+.dk .hero h1 { max-width: 18ch; }
+.dk .hero p { max-width: 40em; }
+.dk .cards { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); padding-bottom: 64px; }
+.dk .card { display: grid; gap: 12px; align-content: start; padding: 28px; text-decoration: none; min-height: 260px; }
+.dk a.card:hover h3 { text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 1px; }
+.dk .card .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; }
+.dk .chip { padding: 5px 10px; }
+.dk .card.soon { opacity: .7; }
+.dk .section-title { padding: 24px 0 16px; }
+.dk .themes { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); padding-bottom: 72px; }
+.dk .theme { padding: 18px 20px; display: grid; gap: 6px; }
+.dk .slide { min-height: 100svh; display: flex; align-items: center; padding: 72px 0; scroll-margin-top: 52px; }
+.dk .slide > .wrap { width: 100%; display: grid; gap: 28px; }
+.dk .slide h2 { max-width: 24ch; }
+.dk .slide .lede { max-width: 40em; }
+.dk .kicker { display: flex; gap: 14px; align-items: baseline; flex-wrap: wrap; }
+.dk .stats { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.dk .stat { padding: 24px; display: grid; gap: 6px; }
+.dk .stat .big.ba { display: grid; gap: 6px; }
+.dk .dflow { display: grid; gap: 14px; align-items: stretch; grid-template-columns: 1fr auto 1.2fr auto 1.4fr; }
+.dk .dflow .darrow { align-self: center; }
+.dk .dbox { padding: 18px; display: grid; gap: 8px; align-content: start; }
+.dk .dbox ul { margin: 0; padding-left: 18px; }
+.dk .dstack { display: grid; gap: 10px; }
+.dk .sources { display: flex; flex-wrap: wrap; gap: 8px; }
+.dk .src { padding: 8px 12px; }
+@media (max-width: 860px) {
+.dk .dflow { grid-template-columns: 1fr; }
+.dk .dflow .darrow { transform: rotate(90deg); justify-self: center; }
+}
+.dk .compare { display: grid; gap: 20px; grid-template-columns: 1fr 1fr; }
+@media (max-width: 760px) {
+.dk .compare { grid-template-columns: 1fr; }
+}
+.dk .steps { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+.dk .records { display: grid; gap: 16px; grid-template-columns: 1fr 1fr; }
+@media (max-width: 760px) {
+.dk .records { grid-template-columns: 1fr; }
+}
+.dk .record { padding: 20px; display: grid; gap: 10px; }
+.dk .status { justify-self: start; font: 700 0.6875rem var(--f-display); letter-spacing: 0.14em; text-transform: uppercase; padding: 5px 10px; border-radius: 999px; }
+.dk .status.ok { color: var(--confirmed); background: var(--confirmed-bg); }
+.dk .status.wait { color: var(--pending); background: var(--pending-bg); }
+.dk .status.flag { color: var(--flag); background: var(--flag-bg); }
+.dk .record dl { margin: 0; display: grid; grid-template-columns: max-content 1fr; gap: 4px 14px; }
+.dk .record dd { margin: 0; }
+.dk .fresh { display: grid; gap: 10px; grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 760px) {
+.dk .fresh { grid-template-columns: 1fr; }
+}
+.dk .columns3 { display: grid; gap: 16px; grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 860px) {
+.dk .columns3 { grid-template-columns: 1fr; }
+}
+.dk .quote { max-width: 26ch; }
+.dk :focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+.dk .log { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.dk .log li { display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: start; padding-bottom: 10px; }
+.dk .log li:last-child { padding-bottom: 0; }
+.dk .problem { display: grid; gap: 16px; grid-template-columns: 0.8fr 1fr 1.2fr; align-items: stretch; }
+@media (max-width: 960px) {
+.dk .problem { grid-template-columns: 1fr; }
+}
+.dk .questions { margin: 4px 0 0; padding-left: 1.4em; display: grid; gap: 8px; }
+.dk .tools { list-style: none; margin: 4px 0 0; padding: 0; display: grid; gap: 10px; }
+.dk .tools li { display: grid; grid-template-columns: 30px 1fr; column-gap: 12px; align-items: center; }
+.dk .tools img { grid-row: span 2; width: 26px; height: 26px; object-fit: contain; }
+.dk .how { margin-top: 4px; }
+.dk .timeline { margin: 0; padding-left: 1.3em; display: grid; gap: 6px; }
+.dk .budget { display: grid; gap: 16px; grid-template-columns: 0.9fr 1.6fr; align-items: stretch; }
+.dk .budget .dstack { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 960px) {
+.dk .budget, .dk .budget .dstack { grid-template-columns: 1fr; }
+}
+.dk .span-all { grid-column: 1 / -1; }
+.dk .timeline { gap: 4px; }
+.dk .slide { padding: 56px 0; }
+.dk .dflow { align-items: center; }
+.dk .dflow .tools { gap: 12px; }
+@media (min-width: 861px) {
+.dk .dflow.wide-first { grid-template-columns: 1.7fr auto 1fr auto 1.2fr; }
+}
+.dk .dflow.wide-first .tools { gap: 10px; }
+.dk .dflow.wide-first .tools li { grid-template-columns: 30px 130px 1fr; }
+.dk .dflow.wide-first .tools img { grid-row: auto; }
+.dk .budget2 { display: grid; gap: 32px; grid-template-columns: 0.8fr 1.5fr; align-items: center; }
+@media (max-width: 960px) {
+.dk .budget2 { grid-template-columns: 1fr; }
+}
+.dk .responses { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.dk .responses li { padding-left: 14px; }
+.dk .responses b { display: block; }
+.dk .tri { margin: 0; display: grid; gap: 10px; }
+.dk .tri svg { width: 100%; height: auto; max-height: 52vh; overflow: visible; }
+.dk .tri-shape { fill: var(--surface); stroke: #CFCFCF; stroke-width: 1.5; }
+.dk .tri-v { fill: var(--ink); }
+.dk .tri-s { fill: var(--muted); }
+.dk .tri-a { fill: var(--muted); }
+.dk .tri-p { fill: var(--ink); }
+.dk .tri-alt { fill: #fff; stroke: #9A9A9A; stroke-width: 1.5; }
+.dk .tri-pick { fill: var(--ink); }
+.dk .options { margin: 0; display: grid; gap: 12px; }
+.dk .options table { width: 100%; border-collapse: separate; border-spacing: 0; }
+.dk .options th, .dk .options td { text-align: left; vertical-align: top; padding: 12px 12px; }
+.dk .options thead th { padding-top: 0; }
+.dk .options tbody th { width: 30%; }
+.dk .options tbody th span { display: block; margin-top: 2px; }
+.dk .options td::before { position: absolute; left: 12px; top: 12px; font: 700 0.95rem var(--f-display); }
+.dk .options td.yes::before { content: "✓"; color: var(--confirmed); }
+.dk .options td.no::before { content: "✕"; color: #A33A2E; }
+.dk .options td.mid::before { content: "~"; color: var(--pending); }
+.dk .budget3 { display: grid; grid-template-columns: minmax(0, 1fr); gap: 22px; }
+@media (max-width: 760px) {
+.dk .budget3 .options { display: block; overflow-x: auto; }
+.dk .credit { flex-wrap: wrap; }
+}
+.dk .credit { display: flex; align-items: center; gap: 22px; padding: 16px 22px; justify-self: start; }
+.dk .credit b { display: block; }
+.dk .budget3 .options tbody th { width: 26%; }
+.dk .budget3 .options td { width: 24.6%; }
+.dk .theme-link { text-decoration: none; }
+.dk .theme-link:hover b { text-decoration: underline; text-underline-offset: 4px; }
+.dk .meta { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px 24px; margin: 0; padding-top: 16px; }
+.dk .meta dd { margin: 2px 0 0; }
+.dk .confidential::before { content: "🔒 "; }
+.dk .defend { padding: 12px 18px; display: grid; gap: 6px; max-width: 46em; }
+.dk .sim { border: 1px solid var(--line); border-radius: 14px; background: #fff; box-shadow: 0 24px 48px -32px rgba(0,0,0,.35); overflow: hidden; }
+.dk .sim-bar { display: flex; align-items: center; gap: 6px; padding: 10px 14px; border-bottom: 1px solid var(--line); background: var(--surface); }
+.dk .sim-bar .dot { width: 9px; height: 9px; border-radius: 50%; background: #D5D5D5; }
+.dk .sim-title { font: 600 0.75rem var(--f-display); color: var(--muted); margin-left: 8px; }
+.dk .sim-toggle { margin-left: auto; font: 600 0.6875rem var(--f-display); letter-spacing: 0.12em; text-transform: uppercase; background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 5px 10px; cursor: pointer; }
+.dk .sim-body { display: grid; grid-template-columns: 1fr 1.45fr; min-height: 300px; }
+@media (max-width: 860px) {
+.dk .sim-body { grid-template-columns: 1fr; }
+}
+.dk .sim-chat { padding: 16px; display: grid; gap: 10px; align-content: start; border-right: 1px solid var(--line); background: #FBFBFB; }
+.dk .msg { padding: 10px 12px; max-width: 95%; }
+.dk .msg.user { justify-self: end; border-bottom-right-radius: 4px; }
+.dk .msg.ai { border-bottom-left-radius: 4px; }
+.dk .msg u { text-underline-offset: 3px; }
+.dk .sim-label { display: block; font: 600 0.6875rem var(--f-display); letter-spacing: 0.08em; color: var(--muted); margin-bottom: 8px; }
+.dk .sim-sources { display: flex; flex-wrap: wrap; gap: 6px; }
+.dk .src-chip { display: inline-flex; align-items: center; gap: 6px; padding: 5px 8px; }
+.dk .src-chip img { width: 14px; height: 14px; object-fit: contain; }
+.dk .src-chip::after { content: "✓"; color: var(--confirmed); margin-left: 2px; }
+.dk .sim-doc { padding: 16px 18px; display: grid; gap: 10px; align-content: start; }
+.dk .doc-head b { font: 600 1rem var(--f-display); }
+.dk .stamps { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.dk .stamps span { padding: 4px 8px; }
+.dk .doc-row { display: grid; grid-template-columns: 92px 1fr; gap: 10px; align-items: start; padding: 10px 0; border-top: 1px solid var(--line); }
+.dk .doc-row .status { justify-self: start; }
+.dk .doc-row b { display: block; font-weight: 600; font-size: 0.98rem; }
+.dk .doc-row small { color: var(--muted); font-size: 0.85rem; }
+.dk .cite { text-decoration: underline; text-underline-offset: 3px; }
+.dk .doc-verify { font-size: 0.85rem; color: var(--muted); border-top: 1px dashed var(--line); padding-top: 10px; }
+.dk .sim .s1, .dk .sim .s2, .dk .sim .s3, .dk .sim .s4, .dk .sim .s5, .dk .sim .s6, .dk .sim .s7, .dk .sim .s8, .dk .sim .s9, .dk .sim .s10, .dk .sim .s11, .dk .sim .s12, .dk .sim .s13, .dk .sim .s14 { opacity: 0; transform: translateY(6px); transition: opacity .45s ease, transform .45s ease; }
+.dk .sim .shown { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+.dk .sim .s1, .dk .sim .s2, .dk .sim .s3, .dk .sim .s4, .dk .sim .s5, .dk .sim .s6, .dk .sim .s7, .dk .sim .s8, .dk .sim .s9, .dk .sim .s10, .dk .sim .s11, .dk .sim .s12, .dk .sim .s13, .dk .sim .s14 { transition: none; }
+}
+.dk #demo h2 { max-width: none; }
+.dk #demo > .wrap { gap: 18px; }
+.dk .sim-body { min-height: 0; }
+.dk .doc-row { padding: 7px 0; }
+.dk .sim-doc, .dk .sim-chat { padding: 12px 16px; gap: 8px; }
+.dk .inpractice { max-width: 52em; }
+.dk .step { padding-left: 14px; }
+.dk .link-chip { display: inline-block; margin-top: 4px; padding: 2px 6px; }
+.dk .sim-board { background: #2E2E2E; color: #EDEDED; padding: 18px 22px; display: grid; gap: 10px; align-content: start; }
+.dk .board-title { margin-top: -4px; }
+.dk .board-owners { display: grid; grid-template-columns: 34px 1fr; gap: 2px 8px; margin: 0; }
+.dk .board-owners dd { margin: 0; }
+.dk .board-owners .blank span { margin-left: 6px; }
+.dk .board-sec b { display: block; }
+.dk .board-sec u { text-underline-offset: 3px; }
+.dk .columns4 { display: grid; gap: 14px; grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 1000px) {
+.dk .columns4 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+.dk .columns4 { grid-template-columns: 1fr; }
+}
+.dk .sample { display: grid; gap: 28px; grid-template-columns: 1.6fr 1fr; align-items: start; }
+@media (max-width: 960px) {
+.dk .sample { grid-template-columns: 1fr; }
+}
+.dk .paper { height: min(56vh, 520px); overflow: auto; background: #fff; border: 1px solid var(--line); border-radius: 6px; box-shadow: 0 24px 48px -32px rgba(0,0,0,.35); padding: 28px 34px; font: 13px/1.5 Arial, Helvetica, sans-serif; color: #202124; }
+.dk .doc-org { display: block; font-weight: 700; color: #2B4B5B; margin-bottom: 14px; }
+.dk .doc-type { display: block; font-weight: 700; font-size: 17px; }
+.dk .doc-title { display: block; font-size: 22px; margin: 2px 0 12px; }
+.dk .doc-meta { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 14px; }
+.dk .doc-meta span { color: #3c4043; }
+.dk .doc-meta i { font-style: normal; background: #EEF0F2; border-radius: 10px; padding: 1px 8px; margin-left: 4px; }
+.dk .doc-table { width: 100%; border-collapse: collapse; margin: 6px 0 12px; }
+.dk .doc-table th, .dk .doc-table td { border: 1px solid #DADCE0; padding: 6px 8px; text-align: left; vertical-align: top; }
+.dk .doc-table th { background: #F1F3F4; font-weight: 700; }
+.dk .doc-table td:first-child { color: #3c4043; }
+.dk .doc-table td:first-child { white-space: nowrap; }
+.dk .doc-table .status { font-size: 10px; }
+.dk .pill { background: #FCE8B2; border-radius: 10px; padding: 1px 8px; }
+.dk .paper u { color: #1A0DAB; text-underline-offset: 2px; }
+.dk .doc-nav { color: #1A0DAB; margin: 4px 0 14px; }
+.dk .paper h4 { font-size: 15px; margin: 16px 0 4px; }
+.dk .paper p { margin: 0 0 6px; }
+.dk .sample-side { display: grid; gap: 14px; }
+.dk .contains { margin: 0; padding-left: 18px; display: grid; gap: 6px; }
+.dk .disclaimer { padding-left: 14px; }
+.dk #s4 h2 { max-width: none; }
+.dk .paper .doc-h { font: 700 16px Arial, Helvetica, sans-serif; margin: 22px 0 6px; padding-top: 14px; border-top: 1px solid #E3E3E3; }
+.dk .paper ul { margin: 0 0 8px; padding-left: 18px; }
+.dk .paper li { margin: 2px 0; }
+.dk .pill.green { background: #CEEAD6; }
+.dk .doc-foot { margin-top: 18px !important; font-size: 11px; color: #70757a; font-weight: 700; letter-spacing: 0.04em; }
+.dk .who { justify-self: start; padding: 3px 8px; }
+.dk .rules { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 960px) {
+.dk .rules { grid-template-columns: 1fr 1fr; }
+}
+.dk .rules li { padding-top: 8px; }
+.dk .rules b { display: block; margin-bottom: 2px; }
+.dk .caught { display: grid; gap: 10px; }
+.dk .dimpact { display: grid; gap: 20px; grid-template-columns: 0.9fr 1.3fr; align-items: start; }
+@media (max-width: 900px) {
+.dk .dimpact { grid-template-columns: 1fr; }
+}
+.dk .caught .dbox { gap: 6px; padding: 14px 16px; }
+.dk #s5 > .wrap { gap: 20px; }
+.dk #s5 .rules { gap: 18px; margin-top: 8px; }
+.dk #s5 .rules li { padding-top: 14px; }
+.dk #s5 .rules b { margin-bottom: 6px; }
+.dk .timeline-row { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 900px) {
+.dk .timeline-row { grid-template-columns: 1fr; }
+}
+.dk .timeline-row li { padding-top: 12px; display: grid; gap: 6px; align-content: start; }
+.dk .thread { display: grid; gap: 10px; align-content: start; padding: 18px; }
+.dk .cmt { padding: 10px 12px; display: grid; gap: 4px; position: relative; }
+.dk .cmt.person { margin-left: 28px; }
+.dk .cmt.resolved { opacity: .85; }
+.dk .tag-resolved { justify-self: start; padding: 3px 8px; }
+.dk .stats.three { grid-template-columns: repeat(3, 1fr); }
+.dk .stats.four { grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 900px) {
+.dk .stats.three, .dk .stats.four { grid-template-columns: 1fr 1fr; }
+}
+.dk .tpl { display: grid; gap: 12px; grid-template-columns: 1fr auto 1.2fr auto 2.4fr; align-items: center; }
+@media (max-width: 900px) {
+.dk .tpl { grid-template-columns: 1fr; }
+.dk .tpl .darrow { transform: rotate(90deg); justify-self: center; }
+}
+.dk .tpl-step { padding: 14px 16px; display: grid; gap: 6px; }
+.dk .pages { display: flex; flex-wrap: wrap; gap: 6px; }
+.dk .pages span { padding: 6px 9px; }
+.dk #c3 > .wrap { gap: 20px; }
+.dk #c3 h2 { max-width: none; }
+.dk .demo-link { display: inline-block; text-decoration: none; padding: 10px 16px; }
+.dk .demo-link:hover { opacity: .9; }
+.dk .skills2 { display: grid; gap: 28px; grid-template-columns: 1fr; align-items: start; }
+@media (max-width: 900px) {
+.dk .skills2 { grid-template-columns: 1fr; }
+}
+.dk .dshot { margin: 0; display: grid; gap: 8px; }
+.dk .dshot img { width: 100%; border-radius: 12px; border: 1px solid var(--line); box-shadow: 0 24px 48px -32px rgba(0,0,0,.35); display: block; }
+.dk .dshot figcaption { color: var(--muted); font-size: 0.9rem; }
+.dk .skill-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.dk .skill-list li { padding-left: 12px; }
+.dk .skill-list b { display: block; }
+.dk .paper.report { background: #F7F7F7; }
+.dk .tally { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0 4px; }
+.dk .st { font: 700 10px Arial, sans-serif; letter-spacing: 0.04em; padding: 3px 7px; border-radius: 5px; }
+.dk .st.pass { background: #CEEAD6; color: #1E5631; }
+.dk .st.part { background: #FCE8B2; color: #7A4F01; }
+.dk .st.na { background: #E8EAED; color: #3C4043; }
+.dk .st.fail { background: #F6D5D2; color: #8C1D18; }
+.dk .chk { padding: 10px 12px; margin: 6px 0; display: grid; grid-template-columns: auto 1fr; gap: 4px 10px; align-items: center; }
+.dk .chk p { grid-column: 1 / -1; margin: 0; }
+.dk .paper.report h4 { margin: 18px 0 4px; }
+.dk .kicker .frame { padding: 2px 10px; }
+.dk .problem-line { max-width: 70ch; margin-top: -8px; }
+.dk .decisions-label { display: block; margin-bottom: -10px; }
+.dk .shift-key { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+.dk .shift-key .k { font: 600 0.75rem var(--f-display); display: inline-flex; align-items: center; gap: 6px; }
+.dk .shift-key .k::before { content: ""; width: 12px; height: 12px; border-radius: 3px; }
+.dk .shift-key .fig::before, .dk .weight .fig { background: #C9CCD6; }
+.dk .shift-key .code::before, .dk .weight .code { background: var(--ink); }
+.dk .timeline-row.shift .sub { margin-top: -4px; }
+.dk .weight { display: flex; height: 14px; border-radius: 4px; overflow: hidden; gap: 2px; margin: 6px 0 2px; }
+.dk .tools { display: flex; flex-wrap: wrap; gap: 6px; }
+.dk .tools span { padding: 2px 8px; }
+.dk #k1 > .wrap { gap: 22px; }
+.dk #c3 .demo-row { display: flex; gap: 24px; align-items: baseline; flex-wrap: wrap; justify-content: space-between; }
+.dk .frame-rows { margin: 0; display: grid; }
+.dk .frame-row { display: grid; grid-template-columns: 150px 1fr; gap: 24px; padding: 14px 0; }
+.dk .frame-row dt { padding-top: 5px; }
+.dk .frame-row dd { margin: 0; }
+.dk .frame-row ul { margin: 0; padding-left: 1.1em; display: grid; gap: 4px; }
+.dk .frame-row ul.two-col { grid-template-columns: 1fr 1fr; column-gap: 32px; }
+@media (max-width: 760px) {
+.dk .frame-row { grid-template-columns: 1fr; gap: 6px; }
+.dk .frame-row ul.two-col { grid-template-columns: 1fr; }
+}
+.dk .sub-head { display: grid; gap: 6px; }
+.dk .slide h2.stage-title { max-width: 30ch; }
+.dk #c3 h2.stage-title { max-width: none; }
+.dk .frame-row { padding: 12px 0; }
+.dk .frame-row dd.demo-row { display: flex; gap: 20px; align-items: center; justify-content: space-between; }
+.dk .frame-row dd.demo-row p { max-width: 62ch; }
+.dk .frame-row dd.demo-row .demo-link { flex-shrink: 0; margin: 0; }
+.dk .stage-title + .sub-head { margin-top: 8px; }
+.dk .frame-row dd > * + * { margin-top: 12px; }
+.dk .two-lists { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+.dk .two-lists.wide-right { grid-template-columns: 1fr; align-items: start; }
+.dk .two-lists b { display: block; margin-bottom: 6px; }
+.dk .two-lists ol, .dk .two-lists ul { margin: 0; padding-left: 1.1em; display: grid; gap: 4px; }
+.dk .lead-list { display: grid; gap: 10px !important; }
+.dk .lead-list b { display: inline !important; }
+.dk .with-media { display: grid; grid-template-columns: 1fr; gap: 28px; align-items: start; }
+.dk .clip-fig { margin: 0; }
+.dk .clip-fig video { width: 100%; display: block; border-radius: 8px; border: 1px solid var(--line); background: var(--surface); }
+.dk .clip-fig figcaption { font-size: 0.85rem; color: var(--muted); margin-top: 6px; }
+@media (max-width: 760px) {
+.dk .two-lists, .dk .two-lists.wide-right, .dk .with-media { grid-template-columns: 1fr; }
+}
+.dk .slide h2.stage-title { max-width: none; }
+.dk #p1 .frame-row { padding: 10px 0; }
+.dk .stage-head { display: grid; gap: 10px; }
+.dk .stage-track { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.dk .stage-track .seg { padding-top: 6px; display: flex; gap: 8px; align-items: baseline; }
+.dk .step-track { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; counter-reset: st; }
+.dk .step-track li { counter-increment: st; padding: 4px 10px; }
+.dk .step-track li::before { content: counter(st) "  "; white-space: pre; }
+.dk .beat-num { display: block; margin-bottom: 8px; }
+.dk .beat-sub { max-width: 72ch; margin-top: -12px; }
+.dk .before-after { display: grid; grid-template-columns: 1fr auto 1fr; gap: 20px; align-items: stretch; }
+.dk .before-after > div { padding: 18px 20px; }
+.dk .before-after ol, .dk .before-after ul { margin: 8px 0 0; padding-left: 1.1em; display: grid; gap: 6px; }
+.dk .ba-arrow { align-self: center; }
+.dk .skill-list li.focus { padding: 6px 10px; margin-left: -10px; }
+.dk .skill-list li.focus b::after { content: "Deep dive"; font: 600 0.625rem var(--f-display); letter-spacing: 0.1em; text-transform: uppercase; background: var(--ink); color: #fff; border-radius: 999px; padding: 2px 7px; margin-left: 8px; vertical-align: 2px; }
+.dk .numbered4 { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; counter-reset: n4; }
+.dk .numbered4 li { counter-increment: n4; padding-top: 12px; display: grid; gap: 6px; align-content: start; }
+.dk .numbered4 li::before { content: counter(n4); font: 600 0.75rem var(--f-display); color: var(--muted); }
+.dk .impact-strip { padding: 14px 18px; display: grid; gap: 4px; }
+@media (max-width: 900px) {
+.dk .before-after { grid-template-columns: 1fr; }
+.dk .ba-arrow { transform: rotate(90deg); justify-self: center; }
+.dk .numbered4 { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+.dk .stage-track .seg { flex-direction: column; gap: 2px; }
+}
+.dk #pf .beat-sub { max-width: none; }
+.dk #c3 .frame-row { padding: 10px 0; }
+.dk .stage-nav { position: fixed; left: 0; right: 0; top: 52px; z-index: 9; backdrop-filter: blur(6px);
+  transform: translateY(-8px); opacity: 0; pointer-events: none; transition: opacity .2s, transform .2s; }
+.dk .stage-nav.show { transform: none; opacity: 1; pointer-events: auto; }
+@media (prefers-reduced-motion: reduce) {
+.dk .stage-nav { transition: none; }
+}
+.dk .stage-nav .wrap { display: flex; align-items: center; gap: 12px 28px; flex-wrap: wrap; min-height: 48px; padding-top: 6px; padding-bottom: 6px; }
+.dk .stage-nav ol { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; }
+.dk .sn-stages { gap: 4px 20px; }
+.dk .sn-stages a { text-decoration: none; display: inline-flex; gap: 6px; align-items: baseline; padding: 6px 0; }
+.dk .sn-stages a.on { border-bottom-color: var(--ink); }
+.dk .sn-steps { gap: 4px; display: none !important; padding-left: 20px !important; }
+.dk .stage-nav.steps-on .sn-steps { display: flex !important; }
+.dk .sn-steps a { text-decoration: none; padding: 4px 10px; }
+.dk .stage-nav a:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.dk .slide.stage-sec { min-height: 0; display: block; padding: 120px 0 96px; scroll-margin-top: 110px; }
+.dk .slide.stage-sec.in-stage { padding: 64px 0; }
+.dk .slide.stage-sec.in-stage.stage-first { padding-top: 120px; }
+.dk .slide.stage-sec.in-stage.stage-last { padding-bottom: 120px; }
+.dk .slide.stage-sec > .wrap { gap: 24px; }
+.dk .slide.stage-sec.in-stage:not(.stage-first) > .wrap { padding-top: 56px; }
+@media (max-width: 760px) {
+.dk .sn-steps { padding-left: 0 !important; }
+.dk .slide.stage-sec { padding: 72px 0 56px; scroll-margin-top: 150px; }
+}
+.dk .stage-nav .wrap { flex-direction: column; align-items: flex-start; gap: 2px; }
+.dk .sn-steps { padding-left: 0 !important; margin-left: -10px !important; }
+.dk .stage-nav .sn-steps.on { display: flex !important; }
+.dk .stage-head2 { display: grid; gap: 10px; }
+.dk .phase { display: grid; grid-template-columns: 160px minmax(0, 1fr); gap: 24px; padding: 32px 0 8px; scroll-margin-top: 140px; }
+.dk .slide.stage-sec > .wrap > .phase:first-child { padding-top: 0; }
+.dk .step-label { margin: 0; padding-top: 4px; }
+.dk .step-body { display: grid; gap: 18px; min-width: 0; }
+.dk .step-lead { max-width: 62ch; }
+.dk .sub-label { margin: 0; }
+.dk .why-first { display: grid; gap: 12px; margin-top: 8px; }
+.dk .two-callouts { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.dk .constraints { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.dk .constraints li { padding: 14px 16px; display: grid; gap: 6px; align-content: start; }
+.dk .dtag { justify-self: start; padding: 2px 8px; }
+.dk .options-wrap { overflow-x: auto; }
+.dk .weigh { width: 100%; table-layout: fixed; border-collapse: collapse; min-width: 720px; }
+.dk .weigh caption { text-align: left; padding-bottom: 8px; }
+.dk .weigh th, .dk .weigh td { text-align: left; vertical-align: top; padding: 10px 12px; }
+.dk .weigh tbody th { width: 27%; }
+.dk :is(.weigh, .dk .options) .m { display: flex; align-items: center; gap: 6px; font: 600 0.8rem var(--f-display); color: var(--ink); margin-bottom: 2px; }
+.dk :is(.weigh, .dk .options) .m::before { content: ""; width: 10px; height: 10px; border-radius: 50%; flex: none; box-sizing: border-box; }
+.dk :is(.weigh, .dk .options) .m.y::before { background: var(--confirmed); }
+.dk :is(.weigh, .dk .options) .m.p::before { border: 2px solid var(--pending); background: linear-gradient(90deg, var(--pending) 50%, transparent 50%); }
+.dk :is(.weigh, .dk .options) .m.n::before { border: 2px solid #A8A8A8; }
+.dk :is(.weigh, .dk .options) .m.n { color: var(--muted); }
+.dk .choice { display: block; width: fit-content; margin-top: 6px; font: 600 0.65rem var(--f-display); letter-spacing: 0.04em; background: var(--ink); color: #fff; border-radius: 999px; padding: 2px 8px; }
+.dk .outcome-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.dk .step-body.demo-row { display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+.dk .step-body.demo-row .demo-link { flex-shrink: 0; margin: 0; }
+.dk .dd-cols { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.dk .dd-cols li { padding-top: 12px; display: grid; gap: 8px; align-content: start; }
+.dk .dd-me::before { content: "In my work: "; font: 600 0.85rem var(--f-display); }
+.dk .brief { border: 1px solid var(--line); border-radius: 12px; padding: 20px 22px; display: grid; gap: 10px; max-width: 900px; }
+.dk .brief h3 { font: 600 1.1rem var(--f-display); }
+.dk .brief dl { margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 12px 28px; }
+.dk .brief dt { font: 600 0.75rem var(--f-display); color: var(--muted); }
+.dk .brief dd { margin: 2px 0 0; font-size: 0.98rem; }
+@media (max-width: 960px) {
+.dk .constraints { grid-template-columns: 1fr 1fr; }
+.dk .dd-cols, .dk .two-callouts, .dk .brief dl { grid-template-columns: 1fr; }
+}
+@media (max-width: 760px) {
+.dk .phase { grid-template-columns: 1fr; gap: 10px; }
+.dk .step-body.demo-row { flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 520px) {
+.dk .constraints { grid-template-columns: 1fr; }
+}
+.dk .future h2 { max-width: 30ch; }
+.dk .closer-intro { display: grid; gap: 12px; padding-top: 24px; margin-top: 8px; }
+.dk .closer-intro p { max-width: 68ch; }
+.dk .sub-head { margin: 0; }
+.dk .sub-num { display: block; margin-bottom: 6px; }
+.dk .mini-label { margin: 0 0 8px; }
+.dk .slide.stage-sec.in-stage.cont { padding-top: 24px; }
+.dk .slide.stage-sec.in-stage.cont > .wrap { padding-top: 0; }
+.dk .phase-cont > .step-body { padding-top: 28px; }
+.dk .cont-label { padding-top: 32px; }
+.dk .phase-cont .sample { grid-template-columns: 1.5fr 1fr; }
+@media (max-width: 760px) {
+.dk .cont-label { padding-top: 0; }
+}
+.dk .slide.stage-sec, .dk .phase { scroll-margin-top: 60px; }
+.dk .phase-cont > .step-body { grid-column: 2; }
+.dk .comment-shot img { border-radius: 10px; border: 1px solid var(--line); }
+@media (max-width: 760px) {
+.dk .phase-cont > .step-body { grid-column: auto; }
+}
+.dk .shift-key .fig::before, .dk .weight .fig { background: #A259FF; }
+.dk .constraints.dstack { grid-template-columns: 1fr; }
+.dk .pg-split { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+.dk .pg-split > div { display: grid; gap: 12px; align-content: start; }
+.dk .pg-split .beat-sub { margin-top: 0; }
+.dk .before-after .say { margin: 8px 0 6px; }
+.dk .numbered4.three { grid-template-columns: repeat(3, 1fr); }
+.dk .numbered4.dstack { grid-template-columns: 1fr; gap: 14px; }
+.dk .touch3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.dk .touch3 figure { margin: 0; display: grid; gap: 8px; align-content: start; }
+.dk .touch3 img { width: 100%; display: block; }
+@media (max-width: 900px) {
+.dk .pg-split, .dk .touch3, .dk .numbered4.three { grid-template-columns: 1fr; }
+}
+.dk .pg-reflect { grid-template-columns: 1.8fr 1fr; }
+.dk .numbered4.two { grid-template-columns: 1fr 1fr; gap: 18px 24px; }
+@media (max-width: 900px) {
+.dk .pg-reflect, .dk .numbered4.two { grid-template-columns: 1fr; }
+}
+.dk #g11 h2, .dk #g9 h2 { max-width: 32ch; }
+.dk .two-lists li b { display: inline; margin: 0; }
+.dk #g4b h2, .dk #g2b h2, .dk #g5 h2 { max-width: 32ch; }
+.dk .pg-split.three { grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.dk .audit-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 16px; margin: 10px 0 12px; }
+.dk .audit-row span { display: flex; align-items: baseline; gap: 8px; white-space: nowrap; }
+.dk .guide-row { display: grid; gap: 8px; }
+.dk .guide-row ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.dk .guide-row li { padding-top: 8px; }
+.dk #g5 .constraints li { padding: 10px 14px; gap: 4px; }
+.dk #g6 h2 { max-width: 34ch; }
+@media (max-width: 900px) {
+.dk .pg-split.three, .dk .guide-row ul { grid-template-columns: 1fr; }
+.dk .audit-row { grid-template-columns: 1fr 1fr; }
+}
+.dk #g6 h2 { max-width: 46ch; }
+.dk #g5, .dk #g6 { padding: 44px 0; }
+.dk #g6 .constraints li { padding: 10px 14px; gap: 4px; }
+.dk #g5 .wrap, .dk #g6 .wrap { gap: 22px; }
+.dk .workshop-list { margin: 0; }
+.dk .principles-row { display: grid; grid-template-columns: 1fr 440px; gap: 32px; align-items: start; }
+@media (max-width: 900px) {
+.dk .principles-row { grid-template-columns: 1fr; }
+}
+.dk .two-phones { display: grid; grid-template-columns: 250px 250px 1fr; gap: 24px; align-items: center; }
+.dk .two-phones .dshot img { border: 0; box-shadow: none; border-radius: 0; }
+.dk .two-phones-note { display: block; margin-top: 12px; }
+@media (max-width: 900px) {
+.dk .two-phones { grid-template-columns: 1fr 1fr; }
+.dk .two-phones p { grid-column: 1 / -1; }
+}
+.dk .touch3 video { width: 100%; max-height: 380px; object-fit: contain; display: block; }
+.dk .slide { min-height: 0; display: block; padding: 96px 0; }
+.dk .slide h2 { max-width: 30ch; }
+.dk .slide > .wrap > .sub-head { margin-top: 28px; }
+.dk .section-text { max-width: 72ch; margin-top: -12px; }
+.dk .zoom { display: block; cursor: zoom-in; }
+.dk .pg-split.three { row-gap: 12px; }
+.dk .pg-split.three > div { grid-row: span 3; grid-template-rows: subgrid; }
+@media (max-width: 900px) {
+.dk .pg-split.three { row-gap: 32px; }
+.dk .pg-split.three > div { grid-row: auto; grid-template-rows: none; }
+}
+.dk .owned b { display: block; margin-bottom: 6px; }
+.dk .owned ul, .dk .section-list { margin: 0; padding-left: 1.1em; display: grid; gap: 4px; max-width: 72ch; }
+.dk .find-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+.dk .find-row span { display: grid; gap: 4px; align-content: start; }
+.dk .principle-rows { display: grid; }
+.dk .principle-rows > div { display: grid; grid-template-columns: 280px 1fr; gap: 24px; padding: 16px 0; }
+.dk .principle-rows > div > div { display: grid; gap: 14px; }
+.dk .constraints.three-col { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 900px) {
+.dk .find-row, .dk .constraints.three-col { grid-template-columns: 1fr 1fr; }
+.dk .principle-rows > div { grid-template-columns: 1fr; gap: 6px; }
+}
+.dk .section-text, .dk .section-list, .dk .owned ul, .dk .beat-sub, .dk .lede, .dk .defend p { max-width: none; }
+.dk .owned ul { grid-template-columns: 1fr 1fr; gap: 6px 32px; }
+.dk .find-row span { padding: 16px; }
+.dk .minor-head { margin: 8px 0 0; }
+@media (max-width: 900px) {
+.dk .owned ul { grid-template-columns: 1fr; }
+}
+.dk .touch-stack { display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x proximity; padding-bottom: 12px; }
+.dk .touch-stack figure { margin: 0; flex: 0 0 auto; width: min-content; display: grid; gap: 8px; align-content: start; scroll-snap-align: start; }
+.dk .touch-stack img { height: clamp(260px, 44vw, 520px); width: auto; max-width: none; display: block; }
+.dk .svc-map-wrap { overflow-x: auto; }
+.dk .svc-map { width: 100%; min-width: 860px; border-collapse: collapse; table-layout: fixed; font-size: 0.88rem; line-height: 1.35; }
+.dk .svc-map th, .dk .svc-map td { padding: 10px; text-align: left; vertical-align: top; border-top: 1px solid var(--line); }
+.dk .svc-map thead th { font: 600 0.8rem var(--f-display); border-top: 0; border-bottom: 2px solid var(--ink); }
+.dk .svc-map thead td { border-top: 0; border-bottom: 2px solid var(--ink); }
+.dk .svc-map tbody th { font: 600 0.78rem/1.3 var(--f-display); width: 108px; }
+.dk .svc-map .tp { display: block; width: fit-content; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); padding: 2px 7px; margin-bottom: 4px; }
+.dk .svc-map .worry td, .dk .svc-map .worry th { background: var(--surface); }
+.dk .svc-map-title { font: 600 0.95rem var(--f-display); margin: 8px 0 -4px; }
+.dk .svc-map .stage th { font: 600 0.72rem var(--f-display); color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; border-top: 0; border-bottom: 0; border-left: 1px solid var(--line); padding-bottom: 2px; }
+.dk .svc-map .stage td { border: 0; }
+.dk .trace { width: 100%; min-width: 680px; border-collapse: collapse; table-layout: fixed; }
+.dk .trace th, .dk .trace td { padding: 12px; text-align: left; vertical-align: top; }
+.dk #outcome .stat { align-content: start; }
+.dk .answers { margin: 2px 0 6px; }
+.dk .st-map { width: 100%; min-width: 900px; border-collapse: collapse; font-size: 0.85rem; line-height: 1.3; }
+.dk .st-map th, .dk .st-map td { padding: 7px 8px; text-align: left; vertical-align: middle; border-top: 1px solid var(--line); font-weight: 400; }
+.dk .st-map thead th { font: 600 0.72rem/1.25 var(--f-display); border-top: 0; border-bottom: 2px solid var(--ink); vertical-align: bottom; }
+.dk .st-map tbody tr.grp > * { border-top-color: var(--ink); }
+.dk .st-map .sg { font: 600 0.78rem/1.25 var(--f-display); vertical-align: top; }
+.dk .st-map .sp { font: 600 0.72rem/1.25 var(--f-display); color: var(--muted); vertical-align: top; }
+.dk .st-map .con { background: var(--surface); vertical-align: top; }
+.dk .jd { display: inline-block; flex: none; width: 12px; height: 12px; border-radius: 50%; border: 1.5px solid var(--ink); vertical-align: -1px; }
+.dk .jd.d { background: var(--ink); }
+.dk .jd-t { font: 600 0.68rem var(--f-display); color: var(--muted); }
+.dk .jd-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; margin: 0 0 6px; font-size: 0.85rem; color: var(--muted); }
+.dk .jd-legend .jd:not(:first-child), .dk .jd-legend .jd-t { margin-left: 12px; }
+.dk .jd-foot { font-size: 0.85rem; color: var(--muted); margin-top: 8px; }
+.dk .jd-fig { margin: 8px 0; padding: 20px 22px; border: 1px solid var(--line); border-radius: 12px; background: var(--paper); box-shadow: 0 24px 48px -32px rgba(0,0,0,.35); display: grid; gap: 12px; min-width: 0; }
+.dk .jd-fig figcaption { font: 600 0.95rem var(--f-display); }
+.dk .jd-fig .jd-legend { margin: 0; }
+.dk .jd-fig .jd-foot { margin: -6px 0 0; }
+.dk .jd-fig .st-map { min-width: 860px; }
+.dk .ba-flows { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; }
+.dk .ba-flows .ba-label { display: block; margin-bottom: 8px; }
+@media (max-width: 760px) {
+.dk .ba-flows { grid-template-columns: 1fr; }
+}
+.dk .two-tools { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 40px; align-items: center; }
+.dk .two-tools-text { display: grid; gap: 28px; }
+.dk .two-tools-text p { margin: 6px 0 0; }
+.dk .tt-head { margin: 0; }
+.dk .two-tools-shots { display: grid; grid-template-columns: 200px 200px; gap: 16px; }
+.dk .two-tools-shots .dshot img { border: 0; box-shadow: none; border-radius: 0; }
+@media (max-width: 860px) {
+.dk .two-tools { grid-template-columns: 1fr; }
+.dk .two-tools-shots { grid-template-columns: 1fr 1fr; }
+}
+.dk .principles { width: 100%; border-collapse: collapse; }
+.dk .principles th, .dk .principles td { text-align: left; vertical-align: top; padding: 16px 0; }
+.dk .principles th { width: 30%; padding-right: 28px; }
+.dk .principles td p { margin: 0 0 10px; }
+.dk .principles td .before-after { margin: 12px 0; }
+@media (max-width: 760px) {
+.dk .principles tr { display: grid; }
+.dk .principles th { width: auto; padding-bottom: 4px; }
+.dk .principles td { padding-top: 0; }
+}
+.dk .decide { display: grid; gap: 14px; }
+.dk .dc-main { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 28px; counter-reset: dc; }
+.dk .dc-step { position: relative; padding: 16px 18px; display: grid; gap: 6px; align-content: start; }
+.dk .dc-step + .dc-step::before { content: "→"; position: absolute; left: -22px; top: 50%; transform: translateY(-50%); color: var(--muted); font: 600 1.1rem var(--f-display); }
+.dk .dc-pending { border: 1px dashed #BDBDBD; border-radius: 12px; padding: 14px 18px; display: grid; gap: 4px; }
+@media (max-width: 860px) {
+.dk .dc-main { grid-template-columns: 1fr; gap: 26px; }
+.dk .dc-step + .dc-step::before { content: "↓"; left: 50%; top: -24px; transform: translateX(-50%); }
+}
+/* =====================================================================
+   Portfolio design system — case sections
+   Five text styles (label, heading, body, caption, number) plus the
+   section title; one box; one table; one figure. Reference: design-system.md
+   ===================================================================== */
+:root {
+  --t-label: 600 0.6875rem/1.4 var(--f-display);
+  --t-title: 400 var(--step-2)/1.2 var(--f-body);
+  --t-heading: 600 1.0625rem/1.35 var(--f-body);
+  --t-body: 400 1.0625rem/1.6 var(--f-body);
+  --t-caption: 400 0.875rem/1.5 var(--f-body);
+  --t-number: 400 var(--step-2)/1.1 var(--f-body);
+  --radius: 12px;
+  --box-pad: 18px 20px;
+  --gap: 16px;
+}
+.dk { --confirmed: #2F6B4F; --confirmed-bg: #EAF3EE; --pending: #8A5A12; --pending-bg: #FBF1E2; --flag: #4B4FA6; --flag-bg: #EEEFFB; --gutter: clamp(16px, 5vw, 72px); font: var(--t-body); color: var(--ink); }
+
+/* layout resets for deck sections inside the case layout */
+.dk .slide { min-height: 0; display: block; padding: 0; border: 0; }
+.dk .wrap { max-width: none; margin: 0; padding: 0; }
+.dk .slide > .wrap { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; }
+@media (max-width: 760px) { .dk .dflow.wide-first .tools li { grid-template-columns: 30px minmax(0, 1fr); } }
+.cs-more.stacked .cs-sec { grid-template-columns: minmax(0, 1fr); gap: 18px; padding-block: 40px; }
+.dk p { margin: 0; text-wrap: pretty; }
+.dk :is(.section-text, .step-lead, .lede, .two-tools-text p), .dk .slide > .wrap > p { max-width: 44em; }
+.dk .phase { border-top: 1px solid var(--line); }
+.dk .stage-head2 + .phase { border-top: 0; padding-top: 0; }
+
+/* ---- text: title ---- */
+.dk .slide h2 { font: var(--t-title); letter-spacing: -0.01em; max-width: 26em; }
+.dk .slide h2 .stage-name { font-weight: 600; }
+
+/* ---- text: heading ---- */
+.dk table:not(.st-map):not(.doc-table) tbody th { font: var(--t-heading); color: var(--ink); }
+.dk :is(h3, h4, h5, .sub-head, .minor-head, .ex-title, .tt-head, .say, .tools b, .skill-list b, .dd-cols b, .pg-split b),
+.dk :is(.dbox, .tpl-step, .constraints > li, .numbered4 > li, .before-after > div, .dc-step, .timeline-row > li, .two-lists > div, .credit > div) > b:first-of-type {
+  font: var(--t-heading); color: var(--ink); letter-spacing: 0; text-transform: none; display: block; margin: 0; }
+.dk .sub-head { margin-top: 12px; }
+.dk :is(b, strong) { font-weight: 600; color: var(--ink); }
+
+/* ---- text: label ---- */
+.dk :is(.label, .step-label, .when, .mini-label, .ba-label, .stage-when, .sub-num, .moment-when, table:not(.st-map):not(.doc-table) thead th, .k, .who, .dtag:not(.yes)) {
+  font: var(--t-label); letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+
+/* ---- text: body (boxes and lists read muted; headings stay ink) ---- */
+.dk :is(.dbox, .tpl-step, .constraints > li, .columns3 > *, .columns4 > *, .numbered4 > li, .before-after > div, .fresh > *, .caught2 > *, .dd-cols > li, .two-lists > div, .timeline-row > li, .dc-step, .credit, .stat, td) { color: var(--muted); }
+.dk .stat .what { color: var(--muted); }
+
+/* ---- text: caption ---- */
+.dk :is(figcaption, .two-phones-note, .disclaimer, .dscope, .confidential, .was, .dc-out), .dk p.label, .cs-note, .graph-cap {
+  font: var(--t-caption); letter-spacing: 0; text-transform: none; color: var(--muted); max-width: none; }
+.sec-body > p.cs-note { font: var(--t-caption); }
+.dk figcaption, .graph-cap { margin-top: 10px; }
+.dk .stat .dscope, .dk .stat .what { display: block; }
+
+/* ---- text: number ---- */
+.dk :is(.big, .find-row b), .cs-more .impact strong { font: var(--t-number); letter-spacing: -0.01em; color: var(--ink); }
+.cs-more.stacked .impact .was { font: var(--t-caption); font-style: normal; color: var(--muted); display: block; }
+
+/* ---- box: one style everywhere ---- */
+.dk :is(.dbox, .tpl-step, .constraints > li, .columns3 > *, .columns4 > *, .numbered4 > li, .before-after > div, .fresh > *, .caught2 > *, .dd-cols > li, .two-lists > div, .timeline-row > li, .dc-step, .stat, .find-row > span, .credit),
+.cs-more.stacked .impact > div {
+  background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: var(--box-pad); box-shadow: none; display: grid; gap: 6px; align-content: start; }
+.dk :is(.constraints > li.chosen, .dc-end) { border-color: var(--ink); }
+.dk :is(.constraints, .columns3, .columns4, .numbered4, .fresh, .caught2, .dd-cols, .stats, .find-row, .timeline-row), .cs-more.stacked .impact { gap: var(--gap); }
+.dk .defend { background: none; border: 0; padding: 0; display: grid; gap: 6px; }
+
+/* ---- pill: the one choice marker ---- */
+.dk :is(.choice, .dtag.yes) { display: inline-block; width: max-content; background: var(--ink); color: #fff; border-radius: 999px; padding: 3px 10px; font: var(--t-label); letter-spacing: 0.08em; text-transform: none; }
+
+/* ---- table: one style (journey maps and the sample brief keep their own) ---- */
+.dk table:not(.st-map):not(.doc-table) { width: 100%; border-collapse: separate; border-spacing: 0; }
+.dk table:not(.st-map):not(.doc-table) :is(th, td) { text-align: left; vertical-align: top; padding: 12px 16px; border-top: 1px solid var(--line); background: none; }
+.dk table:not(.st-map):not(.doc-table) thead th { border-top: 0; padding-bottom: 10px; }
+.dk table:not(.st-map):not(.doc-table) tbody th span:not(.choice) { display: block; font: var(--t-caption); color: var(--muted); margin-top: 2px; }
+.dk table:not(.st-map):not(.doc-table) tbody th .choice { margin-top: 8px; }
+.dk tr.chosen :is(th, td) { background: var(--surface); }
+.dk :is(.principles, table.weigh, .options table) { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+.dk :is(.principles, table.weigh, .options table) tbody tr:first-child :is(th, td), .dk .principles tr:first-child :is(th, td) { border-top: 1px solid var(--line); }
+.dk .principles tr:first-child :is(th, td) { border-top: 0; }
+.dk :is(table.weigh, .options table) thead th { padding-top: 14px; }
+.dk :is(table.weigh, .options table) tbody th { width: 27%; }
+.dk .principles th { width: 30%; }
+.dk :is(.weigh, .options) .m { margin-bottom: 4px; }
+
+/* ---- figure ---- */
+.dk .dshot { background: none; padding: 0; border: 0; box-shadow: none; }
+.dk .dshot img { border-radius: 10px; }
+.dk .svc-map-wrap { overflow-x: auto; }
+.dk .st-map { min-width: 720px; }
+.dk .touch-stack img { height: clamp(200px, 26vw, 360px); }
+.dk .tpl-one { margin: 0; display: grid; gap: 8px; max-width: 44em; }
+.dk .tpl-one img { width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--line); }
+.dk .tpl-link { margin: 0; }
+.dk .tpl-link a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+.graph-photo { display: grid; place-items: center; background: url(images/bg-teal.webp) center / cover; }
+.graph-photo .shift-graph { width: 80%; height: auto; display: block; background: #fff; border-radius: 14px; box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1); }
+.thumb.graph-photo .shift-graph { width: 86%; }
+.clip-pink { background-image: url(images/bg-pink.webp); }
+
+/* ---- layout patterns ---- */
+.dk :is(.dflow, .tpl) { align-items: stretch; }
+.dk :is(.dflow, .tpl) > .darrow { align-self: center; }
+.dk .skills2 { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; }
+.dk .tools { display: grid; gap: 16px; }
+.dk .tools li { align-items: start; row-gap: 2px; }
+.dk .tools img { margin-top: 2px; }
+.dk .tools span { color: var(--muted); }
+.dk .stats.solo { max-width: 420px; }
+.dk .credit { max-width: 420px; grid-template-columns: 1fr; }
+.dk .credit > div { display: grid; gap: 4px; }
+.dk .caught2 { display: grid; grid-template-columns: 1fr 1fr; align-items: stretch; margin-top: -8px; }
+.dk .dd-cols { align-items: stretch; }
+@media (max-width: 760px) { .dk :is(.skills2, .caught2) { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---- phones ---- */
+@media (max-width: 640px) {
+  /* comparison tables become one card per option */
+  .dk table:not(.st-map):not(.doc-table):not(.principles) { min-width: 0; }
+  .dk table:not(.st-map):not(.doc-table):not(.principles) thead { display: none; }
+  .dk table:not(.st-map):not(.doc-table):not(.principles) :is(tbody, tr, th, td) { display: block; width: auto; }
+  .dk table:not(.st-map):not(.doc-table):not(.principles) tbody tr { padding: 14px 16px; border-top: 1px solid var(--line); }
+  .dk table:not(.st-map):not(.doc-table):not(.principles) tbody tr:first-child { border-top: 0; }
+  .dk table:not(.st-map):not(.doc-table):not(.principles) tbody :is(th, td) { border-top: 0; padding: 0; width: auto; }
+  .dk table:not(.st-map):not(.doc-table):not(.principles) tbody td { margin-top: 10px; }
+  .dk table:not(.st-map):not(.doc-table):not(.principles) tbody td::before { content: attr(data-label); display: block; font: var(--t-label); letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 2px; }
+  .dk .budget3 .options { overflow: visible; }
+  /* principles: name above its explanation */
+  .dk table.principles :is(tr, th, td) { display: block; width: auto; }
+  .dk table.principles th { padding-bottom: 0; }
+  .dk table.principles td { border-top: 0; padding-top: 6px; }
+  /* preflight sample and other side-by-side figures stack */
+  .dk .sample, .dk .phase-cont .sample { grid-template-columns: minmax(0, 1fr); }
+  /* tool lists: description under the name */
+  .dk .tools li > span { grid-column: 2; }
+}
+/* journey maps keep a compact type size */
+.dk .st-map { font-size: 0.875rem; line-height: 1.4; }
+/* small phones: no grid may push past the screen */
+@media (max-width: 420px) {
+  .cs-more .dk .slide :is(.constraints, .columns3, .columns4, .fresh, .dd-cols, .two-lists, .caught2, .timeline-row, .numbered4, .before-after, .phase) { grid-template-columns: minmax(0, 1fr); }
+  .cs-more .dk .slide :is(.stats, .find-row) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .dk :is(.step-body, .phase-cont > .step-body) { min-width: 0; }
+  .dk .before-after .ba-arrow { justify-self: center; transform: rotate(90deg); }
+}
 </style>
 
 <header class="site-head">
@@ -436,11 +1225,11 @@ figcaption { font-family: var(--f-mono); font-size: 0.8125rem; color: var(--mute
     <div class="hero">
       <div class="hero-txt">
         <h1>Hello, I'm Elissa.</h1>
-        <p class="intro">I lead design on complex products and build the tools behind them. Most of what I make starts with curiosity and gets built with some help from AI, so I can find out quickly whether an idea actually works.</p>
+        <p class="intro">I design complex products and build AI tools that make work easier, without taking decisions away from people. Most of what I make starts with curiosity, so I build it quickly to find out whether an idea actually works.</p>
         <div class="meta roles">
           <span class="label">Product designer</span>
+          <span class="label">AI tool builder</span>
           <span class="label">Systems thinker</span>
-          <span class="label">Builder</span>
         </div>
       </div>
     </div>
@@ -448,49 +1237,69 @@ figcaption { font-family: var(--f-mono); font-size: 0.8125rem; color: var(--mute
     <div class="section" id="work">
       <div class="work-wrap">
       <div class="work-list">
-        <a class="work" href="#grading">
-          <div class="txt">
-            <h3>Trading card grading before shipment</h3>
-            <div class="tags"><span class="tag">eBay</span><span class="tag">Product design</span></div>
-            <p>Led eBay's card grading service from first version to launch, aligned eleven teams on one experience, and set up the foundation later services were built on.</p>
-          </div>
-          <div class="thumb photo"><img src="images/grading-flow-v2.webp" alt="eBay item page, PSA grading modal, and the choice to send the card to the PSA Vault or home"></div>
-        </a>
         <a class="work" href="#ai-workflows">
           <div class="txt">
             <h3>AI assistant for project briefs</h3>
             <div class="tags"><span class="tag">eBay</span><span class="tag">AI tools</span></div>
             <p>Designed and built an AI project assistant that consolidates decisions from Slack, meetings, email and docs into one brief, and surfaces cross-team dependencies at kickoff.</p>
+            <p class="evidence">Cut time gathering context and summarizing decisions by ~90% in initial testing</p>
           </div>
           <div class="thumb photo"><img src="images/ai-design-skills.webp" alt="GitHub repository of eBay design skills for AI assistants"></div>
+        </a>
+        <a class="work" href="#ai-toolkit">
+          <div class="txt">
+            <h3>How my use of AI evolved</h3>
+            <div class="tags"><span class="tag">eBay</span><span class="tag">AI tools</span></div>
+            <p>Built Figma plugins, AI skills that check the Figma file, and coded service templates, each shaped by what AI could do at the time and a limited AI budget.</p>
+            <p class="evidence">Cut localized mockups from up to a week to ~10 min<br>Cut a new service's first designs from 1–2 days to ~5 min</p>
+          </div>
+          <div class="thumb photo graph-photo"><svg class="shift-graph" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Roughly where my design work happened: mostly in Figma in January 2026, shifting to mostly AI agents and code by now"><style>.sg-x{font:600 30px var(--f-display);fill:var(--muted);letter-spacing:.04em}.sg-l{font:600 38px var(--f-display)}</style><line x1="340" y1="140" x2="340" y2="690" stroke="var(--line)" stroke-width="2"/><line x1="800" y1="140" x2="800" y2="690" stroke="var(--line)" stroke-width="2"/><line x1="1260" y1="140" x2="1260" y2="690" stroke="var(--line)" stroke-width="2"/><line x1="240" y1="690" x2="1360" y2="690" stroke="var(--ink)" stroke-width="2"/><path d="M340 222 C570 222 570 378 800 378 C1030 378 1030 612 1260 612" fill="none" stroke="#A259FF" stroke-width="9" stroke-linecap="round"/><path d="M340 638 C570 638 570 482 800 482 C1030 482 1030 248 1260 248" fill="none" stroke="var(--ink)" stroke-width="9" stroke-linecap="round"/><circle cx="340" cy="222" r="11" fill="#A259FF"/><circle cx="800" cy="378" r="11" fill="#A259FF"/><circle cx="1260" cy="612" r="11" fill="#A259FF"/><circle cx="340" cy="638" r="11" fill="var(--ink)"/><circle cx="800" cy="482" r="11" fill="var(--ink)"/><circle cx="1260" cy="248" r="11" fill="var(--ink)"/><text x="340" y="752" text-anchor="middle" class="sg-x">Jan 2026</text><text x="800" y="752" text-anchor="middle" class="sg-x">Mid 2026</text><text x="1260" y="752" text-anchor="middle" class="sg-x">Now</text><text x="1290" y="624" class="sg-l" fill="#A259FF">Figma</text><text x="1290" y="242" class="sg-l" fill="var(--ink)">AI agents</text><text x="1290" y="288" class="sg-l" fill="var(--ink)">and code</text></svg></div>
         </a>
         <div class="work has-clip">
           <div class="txt">
             <h3><a href="#price-guide">Price Guide for trading cards</a></h3>
             <div class="tags"><span class="tag">eBay</span><span class="tag">Product design</span></div>
-            <p>Architected the foundation of eBay's Price Guide and led the features that scaled it across card scanning, the item page and My Collection.</p>
+            <p>Designed the foundation of eBay's Price Guide as one component, plus the comparison features, so it could run in card scanning, the item page and My Collection.</p>
+            <p class="evidence">Launched · ~90% satisfaction with Collector's IQ, where users name Price Guide among their most-used features</p>
           </div>
           <div class="thumb clip clip-lilac portrait">
             <div class="device"><video src="images/price-guide-loop.mp4" poster="images/price-guide-loop-poster.webp" muted loop playsinline autoplay preload="metadata" aria-label="Screen recording of scanning a graded card and browsing its Price Guide"></video></div>
             <button class="clip-toggle" type="button">Pause</button>
           </div>
         </div>
-        <a class="work" href="#reading-app">
+        <a class="work" href="#grading">
           <div class="txt">
-            <h3>Chinese reading app for kids</h3>
+            <h3>Trading card grading before shipment</h3>
+            <div class="tags"><span class="tag">eBay</span><span class="tag">Product design</span></div>
+            <p>Led eBay's card grading service from first version to launch, aligned 11 teams on one experience, and set up the foundation later services were built on.</p>
+            <p class="evidence">Launched with 2×+ the attachment rate of a typical service<br>Tripled attachment in the Best Offer flow</p>
+          </div>
+          <div class="thumb photo"><img src="images/grading-flow-v2.webp" alt="eBay item page, PSA grading modal, and the choice to send the card to the PSA Vault or home"></div>
+        </a>
+        <div class="work has-clip">
+          <div class="txt">
+            <h3><a href="#reading-app">Chinese reading app for kids</a></h3>
             <div class="tags"><span class="tag">Personal</span><span class="tag">Product design</span></div>
             <p>Designed and built a Chinese reading app for my kids, with a curriculum that teaches characters backward from books we already own.</p>
+            <p class="evidence">My kid learned ~50 characters in a month</p>
           </div>
-          <div class="thumb photo"><img src="images/reading-app.webp" alt="Chinese reading app on iPhone: the lesson map with a pink bear, and a lesson asking which tile is the character for what"></div>
-        </a>
-        <a class="work" href="#explorations">
+          <div class="thumb clip clip-pink portrait">
+            <div class="device"><video src="images/reading-app-loop.mp4" poster="images/reading-app-loop-poster.webp" muted loop playsinline autoplay preload="metadata" aria-label="Screen recording of the reading app: the lesson map, then a lesson asking which tile is the character for I, then picking its sound"></video></div>
+            <button class="clip-toggle" type="button">Pause</button>
+          </div>
+        </div>
+        <div class="work has-clip">
           <div class="txt">
-            <h3>Ad-free backgammon game</h3>
+            <h3><a href="#explorations">Ad-free backgammon game</a></h3>
             <div class="tags"><span class="tag">Personal</span><span class="tag">Game design</span></div>
             <p>I heard about backgammon on a podcast, got tired of the ads in every app, and built my own, with difficulty levels, ways to play and board designs. It's now on the App Store as Backgammon Rounds.</p>
+            <p class="evidence">Published on the App Store and Google Play</p>
           </div>
-          <div class="thumb photo"><img src="images/backgammon.webp" alt="Backgammon Rounds on iPhone: a wooden board in landscape, playing against the computer"></div>
-        </a>
+          <div class="thumb clip clip-gold landscape">
+            <div class="device"><video src="images/backgammon-loop.mp4" poster="images/backgammon-loop-poster.webp" muted loop playsinline autoplay preload="metadata" aria-label="Screen recording of Backgammon Rounds: starting a game against the computer and playing a turn"></video></div>
+            <button class="clip-toggle" type="button">Pause</button>
+          </div>
+        </div>
       </div>
       </div>
     </div>
@@ -503,7 +1312,7 @@ figcaption { font-family: var(--f-mono); font-size: 0.8125rem; color: var(--mute
           <p>My kids recently made two dolls. They colored the fabric with acrylic markers, I helped cut it out, and we stuck the pieces together with iron-on tape. One has uneven eyes. The other is a cat wearing a crown. They sleep with them every night. Before that, they made a book about a unicorn's party. The plot doesn't quite hold together, and they ask me to read it again and again.</p>
           <p>Watching them reminded me of how I drew as a kid: hours with a pencil, trying to get what was in my head onto paper. As an adult I rarely feel that. There's always pressure to spend time on something productive, whether or not it brings any joy.</p>
           <p>I think about this a lot as a parent right now. AI could translate every Chinese book for my kids. But reading it themselves, and stepping into the culture on their own, is something a translation can't give them. I want them to grow up using these tools to make things, not just to consume them.</p>
-          <p>I try to work that way too. When I built their reading app, AI made the visuals quickly, and I'm not attached to them. What I'm proud of is the part I spent my time on: how the lessons are structured, and why it teaches from books we already own. That's the kind of tool I like building: one that handles the polish, so people can spend their time on the part that's theirs.</p>
+          <p>I try to work that way too. When I built their reading app, AI helped me explore visual directions quickly, so I could spend more time on the part I'm proud of: how the lessons work and build on each other, and why it teaches from books we already own. That's the kind of tool I like building: one that handles the polish, so people can spend their time on the part that's theirs.</p>
         </div>
         <div class="hello">
           <h3>Say hello</h3>
@@ -526,10 +1335,8 @@ figcaption { font-family: var(--f-mono); font-size: 0.8125rem; color: var(--mute
       <h1>Trading card grading before shipment</h1>
       <div class="cs-body">
         <div class="story-text">
-        <p>Trading card collectors rely on professional grading services like PSA to authenticate and assess a card’s condition. A high grade can significantly increase its value, but the traditional process required buyers to receive their cards and independently arrange grading and shipping.</p>
-        <p>I led the design of an integrated grading experience that allowed buyers to send their purchases directly to PSA. Beyond simplifying the customer journey, the challenge was designing a solution that could scale alongside eBay’s evolving value-added services strategy. With a broader framework still in development, I made design decisions that balanced immediate product needs with long-term flexibility, creating a foundation that could accommodate future services such as eBay Vault.</p>
-        <p>The complexity extended well beyond the initial purchase experience. I mapped the end-to-end journey, identified dependencies and edge cases across multiple surfaces, and aligned cross-functional teams around a cohesive experience. This work also surfaced broader usability opportunities outside the original scope, helping influence priorities across adjacent product teams.</p>
-        <p>The experience launched with adoption significantly above typical add-on services and generated strong incremental revenue. More importantly, it established a scalable foundation that informed subsequent initiatives, including the expansion of value-added services into the cart.</p>
+        <p>Collectors pay services like PSA to authenticate and grade trading cards, because a high grade can significantly raise a card's value. But a buyer had to wait for the card to arrive, apply to a grader separately, package it, send it off and wait again. I was asked to build grading into the purchase itself.</p>
+        <p>I owned grading end to end, from enrollment through the post-purchase experience. The harder question was how to ship it while another designer was still working out a framework for all additional services. I worked with them so grading could launch without waiting for that framework, and without building something we'd throw away.</p>
       </div>
         <dl class="facts">
         <div><dt class="label">Role</dt><dd>Lead designer</dd></div>
@@ -540,36 +1347,180 @@ figcaption { font-family: var(--f-mono); font-size: 0.8125rem; color: var(--mute
       </div>
     </div>
 
-    <div class="carousel">
-      <div class="carousel-bar">
-        <span class="label count" aria-live="polite">1 / 1</span>
-        <div class="ctrl">
-          <button type="button" data-dir="-1" aria-label="Previous image">←</button>
-          <button type="button" data-dir="1" aria-label="Next image">→</button>
-        </div>
-      </div>
-      <div class="gallery" tabindex="0" aria-label="Project images">
-      <figure>
-        <div class="photo"><img src="images/grading-swimlane.webp" alt="Flow across grader, seller and buyer: the seller ships the card, the grader checks authenticity and condition and grades it, and the buyer receives the graded card"></div>
-        <figcaption>With grading, the seller ships straight to PSA and the buyer receives the graded card. One fewer shipment.</figcaption>
-      </figure>
-      <figure>
-        <div class="photo"><img src="images/grading-order-states.webp" alt="Figma file of the post-purchase flow for grading and the Vault: every order state, from awaiting payment and shipped through authenticated, auth failed, graded and shipped to buyer, for both buyer and seller"></div>
-        <figcaption>Every touchpoint a graded order passes through, from awaiting payment to failed authentication to shipped to buyer, for both buyer and seller.</figcaption>
-      </figure>
-      <figure>
-        <div class="photo"><img src="images/grading-services-map.webp" alt="Figma file mapping each service across categories, such as part installation, warranty, card grading and the Vault, side by side at each step"></div>
-        <figcaption>Every service across categories, from tire installation and warranties to card grading and the Vault, mapped side by side to align their visuals and language.</figcaption>
-      </figure>
-      <figure>
-        <div class="photo"><img src="images/grading-modal-scaling.webp" alt="Three steps of the enrollment modal: the PSA grading intro, a generic additional configuration step with options, and the choice to send the card to the PSA Vault or ship to an address"></div>
-        <figcaption>How the enrollment modal scales as a service gets more complex: an intro, as many configuration steps as it needs, then where the card should go.</figcaption>
-      </figure>
+    <div class="cs-more stacked">
+      <section class="cs-sec"><h2 class="label">Impact</h2><div class="sec-body"><div class="impact"><div><strong>2×+</strong><span>Grading's attachment rate is at least twice a typical service's. Exact rates stay confidential</span></div><div><strong>3×</strong><span>Attachment rate in the Best Offer flow. After I brought grading into the offer flow</span></div><div><strong>2</strong><span>Interaction patterns established for services. Best Offer is live; the cart pattern hasn't launched</span></div><div><strong>1</strong><span>Dedicated workstream for the service framework. With its own designer</span></div></div></div></section>
+      <section class="cs-sec"><h2 class="label">What I owned</h2><div class="sec-body dk"><div class="slide"><div class="wrap"><div class="owned"><ul><li>Grading end to end, from enrollment through the post-purchase experience for buyers and sellers</li><li>A grading experience designed to scale to future services, tested against future use cases</li><li>The map of how every service appears at every touchpoint, and coded templates for anyone who works on services</li><li>The Best Offer extension</li></ul></div>
+      </div></div></div></section>
+      <section class="cs-sec" id="grading-why"><h2 class="label">Why grading</h2><div class="sec-body dk"><div class="slide"><div class="wrap">
+    <h2>A high grade can raise a card's value, but getting one meant a second project after the purchase</h2>
+
+    <h3 class="sub-head">Customer problem</h3>
+    <ul class="section-list"><li>A buyer waited for the card to arrive, applied to a grader separately, packed it, sent it off and waited again</li><li>Each step was the buyer's to manage, after the purchase was already over</li></ul>
+
+    <h3 class="sub-head">The real barrier was trust, not just effort</h3>
+    <p class="section-text">Before launch, research walked 7 buyers who had all used a grading service through the prototype. Card condition was everyone's top concern, because they'd be sending a card to a grader without seeing it. What separated those open to the service from those who weren't was how much risk they'd accept. Convenience alone wasn't enough. Responses to the prototype itself were very positive, and people wanted more clarity on timing and on what was happening at the grader.</p>
+
+    <h3 class="sub-head">With grading in the purchase</h3>
+    <p class="section-text">The buyer chooses grading when they buy. The seller ships the card, it's authenticated and graded, and the buyer receives the graded card without ever packing it.</p>
+    <div class="ba-flows">
+      <figure class="dshot"><span class="ba-label">Before</span><img src="images/deck/grading-flow-before.webp?v=3" alt="Before: the seller ships the card to the buyer, the buyer receives it and submits it to the grader, who checks authenticity and condition and grades it, then the buyer receives the graded card."><figcaption>Grading was a separate project after delivery.</figcaption></figure>
+      <figure class="dshot"><span class="ba-label">After</span><img src="images/deck/grading-flow-after.webp?v=3" alt="With grading in the purchase: the seller ships the card to the grader, who checks authenticity and condition and grades it, and the buyer receives the graded card."><figcaption>Grading is chosen at purchase.</figcaption></figure>
     </div>
+  
+      </div></div></div></section>
+      <section class="cs-sec" id="grading-challenges"><h2 class="label">Challenges</h2><div class="sec-body dk"><div class="slide"><div class="wrap">
+    <h2>No pattern to follow, a framework still in progress, and pages with several owners</h2>
+
+    <h3 class="sub-head">Added services had no consistent pattern, and a framework was still in progress</h3>
+    <p class="section-text">eBay had many added services, and they were inconsistent. The most recent used a checkbox. Another designer was working on a framework for all of them, on a timeline that overlapped ours, and grading couldn't wait for it.</p>
+
+    <h3 class="sub-head">It had to scale to future services, on an unsure roadmap</h3>
+    <p class="section-text">We knew more services could follow, but not which ones or when. So the design couldn't be built around a specific list. It had to leave room for options we couldn't fully define yet.</p>
+
+    <h3 class="sub-head">Some buyers wouldn't trust grading a card they hadn't seen</h3>
+    <p class="section-text">Research found people who reacted very positively, and people who were more conservative about sending a card to a grader sight unseen. Ease alone wouldn't win over the second group.</p>
+
+    <h3 class="sub-head">Every touchpoint had to be found, and every new service would repeat that work</h3>
+    <p class="section-text">The hardest part wasn't disagreement. It was working out everywhere grading had to show up, when one page could have several owners. On order details, Payments owned the page, Trust owned refunds and Tracking owned shipping, and messages often repeated each other. I mapped the journey by the page each person sees at each stage, which told me the requirements and the pages I needed to design: 14 order states across 9 post-purchase touchpoints, for buyers and sellers.</p>
+    <figure class="jd-fig">
+      <figcaption>Buyer journey</figcaption>
+    <div class="svc-map-wrap" tabindex="0" aria-label="Buyer journey. Scroll sideways on small screens."><table class="st-map">
+      <thead><tr><th scope="col">Stage</th><th scope="col">Step</th><th scope="col">State</th><th scope="col">Item page</th><th scope="col">Selection nudge</th><th scope="col">Checkout</th><th scope="col">Confirmation</th><th scope="col">Order details</th><th scope="col">Service details</th><th scope="col">Tracking</th><th scope="col">Email</th><th scope="col">Buyer's concern</th></tr></thead>
+      <tbody>
+        <tr class="grp"><th scope="rowgroup" rowspan="2" class="sg">Consider</th><th scope="rowgroup" rowspan="2" class="sp">Decide</th><th scope="row">Views the item and enrolls</th><td><span class="jd d" role="img" aria-label="Designed"></span></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td rowspan="2" class="con">I can't inspect this card</td></tr>
+        <tr><th scope="row">Sees the selection nudge</th><td></td><td><span class="jd d" role="img" aria-label="Designed"></span></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr class="grp"><th scope="rowgroup" rowspan="4" class="sg">Purchase</th><th scope="rowgroup" rowspan="4" class="sp">Pay</th><th scope="row">Checks out</th><td></td><td></td><td><span class="jd d" role="img" aria-label="Designed"></span></td><td></td><td></td><td></td><td></td><td></td><td rowspan="4" class="con">Is the cost worth the risk?</td></tr>
+        <tr><th scope="row">Order placed</th><td></td><td></td><td></td><td><span class="jd d" role="img" aria-label="Designed"></span></td><td></td><td></td><td></td><td></td></tr>
+        <tr><th scope="row">Awaiting payment</th><td></td><td></td><td></td><td></td><td><span class="jd e" role="img" aria-label="Existing pattern"></span></td><td><span class="jd d" role="img" aria-label="Designed"></span></td><td></td><td><span class="jd e" role="img" aria-label="Existing pattern"></span></td></tr>
+        <tr><th scope="row">Paid</th><td></td><td></td><td></td><td></td><td><span class="jd d" role="img" aria-label="Designed"></span></td><td></td><td></td><td><span class="jd d" role="img" aria-label="Designed"></span></td></tr>
+        <tr class="grp"><th scope="rowgroup" rowspan="10" class="sg">Track</th><th scope="rowgroup" rowspan="2" class="sp">Seller ships</th><th scope="row">Shipped to authenticator</th><td></td><td></td><td></td><td></td><td><span class="jd d" role="img" aria-label="Designed"></span></td><td></td><td><span class="jd d" role="img" aria-label="Designed"></span></td><td><span class="jd d" role="img" aria-label="Designed"></span></td><td rowspan="2" class="con">Did it arrive?</td></tr>
+        <tr><th scope="row">Arrived at facility</th><td></td><td></td><td></td><td></td><td><span class="jd d" role="img" aria-label="Designed"></span></td><td></td><td><span class="jd d" role="img" aria-label="Designed"></span></td><td></td></tr>
+        <tr class="grp"><th scope="rowgroup" rowspan="5" class="sp">Authenticate</th><th scope="row">Authenticated, sent for grading</th><td></td><td></td><td></td><td></td><td><span class="jd d" role="img" aria-label="Designed"></span></td><td></td><td><span class="jd d" role="img" aria-label="Designed"></span></td><td><span class="jd d" role="img" aria-label="Designed"></span></td><td rowspan="5" class="con"></td></tr>
+        <tr><th scope="row">Card is customized</th><td></td><td></td><td></td><td></td><td><span class="jd d" role="img" aria-label="Designed"></span></td><td></td><td><span class="jd d" role="img" aria-label="Designed"></span></td><td><span class="jd d" role="img" aria-label="Designed"></span></td></tr>
+        <tr><th scope="row">Not as described or inauthentic</th><td></td><td></td><td></td><td></td><td><span class="jd d" role="img" aria-label="Designed"></span></td><td></td><td><span class="jd e" role="img" aria-label="Existing pattern"></span></td><td><span class="jd d" role="img" aria-label="Designed"></span></td></tr>
+        <tr><th scope="row">Condition doesn't match the listing</th><td></td><td></td><td></td><td></td><td><span class="jd d" role="img" aria-label="Designed"></span></td><td></td><td><span class="jd e" role="img" aria-label="Existing pattern"></span></td><td><span class="jd d" role="img" aria-label="Designed"></span></td></tr>
+        <tr><th scope="row">Miscategorized</th><td></td><td></td><td></td><td></td><td><span class="jd d" role="img" aria-label="Designed"></span></td><td></td><td><span class="jd e" role="img" aria-label="Existing pattern"></span></td><td><span class="jd d" role="img" aria-label="Designed"></span></td></tr>
+        <tr class="grp"><th scope="rowgroup" rowspan="3" class="sp">Grade</th><th scope="row">Card received by PSA</th><td></td><td></td><td></td><td></td><td><span class="jd d" role="img" aria-label="Designed"></span></td><td></td><td><span class="jd d" role="img" aria-label="Designed"></span></td><td><span class="jd-t">PSA</span></td><td rowspan="3" class="con">What's happening, and when?</td></tr>
+        <tr><th scope="row">Grading started</th><td></td><td></td><td></td><td></td><td><span class="jd d" role="img" aria-label="Designed"></span></td><td></td><td><span class="jd d" role="img" aria-label="Designed"></span></td><td><span class="jd-t">PSA</span></td></tr>
+        <tr><th scope="row">Grading complete</th><td></td><td></td><td></td><td></td><td><span class="jd d" role="img" aria-label="Designed"></span></td><td></td><td><span class="jd d" role="img" aria-label="Designed"></span></td><td><span class="jd-t">PSA</span></td></tr>
+        <tr class="grp"><th scope="rowgroup" rowspan="2" class="sg">Receive</th><th scope="rowgroup" rowspan="2" class="sp">Deliver</th><th scope="row">Shipped to buyer</th><td></td><td></td><td></td><td></td><td><span class="jd d" role="img" aria-label="Designed"></span></td><td></td><td><span class="jd d" role="img" aria-label="Designed"></span></td><td><span class="jd-t">PSA</span></td><td rowspan="2" class="con"></td></tr>
+        <tr><th scope="row">Delivered</th><td></td><td></td><td></td><td></td><td><span class="jd d" role="img" aria-label="Designed"></span></td><td></td><td><span class="jd e" role="img" aria-label="Existing pattern"></span></td><td><span class="jd-t">PSA</span></td></tr>
+      </tbody>
+    </table></div>
+    <p class="jd-legend"><span class="jd d"></span>Designed for this state <span class="jd e"></span>Existing pattern <span class="jd-t">PSA</span>Handled by PSA</p>
+    <p class="jd-foot">Purchase pages were designed for Buy It Now, auction plus Buy It Now, and auction listings.</p>
+    </figure>
+    <figure class="jd-fig">
+      <figcaption>Seller journey</figcaption>
+    <div class="svc-map-wrap" tabindex="0" aria-label="Seller journey. Scroll sideways on small screens."><table class="st-map">
+      <thead><tr><th scope="col">Stage</th><th scope="col">Step</th><th scope="col">State</th><th scope="col">Seller Hub order</th><th scope="col">Fulfillment</th><th scope="col">Order details</th><th scope="col">Tracking</th><th scope="col">Email</th></tr></thead>
+      <tbody>
+        <tr class="grp"><th scope="rowgroup" rowspan="2" class="sg">Sell</th><th scope="rowgroup" rowspan="2" class="sp">Get paid</th><th scope="row">Awaiting payment</th><td><span class="jd e" role="img" aria-label="Existing pattern"></span></td><td><span class="jd d" role="img" aria-label="Designed"></span></td><td><span class="jd e" role="img" aria-label="Existing pattern"></span></td><td></td><td><span class="jd d" role="img" aria-label="Designed"></span></td></tr>
+        <tr><th scope="row">Paid</th><td><span class="jd e" role="img" aria-label="Existing pattern"></span></td><td></td><td><span class="jd d" role="img" aria-label="Designed"></span></td><td></td><td><span class="jd d" role="img" aria-label="Designed"></span></td></tr>
+        <tr class="grp"><th scope="rowgroup" rowspan="2" class="sg">Fulfill</th><th scope="rowgroup" rowspan="2" class="sp">Ship</th><th scope="row">Shipped to authenticator</th><td><span class="jd d" role="img" aria-label="Designed"></span></td><td></td><td><span class="jd e" role="img" aria-label="Existing pattern"></span></td><td><span class="jd d" role="img" aria-label="Designed"></span></td><td></td></tr>
+        <tr><th scope="row">Arrived at facility</th><td><span class="jd e" role="img" aria-label="Existing pattern"></span></td><td></td><td><span class="jd e" role="img" aria-label="Existing pattern"></span></td><td><span class="jd d" role="img" aria-label="Designed"></span></td><td></td></tr>
+        <tr class="grp"><th scope="rowgroup" rowspan="10" class="sg">Follow along</th><th scope="rowgroup" rowspan="5" class="sp">Authenticate</th><th scope="row">Authenticated, sent for grading</th><td><span class="jd e" role="img" aria-label="Existing pattern"></span></td><td></td><td><span class="jd d" role="img" aria-label="Designed"></span></td><td><span class="jd d" role="img" aria-label="Designed"></span></td><td><span class="jd d" role="img" aria-label="Designed"></span></td></tr>
+        <tr><th scope="row">Card is customized</th><td><span class="jd e" role="img" aria-label="Existing pattern"></span></td><td></td><td><span class="jd d" role="img" aria-label="Designed"></span></td><td><span class="jd d" role="img" aria-label="Designed"></span></td><td><span class="jd d" role="img" aria-label="Designed"></span></td></tr>
+        <tr><th scope="row">Not as described or inauthentic</th><td><span class="jd e" role="img" aria-label="Existing pattern"></span></td><td></td><td><span class="jd e" role="img" aria-label="Existing pattern"></span></td><td><span class="jd e" role="img" aria-label="Existing pattern"></span></td><td><span class="jd e" role="img" aria-label="Existing pattern"></span></td></tr>
+        <tr><th scope="row">Condition doesn't match the listing</th><td><span class="jd e" role="img" aria-label="Existing pattern"></span></td><td></td><td><span class="jd e" role="img" aria-label="Existing pattern"></span></td><td><span class="jd e" role="img" aria-label="Existing pattern"></span></td><td><span class="jd e" role="img" aria-label="Existing pattern"></span></td></tr>
+        <tr><th scope="row">Miscategorized</th><td><span class="jd d" role="img" aria-label="Designed"></span></td><td></td><td><span class="jd e" role="img" aria-label="Existing pattern"></span></td><td><span class="jd e" role="img" aria-label="Existing pattern"></span></td><td><span class="jd e" role="img" aria-label="Existing pattern"></span></td></tr>
+        <tr class="grp"><th scope="rowgroup" rowspan="3" class="sp">Grade</th><th scope="row">Card received by PSA</th><td><span class="jd d" role="img" aria-label="Designed"></span></td><td></td><td><span class="jd d" role="img" aria-label="Designed"></span></td><td><span class="jd d" role="img" aria-label="Designed"></span></td><td></td></tr>
+        <tr><th scope="row">Grading started</th><td><span class="jd d" role="img" aria-label="Designed"></span></td><td></td><td><span class="jd d" role="img" aria-label="Designed"></span></td><td><span class="jd d" role="img" aria-label="Designed"></span></td><td></td></tr>
+        <tr><th scope="row">Grading complete</th><td><span class="jd d" role="img" aria-label="Designed"></span></td><td></td><td><span class="jd d" role="img" aria-label="Designed"></span></td><td><span class="jd d" role="img" aria-label="Designed"></span></td><td></td></tr>
+        <tr class="grp"><th scope="rowgroup" rowspan="2" class="sp">Deliver</th><th scope="row">Shipped to buyer</th><td><span class="jd e" role="img" aria-label="Existing pattern"></span></td><td></td><td><span class="jd d" role="img" aria-label="Designed"></span></td><td><span class="jd d" role="img" aria-label="Designed"></span></td><td></td></tr>
+        <tr><th scope="row">Delivered</th><td><span class="jd e" role="img" aria-label="Existing pattern"></span></td><td></td><td><span class="jd e" role="img" aria-label="Existing pattern"></span></td><td><span class="jd e" role="img" aria-label="Existing pattern"></span></td><td></td></tr>
+      </tbody>
+    </table></div>
+    <p class="jd-legend"><span class="jd d"></span>Designed for this state <span class="jd e"></span>Existing pattern <span class="jd-t">PSA</span>Handled by PSA</p>
+    </figure>
+    <p class="section-text">Every service runs through these same pages. Gathering the screens for a new one took about 2 weeks from scratch, or 1–2 days with my Figma templates.</p>
+
+    <h3 class="sub-head">Seller instructions had to do two jobs</h3>
+    <p class="section-text">Sellers mainly need to know where to ship. But grading can take a long time and buyers may ask sellers for updates, so sellers also need context.</p>
+
+    <h3 class="sub-head">Layouts had no answer for several items and services</h3>
+    <p class="section-text">Each service counted as its own item, so a card plus grading showed as 2 in the item count. The layouts also had no answer for one item with two services, one service shared across items, or an order mixing items with and without services.</p>
+
+    <h3 class="sub-head">There was no pattern for a service in the cart</h3>
+    <p class="section-text">We limit services to one per item. When a buyer selects a service, even clicking "Add to cart" takes them straight to checkout, so nobody had established what a service looks like once it's in a cart.</p>
+
+    <h3 class="sub-head">There was no pattern for adding a service in Best Offer</h3>
+    <p class="section-text">We uncovered this after the MVP launched, and at first we weren't sure how significant the flow was. Once an offer was accepted, payment processed automatically, so most offer buyers skipped the point where they could enroll. The few who did attach grading hadn't set up auto-checkout yet, so they still saw the option at checkout.</p>
+
+    <h3 class="sub-head">Complimentary and optional services looked unrelated</h3>
+    <p class="section-text">Working on the cart raised a question nobody had asked me to answer: what happens when a complimentary service and an optional one sit side by side? The same service could look like two different things.</p>
+  
+      </div></div></div></section>
+      <section class="cs-sec" id="grading-decisions"><h2 class="label">Decisions</h2><div class="sec-body dk"><div class="slide"><div class="wrap">
+    <h2>What I decided, from how to ship without the framework to what I raised with other teams</h2>
+
+    <h3 class="sub-head">Don't wait for the framework, and don't build something to throw away</h3>
+    <p class="section-text">I worked with the designer on the framework so grading could launch ahead of it without conflicting with it. I took the existing checkbox pattern and adapted it for grading, rather than inventing another pattern while one was being defined.</p>
+
+    <h3 class="sub-head">A stepper, tested against services that didn't exist yet</h3>
+    <p class="section-text">For the original launch, we tested showing configuration options on one page against a stepper. The stepper won because it was less overwhelming, especially on mobile, where selections on one page got mixed in with unselected options and people had to scroll to check them. We also tested the design against hypothetical future use cases, so the structure would hold up once there was more to choose.</p>
+    <p class="section-text">Launch needed only basic grading, but the experience had a place for an added configuration step. When PSA Vault arrived, choosing where the card goes became that step.</p>
+    <figure class="dshot"><img src="images/deck/grading-modal-scaling.webp" alt="Three steps of the enrollment modal: the PSA grading intro, a generic additional configuration step with options, and the choice to send the card to the PSA Vault or ship to an address."><figcaption>The intro, the generic configuration step, and how Vault fills it.</figcaption></figure>
+
+    <h3 class="sub-head">Launch for the buyers more willing to trust the process</h3>
+    <p class="section-text">We didn't try to solve for trust in the MVP. We decided to target people who were already comfortable with the process, and discussed ways to reduce the risk for everyone else. Those haven't been a priority yet.</p>
+
+    <h3 class="sub-head">Turn the touchpoint work into coded templates for anyone who touches services</h3>
+    <p class="section-text">This is separate from the grading experience. I mapped every service across every page, then built templates in code with a service library behind them. They're meant to help not just my team, but anyone who works on services. A new service's first end-to-end designs take about 5 minutes.</p>
+    <figure class="tpl-one"><img src="images/deck/grading-templates-focus.webp" alt="Service template tool in Focus layout: the Grading only item page shown full width in a browser frame, with filters for journey, category, service, buying format and platform."><figcaption><b>User flows, focus.</b> Browse one service's pages as a buyer would.</figcaption></figure>
+      <p class="tpl-link"><a href="#ai-toolkit-s3">See how I built the templates, and the other views →</a></p>
+
+    <h3 class="sub-head">Seller instructions: I argued for less, and accepted more</h3>
+    <div class="two-lists">
+      <div><b>What I proposed</b><p>Keep shipping instructions focused on the seller's task, where to ship, and share grading details later. I checked with Legal and learned that the detail was a business preference, not a legal requirement.</p></div>
+      <div><b>What shipped</b><p>The business chose more detail up front. There was a fair reason: grading takes a long time, and buyers may ask sellers for updates, so sellers need context. I went with that decision.</p></div>
     </div>
 
+    <h3 class="sub-head">Follow the flawed pattern to ship, and make the flaw visible</h3>
+    <p class="section-text">We had to follow the item count to launch, and fixing the layouts wasn't in my scope. It also shouldn't block grading. So I made initial concepts with Payments showing those cases, and told the teams involved what they'd need to resolve so grading could adopt it.</p>
 
-    <nav class="next" aria-label="Next story"><span class="label">Next</span><a href="#ai-workflows">AI assistant for project briefs →</a></nav>
+    <h3 class="sub-head">Lay out how a service appears in the cart</h3>
+    <p class="section-text">I designed the interaction pattern for a service once it's added to the cart, including several items and services together.</p>
+
+    <h3 class="sub-head">Bring the choice to offer review</h3>
+    <p class="section-text">I designed the pattern for adding a service in the offer flow, and introduced grading at offer review, in a placement we could adjust based on how it performed.</p>
+
+    <h3 class="sub-head">Test how complimentary and optional services display together</h3>
+    <p class="section-text">This wasn't part of the brief. While working on the cart pattern, we tested ways to show the two side by side, and I shared what we learned with the program owner.</p>
+  
+      </div></div></div></section>
+      <section class="cs-sec" id="grading-outcome"><h2 class="label">Outcome</h2><div class="sec-body dk"><div class="slide"><div class="wrap">
+    <h2>Each challenge led to a decision, and each decision to a result</h2>
+    <div class="stats four">
+      <div class="stat"><span class="big">2×+</span><span class="what">Grading's attachment rate is at least twice a typical service's</span><span class="dscope">Which I'd credit to a strong fit with what buyers wanted, and how we highlighted the benefits</span></div>
+      <div class="stat"><span class="big">3×</span><span class="what">Attachment rate in the Best Offer flow</span><span class="dscope">Compared with before grading was in the offer flow</span></div>
+      <div class="stat"><span class="big">2</span><span class="what">Interaction patterns established for services</span><span class="dscope">Best Offer is live. The cart pattern is agreed but hasn't launched</span></div>
+      <div class="stat"><span class="big">1</span><span class="what">Dedicated workstream for the service framework</span><span class="dscope">With its own designer</span></div>
+    </div>
+  
+      </div></div></div></section>
+      <section class="cs-sec" id="grading-change"><h2 class="label">What I'd change now</h2><div class="sec-body dk"><div class="slide"><div class="wrap">
+    <h2>With what I know now, I'd push further on trust, every way of buying, and the cart</h2>
+    <ol class="numbered4 two">
+      <li><b>Plan for every way people buy</b><span>We launched in the regular buying flow, and only later addressed that automatic payment kept most offer buyers from ever seeing grading. I'd map every purchase path at the start, not just the main one.</span></li>
+      <li><b>Get services into the cart</b><span>Buyers grading several cards have to buy them individually, because a service skips the cart and goes straight to checkout. It was the right scope for launch, and I'd push to launch the cart pattern next.</span></li>
+      <li><b>Go further on trust</b><span>Research showed the real barrier was sending a card to a grader without seeing it. Ease alone wasn't enough for many people. I'd look harder at what reduces that risk, like better photos or a card review.</span></li>
+      <li><b>Build the map as a tool sooner</b><span>I wanted the service map to be something people could browse, but it stayed in Figma. Coded templates now do much of what I had in mind, and I'd have started earlier.</span></li>
+    </ol>
+  
+      </div></div></div></section>
+      <section class="cs-sec" id="grading-learned"><h2 class="label">What I learned</h2><div class="sec-body dk"><div class="slide"><div class="wrap">
+    <h2>Every new pattern shows you something about the old ones</h2>
+    <div class="columns3">
+      <div class="dbox"><h3>What worked</h3><p>Testing the structure against services that didn't exist yet, so launch stayed small without boxing in what came next.</p></div>
+      <div class="dbox"><h3>What surprised me</h3><p>Work that hasn't launched can still be useful. Designing the cart pattern showed us how complimentary and optional services were being presented, and the program owner plans to act on it.</p></div>
+      <div class="dbox"><h3>What I'd keep doing</h3><p>Using a few concrete concepts to show a problem outside my scope, and following a flawed pattern to ship while making sure the right people know about the flaw.</p></div>
+    </div>
+  
+      </div></div></div></section>
+    </div>
+
+    <nav class="next" aria-label="Next story"><span class="label">Next</span><a href="#reading-app">Chinese reading app for kids →</a></nav>
   </div>
 </article>
 
@@ -584,27 +1535,586 @@ figcaption { font-family: var(--f-mono); font-size: 0.8125rem; color: var(--mute
       <h1>AI assistant for project briefs</h1>
       <div class="cs-body">
         <div class="story-text">
-        <p>Design work often involves significant effort beyond designing the product itself. While requirements are typically documented, project context, decisions, and dependencies are frequently fragmented across conversations, meetings, and documents. This creates unnecessary overhead for designers and makes it harder to build a shared understanding, particularly when projects span multiple teams.</p>
-        <p>When eBay introduced Claude integrations with internal tools, I saw an opportunity to streamline how designers gather and synthesize information. I developed a set of reusable AI skills that consolidate context across Slack, Zoom, Outlook, and Google Drive, generate structured design briefs, distinguish resolved decisions from open questions, and identify related initiatives and potential dependencies early in the process.</p>
-        <p>What began as a way to improve my own workflow evolved into a project assistant that supports more informed kickoffs and reduces repetitive documentation. Early testing with two other designers highlighted substantial time savings and surfaced insights they might otherwise have missed.</p>
-        <p>I extended this approach into design execution, creating a reusable toolkit that enables AI-assisted workflows in Figma, from accessibility reviews and design preflight checks to updating existing designs. I also developed Figma plugins adopted by designers beyond my immediate team, including Payments.</p>
-        <p>Together, these efforts reflect a broader focus on improving how design teams operate: reducing repetitive work, making knowledge more accessible, identifying dependencies earlier, and creating more space for meaningful product thinking.</p>
+        <p>Every project kept coming back to the same four questions: what was decided, who decided it, why, and what's still open. The answers existed, but they were spread across Slack, meetings, email and docs, so I'd ask around and piece the timeline together by hand.</p>
+        <p>When Claude could reach our internal tools, I built skills for my own workflow. They pull context from Slack, Zoom, Outlook and Google Drive into the design brief format the team already reads, separate confirmed decisions from open ones, flag related work, and link back to sources so people can check them.</p>
+        
       </div>
         <dl class="facts">
         <div><dt class="label">Role</dt><dd>Solo: concept, design and build</dd></div>
-        <div><dt class="label">Team</dt><dd>Just me, with two designers in beta</dd></div>
+        <div><dt class="label">Team</dt><dd>Just me, tested with about six designers</dd></div>
         <div><dt class="label">Built with</dt><dd>Claude</dd></div>
-        <div><dt class="label">Status</dt><dd>Beta</dd></div>
+        <div><dt class="label">Status</dt><dd>Early use</dd></div>
       </dl>
       </div>
     </div>
 
 
-    <nav class="next" aria-label="Next story"><span class="label">Next</span><a href="#price-guide">Price Guide for trading cards →</a></nav>
+    <div class="cs-more stacked">
+      <section class="cs-sec"><h2 class="label">Impact</h2><div class="sec-body"><div class="impact"><div><strong>~90%</strong><span>Less time gathering context and summarizing decisions. Average, initial testing with the immediate team</span></div><div><strong>Human-verified</strong><span>AI-generated project records. Sources, decision status, and review of missing information</span></div></div><p class="cs-note">Internal tool. Examples are simplified, with names and project details removed.</p></div></section>
+      <section class="cs-sec" id="ai-workflows-s2"><h2 class="label">The problem</h2><div class="sec-body dk"><div class="slide"><div class="wrap">
+    <h2>The information existed. The decisions were hard to reconstruct.</h2>
+    <div class="problem">
+      <div class="dbox">
+        <span class="label">1 · What we needed to know</span>
+        <ol class="questions">
+          <li>What was decided?</li>
+          <li>Who decided it?</li>
+          <li>Why?</li>
+          <li>What's still open?</li>
+        </ol>
+      </div>
+      <div class="dbox">
+        <span class="label">2 · Where the answers lived</span>
+        <ul class="tools">
+          <li><img src="images/deck/logos/slack.svg" alt="" width="22" height="22"><b>Slack</b><span>Threads and quick calls</span></li>
+          <li><img src="images/deck/logos/zoom.svg" alt="" width="22" height="22"><b>Zoom</b><span>Meeting discussions</span></li>
+          <li><img src="images/deck/logos/microsoftoutlook.svg" alt="" width="22" height="22"><b>Outlook</b><span>Approvals and follow-ups</span></li>
+          <li><img src="images/deck/logos/googledrive.svg" alt="" width="22" height="22"><b>Google Drive</b><span>Requirements and briefs</span></li>
+        </ul>
+        <p class="how">So we asked around, opened each one, and rebuilt the timeline by hand.</p>
+      </div>
+      <div class="dbox fill">
+        <span class="label">3 · Where it broke down</span>
+        <h3 class="ex-title">Example: how one decision traveled across 10+ stakeholders</h3>
+        <ol class="timeline">
+          <li>Leadership feedback conflicts with an existing guideline</li>
+          <li>The team checks with core members and legal for the history, across several threads</li>
+          <li>Marketing shares a point of view that conflicts with the core team's discussion</li>
+          <li>The decision is escalated to leadership</li>
+          <li>Teammates outside some threads lose track of the latest context</li>
+          <li>Once decided, it takes more threads to find the right owners and share it</li>
+        </ol>
+      </div>
+    </div>
+  
+      </div></div></div></section>
+      <section class="cs-sec" id="ai-workflows-c1"><h2 class="label">Consideration 1 of 5 · Audience</h2><div class="sec-body dk"><div class="slide"><div class="wrap">
+    <h2>Design for the people who don't have an agent</h2>
+    <p class="lede">With a limited AI budget, I was the one running the assistant. Most teammates would only ever read what it produced, so the output had to stand on its own.</p>
+    <div class="columns3">
+      <div class="dbox"><h3>Readable without AI</h3><p>A finished document, not something you have to query to understand.</p></div>
+      <div class="dbox"><h3>In a format the team knows</h3><p>The existing design-brief template, already expected at kickoff and handoff, so people know where to look.</p></div>
+      <div class="dbox"><h3>Easy to correct</h3><p>A doc anyone can edit, so the team can fix or add context the AI missed.</p></div>
+    </div>
+    <aside class="defend"><span class="label">The tradeoff</span><p>An AI-native output would have been easier for me to build and query. A human-readable brief meant everyone could use it, with or without an agent.</p></aside>
+  
+      </div></div></div></section>
+      <section class="cs-sec" id="ai-workflows-s3b"><h2 class="label">Consideration 1 of 5 · Audience and budget</h2><div class="sec-body dk"><div class="slide"><div class="wrap">
+    <h2>A useful assistant also had to be affordable to run</h2>
+    <div class="budget3">
+      <div class="credit"><span class="big">$150</span><div><b>Monthly AI usage credit</b><span>Billed by use, so every retrieval and summary drew on a limited budget.</span></div></div>
+      <figure class="options">
+        <span class="label">How often should the AI do the work?</span>
+        <table>
+          <thead>
+            <tr><th scope="col">Option</th><th scope="col">Up to date</th><th scope="col">Cost</th><th scope="col">Saved for the team</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Every change<span>Continuous monitoring</span></th><td data-label="Up to date"><span class="m y">Yes</span>Always</td><td data-label="Cost"><span class="m n">No</span>Runs constantly</td><td data-label="Saved for the team"><span class="m y">Yes</span>Yes</td></tr>
+            <tr><th scope="row">Every question<span>Chat only</span></th><td data-label="Up to date"><span class="m y">Yes</span>When asked</td><td data-label="Cost"><span class="m n">No</span>Repeats the same work for every question</td><td data-label="Saved for the team"><span class="m n">No</span>Buried in chats</td></tr>
+            <tr class="chosen"><th scope="row">On a schedule<span>Saved as a shared brief</span> <span class="choice">My choice</span></th><td data-label="Up to date"><span class="m p">Partly</span>Can fall a step behind</td><td data-label="Cost"><span class="m y">Yes</span>Done once, reused</td><td data-label="Saved for the team"><span class="m y">Yes</span>Yes</td></tr>
+          </tbody>
+        </table>
+      </figure>
+    </div>
+  
+      </div></div></div></section>
+      <section class="cs-sec" id="ai-workflows-s3"><h2 class="label">Consideration 2 of 5 · Structure</h2><div class="sec-body dk"><div class="slide"><div class="wrap">
+    <h2>What goes where depends on who can see it</h2>
+    <div class="dflow wide-first">
+      <div class="dbox">
+        <h3>Connected through MCP</h3>
+        <ul class="tools">
+          <li><img src="images/deck/logos/slack.svg" alt="" width="26" height="26"><b>Slack</b><span>Threads</span></li>
+          <li><img src="images/deck/logos/zoom.svg" alt="" width="26" height="26"><b>Zoom</b><span>Transcripts</span></li>
+          <li><img src="images/deck/logos/microsoftoutlook.svg" alt="" width="26" height="26"><b>Outlook</b><span>Email</span></li>
+          <li><img src="images/deck/logos/googledrive.svg" alt="" width="26" height="26"><b>Google Drive</b><span>Docs</span></li>
+          <li><img src="images/deck/logos/figma.svg" alt="" width="26" height="26"><b>Figma</b><span>Design files</span></li>
+          <li><img src="images/deck/logos/search.svg" alt="" width="26" height="26"><b>Glean</b><span>Company search</span></li>
+          <li><img src="images/deck/logos/research.svg" alt="" width="26" height="26"><b>Research library</b><span>Internal studies</span></li>
+        </ul>
+      </div>
+      <span class="darrow" aria-hidden="true">→</span>
+      <div class="dbox fill">
+        <h3>Claude-powered assistant</h3>
+        <p>Retrieves, synthesizes, and identifies decisions and dependencies</p>
+      </div>
+      <span class="darrow" aria-hidden="true">→</span>
+      <div class="dstack">
+        <div class="dbox"><span class="who">Just me</span><h3>Answers</h3><p>Questions in the moment</p></div>
+        <div class="dbox"><span class="who team">Whole team</span><h3>Shared brief</h3><p>Only team-safe information, in Google Drive</p></div>
+        <div class="dbox"><span class="who">Just me</span><h3>Personal tracker</h3><p>Private context and my action items, in Cursor</p></div>
+      </div>
+    </div>
+  
+      </div></div></div></section>
+      <section class="cs-sec" id="ai-workflows-s4"><h2 class="label">The shared brief · sample output</h2><div class="sec-body dk"><div class="slide"><div class="wrap">
+    <h2>A brief the whole team can read, not a chat only I can see</h2>
+    <div class="sample">
+      <div class="paper" tabindex="0" aria-label="Sample design brief for a fictional project">
+        <span class="doc-org">Brightleaf</span>
+        <span class="doc-type">Design brief</span>
+        <span class="doc-title">Delivery windows for large items</span>
+        <div class="doc-meta"><span>Created <i>May 12</i></span><span>Last update <i>Jun 20</i></span><span>Authors <i>Avery Morgan, Jordan Wells</i></span></div>
+        <table class="doc-table">
+          <tr><th colspan="2">Key information</th></tr>
+          <tr><td>Target hand-off</td><td>Jul 1</td></tr>
+          <tr><td>Target launch</td><td>Sep 15</td></tr>
+          <tr><td>Project category</td><td><span class="pill green">New capability</span></td></tr>
+          <tr><td>Status</td><td><span class="pill">In design</span></td></tr>
+          <tr><td>Supporting materials</td><td><u>Design file</u> · <u>Requirements</u> · <u>Tickets</u> · <u>Research summary</u></td></tr>
+        </table>
+        <p class="doc-nav">Context · Problem · Documents · Decisions · Risks and dependencies · Roles · Schedule · Resources</p>
+
+        <h3 class="doc-h">Context</h3>
+        <p>Buyers of large items like sofas and appliances can't choose when a delivery arrives. Missed deliveries lead to rescheduling, extra carrier fees and support contacts. We want buyers to pick a delivery window at checkout and follow it through to arrival.</p>
+        <table class="doc-table">
+          <tr><th>Feature areas</th><th>Platforms</th><th>Regions</th></tr>
+          <tr><td>Item page, checkout, order details, tracking, seller orders</td><td>Desktop web, iOS, Android</td><td>Pilot region</td></tr>
+        </table>
+        <h4>Constraints</h4>
+        <ul>
+          <li>Build on the existing delivery options at checkout.</li>
+          <li>Window availability varies by carrier and must come from their systems.</li>
+          <li>Seller tools stay the same in the first phase.</li>
+        </ul>
+        <h4>Considerations</h4>
+        <ul>
+          <li>Same-day delivery is out of scope.</li>
+          <li>Addresses outside carrier coverage show that windows aren't available.</li>
+          <li>Assembly at delivery is planned for a later phase.</li>
+        </ul>
+
+        <h3 class="doc-h">Problem definition</h3>
+        <h4>Target customers</h4>
+        <ul><li>Buyers of large items in the pilot region</li><li>Sellers who ship through partner carriers</li></ul>
+        <h4>Customer problems</h4>
+        <ul><li><b>Missed deliveries:</b> buyers aren't home when the item arrives.</li><li><b>Uncertainty:</b> tracking shows a date, not a time.</li><li><b>Rescheduling friction:</b> changing a delivery means contacting support.</li></ul>
+        <h4>Hypotheses</h4>
+        <ul><li>Letting buyers choose a window will reduce missed deliveries.</li><li>Showing the window in tracking will reduce "where is my order" contacts.</li></ul>
+        <h4>Signals and success metrics</h4>
+        <table class="doc-table">
+          <tr><th>Desired outcome</th><th>Signal</th><th>Metric</th></tr>
+          <tr><td>Fewer missed deliveries</td><td>Redelivery requests</td><td>% delivered on first attempt</td></tr>
+          <tr><td>Fewer support contacts</td><td>Delivery-status contacts</td><td>Decrease in "where is my order" contacts</td></tr>
+          <tr><td>Adoption</td><td>Window selection</td><td>% of eligible checkouts choosing a window</td></tr>
+        </table>
+
+        <h3 class="doc-h">Decisions</h3>
+        <table class="doc-table log">
+          <tr><th>Date</th><th>Decision</th><th>Made by</th><th>Status</th></tr>
+          <tr><td>May 15</td><td>Design ownership split across buyer and seller pages</td><td>Cross-functional</td><td><span class="status ok">Confirmed</span></td></tr>
+          <tr><td>Jun 2</td><td>Offer windows in 4-hour blocks</td><td>Design, operations</td><td><span class="status ok">Confirmed</span></td></tr>
+          <tr><td>Jun 9</td><td>Preselect the earliest available window</td><td>Design, product</td><td><span class="status ok">Confirmed</span></td></tr>
+          <tr><td>—</td><td>Extra fee for evening windows</td><td>Pricing review</td><td><span class="status wait">Pending</span></td></tr>
+          <tr><td>—</td><td>How sellers are notified of the chosen window</td><td>Seller team</td><td><span class="status wait">Pending</span></td></tr>
+        </table>
+
+        <h4>Alignment sessions</h4>
+        <table class="doc-table">
+          <tr><th>Date</th><th>Meeting</th><th>Action items</th></tr>
+          <tr><td>May 6</td><td>Requirements review</td><td>Design to explore checkout options</td></tr>
+          <tr><td>May 20</td><td>Carrier capability review</td><td>Confirm which carriers support windows</td></tr>
+          <tr><td>Jun 10</td><td>Design review</td><td>Refine tracking states; draft seller message</td></tr>
+        </table>
+
+        <h3 class="doc-h">Risks and dependencies</h3>
+        <table class="doc-table">
+          <tr><th>Item</th><th>Type</th><th>Details</th><th>Mitigation</th></tr>
+          <tr><td>Carrier connections</td><td>Dependency</td><td>Two carriers must expose window availability</td><td>Weekly sync with the carrier team</td></tr>
+          <tr><td>Peak-season capacity</td><td>Risk</td><td>Windows may sell out at peak times</td><td>Fall back to standard delivery with a clear message</td></tr>
+        </table>
+
+        <h3 class="doc-h">Roles</h3>
+        <table class="doc-table">
+          <tr><th>Role</th><th>Who</th><th>Contribution</th></tr>
+          <tr><td>Responsible</td><td>Avery Morgan, Jordan Wells</td><td>Buyer and seller experience design</td></tr>
+          <tr><td>Accountable</td><td>Sam Bennett</td><td>Requirements and cross-team alignment</td></tr>
+          <tr><td>Consulted</td><td>Kai Mercer</td><td>Carrier operations</td></tr>
+          <tr><td>Informed</td><td>Design leadership</td><td>Updates at milestones</td></tr>
+        </table>
+
+        <h3 class="doc-h">Schedule</h3>
+        <table class="doc-table">
+          <tr><th>Phase</th><th>Milestone</th><th>Status</th></tr>
+          <tr><td>Define</td><td>Kickoff and requirements review</td><td>Complete</td></tr>
+          <tr><td>Explore</td><td>Design explorations</td><td>Complete</td></tr>
+          <tr><td>Refine</td><td>Final designs delivered</td><td>In progress</td></tr>
+          <tr><td>Build</td><td>Engineering hand-off and design QA</td><td>Not started</td></tr>
+          <tr><td>Learn</td><td>Test results and retrospective</td><td>Not started</td></tr>
+        </table>
+
+        <h3 class="doc-h">Resources</h3>
+        <ul><li>Design system and brand guidelines</li><li>Team channel for questions</li><li>Research summary</li></ul>
+        <p class="doc-foot">Fictional sample · Brightleaf and this project are not real</p>
+      </div>
+      <div class="sample-side">
+        <span class="label">What every brief contains</span>
+        <ul class="contains">
+          <li>Context, scope and constraints</li>
+          <li>Problem, hypotheses and success signals</li>
+          <li><b>Decision log</b> with date, who decided, and status</li>
+          <li>Alignment sessions and action items</li>
+          <li>Risks, dependencies and roles</li>
+          <li>Schedule and resources</li>
+        </ul>
+        <p class="disclaimer">This sample shows the structure and the kinds of information a brief includes. It uses a fictional project and company. No recording is available because the real tool works with sensitive internal data.</p>
+      </div>
+    </div>
+  
+      </div></div></div></section>
+      <section class="cs-sec" id="ai-workflows-s7"><h2 class="label">Consideration 3 of 5 · Trust</h2><div class="sec-body dk"><div class="slide"><div class="wrap">
+    <h2>A citation makes an answer traceable. It doesn't make it correct.</h2>
+    <div>
+      <span class="label">What I learned: three different kinds of "up to date"</span>
+      <div class="fresh" style="margin-top:10px">
+        <div class="dbox"><b>Sources last scanned</b><p>When the assistant last read the conversations</p></div>
+        <div class="dbox"><b>Brief last refreshed</b><p>One real brief still showed its August date, with October decisions inside</p></div>
+        <div class="dbox"><b>Decisions last confirmed</b><p>When a person last checked them</p></div>
+      </div>
+    </div>
+    <span class="label">How I designed the review · illustrative example</span>
+    <div class="dflow">
+      <div class="dbox"><h3>AI-generated summary</h3><p>A decision appears to favor the shared framework, but the available discussions don't show final approval.</p></div>
+      <span class="darrow" aria-hidden="true">→</span>
+      <div class="dbox"><h3>Linked evidence</h3><p>The original discussions and documents</p></div>
+      <span class="darrow" aria-hidden="true">→</span>
+      <div class="dbox"><h3>Human verification</h3><p>Review the source, confirm the decision, or add context that was never written down.</p></div>
+    </div>
+    <p class="inpractice"><b>It leaves a blank rather than guess.</b> When it filled in a project summary, it listed only the meetings it could find a source for, and it left the owner field empty because nothing named an owner.</p>
+  
+      </div></div></div></section>
+      <section class="cs-sec" id="ai-workflows-s5"><h2 class="label">Consideration 4 of 5 · Human in the loop</h2><div class="sec-body dk"><div class="slide"><div class="wrap">
+    <h2>The AI records decisions. People make them.</h2>
+    <div class="decide">
+      <ol class="dc-main">
+        <li class="dc-step"><span class="label">Start</span><b>A source mentions something that sounds decided</b></li>
+        <li class="dc-step"><span class="label">Check 1</span><b>Did someone state it as decided, or approve it?</b><span class="dc-out">If not, it stays pending</span></li>
+        <li class="dc-step"><span class="label">Check 2</span><b>Do sources disagree?</b><span class="dc-out">If so, the latest is current; the rest is history</span></li>
+        <li class="dc-step"><span class="label">Check 3</span><b>It asks me to confirm</b><span class="dc-out">Until I do, it stays pending</span></li>
+        <li class="dc-step dc-end"><span class="label">Result</span><b>Recorded as decided</b></li>
+      </ol>
+      <div class="dc-pending"><span class="label">Pending</span><p>Anything not yet decided stays open, with the next step and who owns it.</p></div>
+    </div>
+  
+      </div></div></div></section>
+      <section class="cs-sec" id="ai-workflows-c5"><h2 class="label">Consideration 5 of 5 · Learning</h2><div class="sec-body dk"><div class="slide"><div class="wrap">
+    <h2>It keeps what I correct</h2>
+    <p class="lede">I built a learning skill so the assistant carries lessons forward instead of starting fresh each time.</p>
+    <div class="columns4">
+      <div class="dbox"><h3>My corrections</h3><p>When I fix something, it saves the lesson for next time.</p></div>
+      <div class="dbox"><h3>My preferences</h3><p>Format and level of detail I want in a brief.</p></div>
+      <div class="dbox"><h3>What counts as a decision</h3><p>Sharper at telling decisions from discussion.</p></div>
+      <div class="dbox"><h3>Project context</h3><p>People, roles, terms and history it shouldn't rediscover.</p></div>
+    </div>
+    <p class="inpractice"><b>Lessons live in a file it reads every time,</b> so they're readable and editable, not hidden inside the model.</p>
+  
+      </div></div></div></section>
+      <section class="cs-sec" id="ai-workflows-s8"><h2 class="label">Impact · Initial testing, immediate team</h2><div class="sec-body dk"><div class="slide"><div class="wrap">
+    <h2>From manual reconstruction to reusable context</h2>
+    <div class="stats solo"><div class="stat"><span class="big">~90%</span><span class="what">Average reduction in time spent gathering project context and summarizing decisions</span><span class="dscope">Initial testing; varies by person</span></div></div>
+    <span class="label">What it caught early</span>
+    <div class="caught2"><div class="dbox"><p>Adjacent use cases that didn't follow an existing content framework. The team decided whether to align or make an exception.</p></div>
+        <div class="dbox"><p>A timing dependency between two workstreams, which prompted a conversation before either blocked the other.</p></div></div>
+    <p class="inpractice"><b>It also gives the team shared access, decision visibility and traceability.</b></p>
+  
+      </div></div></div></section>
+      <section class="cs-sec" id="ai-workflows-s9"><h2 class="label">What I learned and what's next</h2><div class="sec-body dk"><div class="slide"><div class="wrap">
+    <h2>AI can organize project knowledge. Keeping it trustworthy takes design.</h2>
+    <div class="columns3">
+      <div class="dbox"><h3>What worked</h3><p>Answers, a persistent brief and a personal tracker gave the same information the right form for each use.</p></div>
+      <div class="dbox"><h3>What still needs work</h3><p>Incomplete sources, stale information, and telling generated findings apart from human-confirmed decisions.</p></div>
+      <div class="dbox"><h3>What's next</h3><p>Broader team adoption, freshness indicators, and spotting changes cheaply, without monitoring every discussion or spending the AI budget on work nobody asked for.</p></div>
+    </div>
+    <p class="quote">AI can do a lot of the information gathering. People still need to own the decisions.</p>
+  
+      </div></div></div></section>
+    </div>
+
+    <nav class="next" aria-label="Next story"><span class="label">Next</span><a href="#ai-toolkit">How my use of AI evolved →</a></nav>
   </div>
 </article>
 
 <!-- =================================================================== PRICE GUIDE -->
+<article data-view="ai-toolkit" hidden>
+  <div class="wrap">
+    <figure class="cs-cover">
+      <div class="photo graph-photo"><svg class="shift-graph" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Roughly where my design work happened: mostly in Figma in January 2026, shifting to mostly AI agents and code by now"><style>.sg-x{font:600 30px var(--f-display);fill:var(--muted);letter-spacing:.04em}.sg-l{font:600 38px var(--f-display)}</style><line x1="340" y1="140" x2="340" y2="690" stroke="var(--line)" stroke-width="2"/><line x1="800" y1="140" x2="800" y2="690" stroke="var(--line)" stroke-width="2"/><line x1="1260" y1="140" x2="1260" y2="690" stroke="var(--line)" stroke-width="2"/><line x1="240" y1="690" x2="1360" y2="690" stroke="var(--ink)" stroke-width="2"/><path d="M340 222 C570 222 570 378 800 378 C1030 378 1030 612 1260 612" fill="none" stroke="#A259FF" stroke-width="9" stroke-linecap="round"/><path d="M340 638 C570 638 570 482 800 482 C1030 482 1030 248 1260 248" fill="none" stroke="var(--ink)" stroke-width="9" stroke-linecap="round"/><circle cx="340" cy="222" r="11" fill="#A259FF"/><circle cx="800" cy="378" r="11" fill="#A259FF"/><circle cx="1260" cy="612" r="11" fill="#A259FF"/><circle cx="340" cy="638" r="11" fill="var(--ink)"/><circle cx="800" cy="482" r="11" fill="var(--ink)"/><circle cx="1260" cy="248" r="11" fill="var(--ink)"/><text x="340" y="752" text-anchor="middle" class="sg-x">Jan 2026</text><text x="800" y="752" text-anchor="middle" class="sg-x">Mid 2026</text><text x="1260" y="752" text-anchor="middle" class="sg-x">Now</text><text x="1290" y="624" class="sg-l" fill="#A259FF">Figma</text><text x="1290" y="242" class="sg-l" fill="var(--ink)">AI agents</text><text x="1290" y="288" class="sg-l" fill="var(--ink)">and code</text></svg></div>
+      <figcaption class="cs-note graph-cap">Roughly where my design work happened, by stage.</figcaption>
+    </figure>
+    <div class="cs-hero">
+      <div class="tags"><span class="tag">eBay</span><span class="tag">AI tools</span></div>
+      <h1>How my use of AI evolved</h1>
+      <div class="cs-body">
+        <div class="story-text">
+        <p>As the tools matured, I went from small Figma plugins, to AI skills that work on the Figma file, to designing in code. Each step was shaped by what AI could do at the time, what designers had access to, and a limited AI budget.</p>
+        <p>The budget meant I spent credits on things that get reused. A plugin, a skill or a template costs once and pays back every time.</p>
+      </div>
+        <dl class="facts">
+        <div><dt class="label">Role</dt><dd>Solo: concept, design and build</dd></div>
+        <div><dt class="label">Constraint</dt><dd>A limited AI credit budget</dd></div>
+        <div><dt class="label">Built with</dt><dd>Figma plugins, Claude Code, Cursor, MCP</dd></div>
+        <div><dt class="label">Status</dt><dd>In internal use</dd></div>
+      </dl>
+      </div>
+    </div>
+
+    <div class="cs-more stacked">
+      <section class="cs-sec"><h2 class="label">Impact</h2><div class="sec-body"><div class="impact"><div><em class="was">Up to a week →</em><strong>~10 min</strong><span>To get a localized mockup. Figma plugins, used by designers on six product teams</span></div><div><em class="was">Accessibility escalations</em><strong>~80% fewer</strong><span>Issues are checked before engineering sees the file. Estimate, including gaps that used to go unreviewed</span></div><div><em class="was">1–2 days →</em><strong>~5 min</strong><span>For a new service's first end-to-end designs. Estimate, coded templates, my own use so far</span></div></div></div></section>
+      <section class="cs-sec" id="ai-toolkit-k1"><h2 class="label">Overview · Three stages</h2><div class="sec-body dk"><div class="slide"><div class="wrap">
+    <h2>As AI got more capable and my constraints changed, my design work moved from Figma into code</h2>
+    <div class="shift-key"><span class="label">Where the design work happens</span><span class="k fig">Figma</span><span class="k code">AI agent and code</span></div>
+    <ol class="timeline-row shift">
+      <li><span class="when">Stage 1 · Jan 2026</span><b>Figma-led</b><span class="sub">AI-built plugins inside Figma</span>
+        <div class="weight" role="img" aria-label="Mostly Figma, a little AI"><span class="fig" style="flex:9"></span><span class="code" style="flex:1"></span></div>
+        <p>AI couldn't reach our tools or follow the design system, so I used it to build helpers for the Figma workflow.</p></li>
+      <li><span class="when">Stage 2 · Mid 2026</span><b>Agent-assisted</b><span class="sub">AI skills that work on the Figma file</span>
+        <div class="weight" role="img" aria-label="Figma still leads, the agent does more"><span class="fig" style="flex:6"></span><span class="code" style="flex:4"></span></div>
+        <p>MCP connected AI to our design system, but designers and engineers still worked in Figma, so the agent works on the Figma file.</p></li>
+      <li><span class="when">Stage 3 · Now</span><b>Code-led</b><span class="sub">Designing in code with coded templates</span>
+        <div class="weight" role="img" aria-label="Mostly code, Figma as reference"><span class="fig" style="flex:1.5"></span><span class="code" style="flex:8.5"></span></div>
+        <p>AI got good at designing with the design system, so I built reusable templates in code for the screens I design most.</p></li>
+    </ol>
+    <div class="two-callouts">
+      <aside class="defend"><span class="label">The constant: a limited budget</span><p>With limited credits, I prioritized things that cost little to run and get reused: a plugin, a skill, a template. That rules out some approaches that would work with an unlimited budget.</p></aside>
+      <aside class="defend"><span class="label">Stage 3 is the latest, not the end</span><p>It's the best fit for my current budget. With more budget, I'd build a system for delegating work to AI. <a href="#ai-toolkit-f1">More at the end.</a></p></aside>
+    </div>
+  
+      </div></div></div></section>
+      <section class="cs-sec" id="ai-toolkit-s1"><h2 class="label">Stage 1 · Around January 2026 · In internal use</h2><div class="sec-body dk"><div class="slide"><div class="wrap">
+    <div class="stage-head2">
+      <h2 class="stage-title"><span class="stage-name">Figma-led</span> — When AI couldn't reach our tools, small helpers inside Figma</h2></div>
+
+    <div class="phase" id="s1-context" data-step><h3 class="step-label">Context</h3><div class="step-body">
+      <p class="step-lead">Four constraints decided how I could use AI.</p>
+      <ul class="constraints">
+        <li><b>Tight budget</b><p>Limited AI credits. Hours of prompting for one mock wasn't affordable.</p></li>
+        <li><b>Weak AI on our design system</b><p>It took hours of prompting to get close to our design system, and it still wasn't accurate.</p></li>
+        <li><b>No AI connection to our tools</b><p>No way yet to connect AI to our internal tools.</p></li>
+        <li><b>Few designers with AI access</b><p>Not every designer had access to AI.</p></li>
+      </ul>
+    </div></div>
+
+    <div class="phase" id="s1-solution" data-step><h3 class="step-label">Solution</h3><div class="step-body">
+      <p class="step-lead">Use AI to build Figma plugins that speed up the existing Figma workflow. They run on their own, with no connection to other tools or MCP.</p>
+      <div class="options-wrap"><table class="weigh">
+        <caption>Options I weighed against the constraints</caption>
+        <thead><tr><th scope="col">Approach</th><th scope="col">Budget</th><th scope="col">Design system accuracy</th><th scope="col">Works without tool connections</th><th scope="col">Every designer can use it</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Prompt AI to generate mocks</th><td data-label="Budget"><span class="m n">No</span>Hours of credits per mock</td><td data-label="Design system accuracy"><span class="m n">No</span>Off-system results</td><td data-label="Works without tool connections"><span class="m y">Yes</span></td><td data-label="Every designer can use it"><span class="m n">No</span>Needs AI access</td></tr>
+          <tr><th scope="row">Connect AI to our tools</th><td data-label="Budget"><span class="m p">Partly</span></td><td data-label="Design system accuracy"><span class="m p">Partly</span></td><td data-label="Works without tool connections"><span class="m n">No</span>Not possible yet</td><td data-label="Every designer can use it"><span class="m n">No</span>Needs AI access</td></tr>
+          <tr class="chosen"><th scope="row">Use AI to build Figma plugins <span class="choice">My choice</span></th><td data-label="Budget"><span class="m y">Yes</span>Credits spent once, to build</td><td data-label="Design system accuracy"><span class="m y">Yes</span>Works on real Figma files</td><td data-label="Works without tool connections"><span class="m y">Yes</span>Self-contained</td><td data-label="Every designer can use it"><span class="m y">Yes</span>Runs in Figma</td></tr>
+        </tbody>
+      </table></div>
+    </div></div>
+
+    <div class="phase" id="s1-built" data-step><h3 class="step-label">What I built</h3><div class="step-body">
+      <p class="step-lead">Two slow, manual parts of my Figma work: a localized mock meant filing a translation request and waiting up to a week, and prices and totals were filled in by hand across mockups. I built a plugin for each.</p>
+      <div class="with-media"><ul class="lead-list"><li><b>Mock Translate:</b> export a frame's text as a CSV, add translations with Gemini, import it back, and get a localized copy of the mock for each language</li><li><b>Amount calculation:</b> fills in prices and totals across mockups</li></ul>
+        <figure class="clip-fig"><video src="images/deck/mock-translate.mp4" poster="images/deck/mock-translate-poster.jpg" autoplay muted loop playsinline controls aria-label="Mock Translate plugin turning one Figma mock into seven languages"></video><figcaption>Mock Translate: one mock into seven languages.</figcaption></figure></div>
+    </div></div>
+
+    <div class="phase" id="s1-outcome" data-step><h3 class="step-label">Outcome</h3><div class="step-body">
+      <ul class="outcome-list"><li><b>Up to a week → ~10 min</b> for a localized mockup, instead of waiting on a translation request</li><li><b>6 product teams</b> have designers using the two plugins</li></ul>
+    </div></div>
+  
+      </div></div></div></section>
+      <section class="cs-sec" id="ai-toolkit-s2"><h2 class="label">Stage 2 · Mid 2026 · In internal use</h2><div class="sec-body dk"><div class="slide"><div class="wrap">
+    <div class="stage-head2">
+      <h2 class="stage-title"><span class="stage-name">Agent-assisted</span> — When MCP arrived, skills that work on the Figma file</h2></div>
+
+    <div class="phase" id="s2-context" data-step><h3 class="step-label">Context</h3><div class="step-body">
+      <p class="step-lead">AI could now reach our design system, but designers and engineers still worked in Figma, and most designers couldn't set up an agent.</p>
+      <ul class="constraints">
+        <li><b>Tight budget</b><p>A $150 monthly usage credit, so every run had to be worth it.</p></li>
+        <li><b>AI connection to our tools now available</b><p>MCP to our design system and to internal insights.</p></li>
+        <li><b>Hard setup for designers</b><p>Most designers had no Claude Code desktop app and no GitHub. The command line was the only way in, and many didn't know how to set it up.</p></li>
+        <li><b>Handoff still in Figma</b><p>Engineers still relied on Figma for handoff.</p></li>
+      </ul>
+    </div></div>
+
+    <div class="phase" id="s2-solution" data-step><h3 class="step-label">Solution</h3><div class="step-body">
+      <p class="step-lead">Build skills that let an AI agent work on the Figma file, so they fit the way designers already work. Designers can run them two ways: in Claude Code, which takes some setup, or through Figma's AI, which is easier to set up.</p>
+      <div class="options-wrap"><table class="weigh">
+        <caption>Options I weighed against the constraints</caption>
+        <thead><tr><th scope="col">Approach</th><th scope="col">Budget</th><th scope="col">Designer setup</th><th scope="col">Handoff stays in Figma</th><th scope="col">Uses design system and insights</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Move designers to designing in code</th><td data-label="Budget"><span class="m p">Partly</span></td><td data-label="Designer setup"><span class="m n">No</span>No Claude Code app or GitHub</td><td data-label="Handoff stays in Figma"><span class="m n">No</span>Engineers expect Figma</td><td data-label="Uses design system and insights"><span class="m y">Yes</span></td></tr>
+          <tr><th scope="row">More Figma plugins</th><td data-label="Budget"><span class="m y">Yes</span></td><td data-label="Designer setup"><span class="m y">Yes</span></td><td data-label="Handoff stays in Figma"><span class="m y">Yes</span></td><td data-label="Uses design system and insights"><span class="m n">No</span>Can't read docs or judge</td></tr>
+          <tr class="chosen"><th scope="row">AI skills that work on the Figma file <span class="choice">My choice</span></th><td data-label="Budget"><span class="m p">Partly</span>Runs cost credits, so only high-value tasks</td><td data-label="Designer setup"><span class="m p">Partly</span>Figma's AI is the easy path</td><td data-label="Handoff stays in Figma"><span class="m y">Yes</span></td><td data-label="Uses design system and insights"><span class="m y">Yes</span>Through MCP</td></tr>
+        </tbody>
+      </table></div>
+    </div></div>
+
+    <div class="phase" id="s2-built" data-step><h3 class="step-label">What I built</h3><div class="step-body">
+      <p class="step-lead">Four skills that take on the slow, easy-to-skip parts of the Figma workflow.</p>
+      <div class="skills2">
+        <ul class="skill-list">
+          <li><b>Design preflight</b> Checks the handoff file against the team's standards and writes an audit into Figma.</li>
+          <li><b>Accessibility audit</b> Checks screens against the accessibility standard and marks the ones that fail.</li>
+          <li><b>Project summary</b> Gathers a project's sources and fills the file's summary board.</li>
+          <li><b>Mock updates</b> Updates titles, prices, dates and images across screens for every touchpoint at once.</li>
+        </ul>
+        <figure class="dshot"><img src="images/deck/ai-design-skills.webp" alt="GitHub repository of AI design skills for Claude Code and Cursor"><figcaption>The skills repository, shared with design teams.</figcaption></figure>
+      </div>
+      <div class="closer-intro">
+        <h4 class="sub-head">A closer look at two of them</h4>
+        <p>Design preflight and the accessibility audit get more detail below because they change <em>when</em> quality gets checked: before engineering sees the file, not after. The other two save time on work designers already do. Here's the gap these two close.</p>
+        <div class="before-after">
+          <div><span class="ba-label">What designers were expected to do before handoff</span><ol><li>Work through a preflight checklist by hand: edge cases, dark mode, every screen size</li><li>Bring designs to accessibility office hours</li></ol></div>
+          <span class="ba-arrow" aria-hidden="true">→</span>
+          <div class="ba-real"><span class="ba-label">What actually happened</span><ul><li>Some designers skipped office hours, so issues reached engineering unreviewed</li><li>Engineers ended up working out details like screen-reader order themselves</li></ul></div>
+        </div>
+      </div>
+    </div></div>
+
+    <div class="phase phase-cont"><div class="step-body">
+    <h4 class="sub-head"><span class="sub-num">Closer look 1 of 2</span>Design preflight: an audit written into the design file</h4>
+    <p class="beat-sub">Given a Figma link, the agent reads the file and its docs, runs every check (accessibility included) and writes the results into Figma.</p>
+    <div class="sample">
+      <div class="paper report" tabindex="0" aria-label="Sample preflight audit, fictional">
+        <span class="doc-type">Design preflight · audit result</span>
+        <div class="tally"><span class="st pass">8 Pass</span><span class="st na">6 N/A</span><span class="st part">23 Partial</span><span class="st fail">0 Fail</span></div>
+        <h4>Design standards</h4>
+        <div class="chk"><span class="st pass">Pass</span><b>Design system components</b><p>Every screen uses library components and variables; no detached instances found.</p></div>
+        <div class="chk"><span class="st part">Partial</span><b>Responsive and native sizes</b><p>Desktop and iOS sizes are present; no Android layout yet. See preflight [2].</p></div>
+        <h4>Requirements and research</h4>
+        <div class="chk"><span class="st pass">Pass</span><b>Solution addresses the problem</b><p>The flow covers the scenarios listed in the requirements doc.</p></div>
+        <div class="chk"><span class="st part">Partial</span><b>Problem informed by research</b><p>The brief links research, but no findings are cited. See preflight [4].</p></div>
+        <h4>Content and stakeholders</h4>
+        <div class="chk"><span class="st na">N/A</span><b>Dedicated content designer</b><p>None assigned on this project; content review is handled by the product team.</p></div>
+        <div class="chk"><span class="st part">Partial</span><b>Content review</b><p>Fee wording has policy implications; no record of a content review yet. See preflight [5].</p></div>
+        <h4>Accessibility</h4>
+        <div class="chk"><span class="st pass">Pass</span><b>Color</b><p>Status and alerts include text, so nothing relies on color alone.</p></div>
+        <div class="chk"><span class="st part">Partial</span><b>Headings</b><p>Two title styles look like headings but aren't marked with heading levels. See preflight [6].</p></div>
+        <div class="chk"><span class="st na">N/A</span><b>Reduced motion</b><p>This page has no animation.</p></div>
+        <h4>Development</h4>
+        <div class="chk"><span class="st part">Partial</span><b>Ready for dev</b><p>The handoff page exists, but the dev-ready flag isn't set. See preflight [11].</p></div>
+        <p class="doc-foot">Fictional sample · not a real project</p>
+      </div>
+      <div class="sample-side">
+        <span class="label">What I designed into the audit</span>
+        <ul class="contains">
+          <li><b>A status on every check</b>, Pass, Partial, N/A or Fail, so the designer sees the state of the whole file at a glance</li>
+          <li><b>A reason with every status</b>, taken from the file and its linked docs, so nobody has to trust a bare verdict</li>
+          <li><b>Judgment calls go to comments pinned on the design</b>, where the designer decides</li>
+          <li><b>N/A comes with its reason</b>, so nothing looks skipped</li>
+        </ul>
+        <p class="disclaimer">This sample shows the structure and the kinds of checks in a preflight audit. It uses a fictional project. The real output works on internal files, so it isn't shown.</p>
+      </div>
+    </div>
+    </div></div>
+
+    <div class="phase phase-cont"><div class="step-body">
+    <h4 class="sub-head"><span class="sub-num">Closer look 2 of 2</span>Both audits: keeping them trustworthy</h4>
+    <p class="section-text">Around the skills, I built the harness that makes their output reliable: the standard they check against, the context they read, and when they hand a decision back to the designer.</p>
+    <div class="two-lists wide-right">
+      <div><h5 class="mini-label">Fix what's clear-cut, leave judgment calls to the designer</h5>
+        <ul class="lead-list"><li><b>Fixes it:</b> clear-cut, mechanical gaps, like missing screen-reader order labels</li><li><b>Marks it:</b> labels the screens that fail, so they're easy to find</li><li><b>Comments on it:</b> anything that needs judgment becomes a Figma comment. The designer replies, and the agent resolves it.</li></ul></div>
+      <figure class="dshot comment-shot"><img src="images/deck/agent-comment.webp?v=2" alt="A Figma comment left by the accessibility audit on a product page: heading levels, with a question for the designer about which title should be the H2"><figcaption>A comment the agent left on a live product page, posted through my Figma account.</figcaption></figure>
+    </div>
+    <h5 class="mini-label">Make the audit right, not just confident</h5>
+    <ol class="numbered4">
+      <li><b>Start from proven work</b><span>Built on existing accessibility skills instead of from scratch.</span></li>
+      <li><b>Ground it in the standard</b><span>Checks against the company accessibility standard.</span></li>
+      <li><b>Check it and tune it</b><span>Spot-checked against manual reviews, and adjusted when it missed issues or flagged false ones.</span></li>
+      <li><b>Experts keep the final say</b><span>Fewer issues need escalating; the accessibility team still reviews what matters.</span></li>
+    </ol>
+    </div></div>
+
+    <div class="phase" id="s2-outcome" data-step><h3 class="step-label">Outcome</h3><div class="step-body">
+      <ul class="outcome-list"><li><b>~80% fewer</b> accessibility issues needing escalation (estimate)</li><li><b>~90% less</b> review time (estimate; varies by project and number of screens)</li><li><b>Earlier checks:</b> quality issues are caught before engineering sees the file</li></ul>
+    </div></div>
+    <div class="phase" id="s2-learning" data-step><h3 class="step-label">Learning</h3><div class="step-body">
+      <p class="step-lead">Building the skills was the easy part. Getting them onto other people's machines was hard, mostly because GitHub was hard for designers to access.</p>
+      <div class="two-lists">
+        <div><b>What I did</b><ul><li>Shared the skills as a zip in Google Drive, since most designers don't have GitHub</li><li>Wrote the setup instructions for the agent, so it could set itself up</li><li>Ran workshops and demos for 50+ people</li></ul></div>
+        <div><b>What still got in the way</b><ul><li>Many designers didn't know how to set up an agent</li><li>Some needed network certificates configured first</li><li>Limited AI credits for running skills</li></ul></div>
+      </div>
+    </div></div>
+  
+      </div></div></div></section>
+      <section class="cs-sec" id="ai-toolkit-s3"><h2 class="label">Stage 3 · Now · My own use so far</h2><div class="sec-body dk"><div class="slide"><div class="wrap">
+    <div class="stage-head2">
+      <h2 class="stage-title"><span class="stage-name">Code-led</span> — When AI learned the design system, templates in code</h2></div>
+
+    <div class="phase" id="s3-context" data-step><h3 class="step-label">Context</h3><div class="step-body">
+      <p class="step-lead">AI could now design accurately with our design system, which changed what was worth building. Budget and access still limited how.</p>
+      <ul class="constraints">
+        <li><b>Tight budget</b><p>Still limited by credits.</p></li>
+        <li><b>Strong AI on our design system</b><p>Very good at generating designs from the design system, which now offers component templates too.</p></li>
+        <li><b>Growing designer access</b><p>Designers are gradually getting GitHub, and some have Claude Code.</p></li>
+        <li><b>No internal source code</b><p>Designers can't access the internal codebase.</p></li>
+      </ul>
+    </div></div>
+
+    <div class="phase" id="s3-solution" data-step><h3 class="step-label">Solution</h3><div class="step-body">
+      <p class="step-lead">Build front-end templates in code for the screens I design most often, using the design system's coded components, which are documented in Storybook. They're expensive to set up, but my projects repeat the same journey, so the setup pays back on every new design.</p>
+      <div class="options-wrap"><table class="weigh">
+        <caption>Options I weighed against the constraints</caption>
+        <thead><tr><th scope="col">Approach</th><th scope="col">Budget</th><th scope="col">Works without internal source code</th><th scope="col">On the design system</th><th scope="col">Fast for the next project</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Figma templates (what I had)</th><td data-label="Budget"><span class="m y">Yes</span></td><td data-label="Works without internal source code"><span class="m y">Yes</span></td><td data-label="On the design system"><span class="m y">Yes</span></td><td data-label="Fast for the next project"><span class="m n">No</span>1–2 days per service</td></tr>
+          <tr><th scope="row">Generate each design from scratch with AI</th><td data-label="Budget"><span class="m n">No</span>Credits spent every time</td><td data-label="Works without internal source code"><span class="m y">Yes</span></td><td data-label="On the design system"><span class="m y">Yes</span></td><td data-label="Fast for the next project"><span class="m p">Partly</span>Starts over each time</td></tr>
+          <tr><th scope="row">Prototype in the product codebase</th><td data-label="Budget"><span class="m p">Partly</span></td><td data-label="Works without internal source code"><span class="m n">No</span>No access</td><td data-label="On the design system"><span class="m y">Yes</span></td><td data-label="Fast for the next project"><span class="m y">Yes</span></td></tr>
+          <tr class="chosen"><th scope="row">Coded templates on design system code components <span class="choice">My choice</span></th><td data-label="Budget"><span class="m p">Partly</span>Costly once, cheap to reuse</td><td data-label="Works without internal source code"><span class="m y">Yes</span>Uses design system code, not product code</td><td data-label="On the design system"><span class="m y">Yes</span></td><td data-label="Fast for the next project"><span class="m y">Yes</span>Minutes per service</td></tr>
+        </tbody>
+      </table></div>
+    </div></div>
+
+    <div class="phase" id="s3-built" data-step><h3 class="step-label">What I built</h3><div class="step-body">
+      <p class="step-lead">Every new service I design needs screens across the whole purchase journey: about 2 weeks from scratch, or 1–2 days with Figma templates. So I built template pages, plus the common components my work needs that the design system doesn't offer.</p>
+      <ul class="lead-list">
+        <li><b>A service component:</b> how a service shows up on each page of the purchase journey</li>
+        <li><b>A variants page:</b> every service shown across use cases and categories, side by side. It shows where older services could be aligned, and when I design a new service, whether there's an existing framework it can slot into.</li>
+        <li><b>Journey templates:</b> one per touchpoint, from search results to order details</li>
+      </ul>
+      <div class="tpl">
+        <div class="tpl-step"><span class="when">1 · Describe</span><p>I tell the agent about a new service.</p></div>
+        <span class="darrow" aria-hidden="true">→</span>
+        <div class="tpl-step"><span class="when">2 · Library</span><p>It adds an entry to the <b>service library</b>, the source of truth for each service.</p></div>
+        <span class="darrow" aria-hidden="true">→</span>
+        <div class="tpl-step wide"><span class="when">3 · Journey</span>
+          <div class="pages"><span>Search results</span><span>Item page</span><span>Cart</span><span>Checkout</span><span>Order details</span></div>
+          <p>The service appears on every template, on real design-system components.</p>
+        </div>
+      </div>
+      <div class="touch-stack" tabindex="0" aria-label="Service template screens, scroll sideways">
+        <figure><img src="images/deck/grading-templates-focus.webp" alt="Service template in Focus layout: the Grading only item page shown full width in a browser frame, with filters for journey, category, service, buying format and platform."><figcaption><b>User flows, focus.</b> Browse one service's pages as a buyer would.</figcaption></figure>
+        <figure><img src="images/deck/grading-templates-grid.webp" alt="Service template in Grid layout: numbered columns for item detail, offer review, enrollment and checkout, with a card for each buying format and enrollment step."><figcaption><b>User flows, grid.</b> Every step and buying format in one view.</figcaption></figure>
+        <figure><img src="images/deck/grading-templates-components.webp" alt="Service template Components tab: each service in a row, with its item detail, offer review, enrollment and checkout components in selected and not selected states."><figcaption><b>Components.</b> Every service's variants, touchpoint by touchpoint: the variants page.</figcaption></figure>
+      </div>
+    </div></div>
+    <div class="phase" id="s3-outcome" data-step><h3 class="step-label">Outcome</h3><div class="step-body">
+      <ul class="outcome-list"><li><b>1–2 days → ~5 min</b> for a new service's first end-to-end designs (estimate, my own use so far)</li><li><b>Alignment:</b> the variants page shows where older services can share one framework</li></ul>
+    </div></div>
+  
+      </div></div></div></section>
+      <section class="cs-sec" id="ai-toolkit-t6"><h2 class="label">What I learned</h2><div class="sec-body dk"><div class="slide"><div class="wrap">
+    <h2>What I learned from building on a budget</h2>
+    <div class="columns3">
+      <div class="dbox"><h3>What worked</h3><p>Matching the tool to the constraints of the moment: plugins when AI couldn't reach our tools, skills while handoff stayed in Figma, code once AI could use the design system.</p></div>
+      <div class="dbox"><h3>What the budget taught me</h3><p>Spend credits on things that get reused: a plugin, a skill or a template costs once and pays back every time. And batch related tasks into one request instead of running them one at a time, so the shared context is only loaded once.</p></div>
+      <div class="dbox"><h3>What still needs work</h3><p>Setup is still too hard for most designers, and the numbers are estimates from early use.</p></div>
+    </div>
+  
+      </div></div></div></section>
+      <section class="cs-sec" id="ai-toolkit-f1"><h2 class="label">What's next · Without the budget limit</h2><div class="sec-body dk"><div class="slide"><div class="wrap">
+    <h2>With more budget, I'd move from using AI to delegating to it</h2>
+    <p class="lede">Today I start every task myself and watch it run, because each run costs credits. With more budget, I'd set up automation and delegation.</p>
+    <ol class="dd-cols">
+      <li><b>Decide</b><p class="dd-what">Define the outcome and what "done" looks like before AI starts.</p><p class="dd-me">The preflight checks become the definition of a ready handoff file, and the service library defines what every new service needs.</p></li>
+      <li><b>Delegate</b><p class="dd-what">Hand off work with a standard brief, send each task to the tool that fits, and keep a person in the loop for anything that can't be undone.</p><p class="dd-me">Agents run the preflight and accessibility audit automatically when a file is marked ready for dev, and draft a new service across the templates, with me approving before anything is shared.</p></li>
+      <li><b>Remember</b><p class="dd-what">Save decisions and reusable context, keep a backlog of repeated work, and review weekly.</p><p class="dd-me">Design decisions feed back into the service library and the skills, and repeated tasks become the next things to automate.</p></li>
+    </ol>
+  
+      </div></div></div></section>
+    </div>
+
+    <nav class="next" aria-label="Next story"><span class="label">Next</span><a href="#price-guide">Price Guide for trading cards →</a></nav>
+  </div>
+</article>
+
 <article data-view="price-guide" hidden>
   <div class="wrap">
     <figure class="cs-cover">
@@ -618,11 +2128,8 @@ figcaption { font-family: var(--f-mono); font-size: 0.8125rem; color: var(--mute
       <h1>Price Guide for trading cards</h1>
       <div class="cs-body">
         <div class="story-text">
-        <p>Understanding a trading card’s market value is essential for collectors making buying, selling, and collection decisions. Unlike products with fixed prices, card values fluctuate based on recent sales, condition, and variations. Collectors often had to piece together this information manually, navigating historical transactions or relying on third-party tools built on eBay’s data.</p>
-        <p>The initiative began with a workshop to identify collectors’ unmet needs and opportunities across the collecting journey. The insights shaped a broader product roadmap, with Price Guide emerging as a foundational capability.</p>
-        <p>I led the design strategy and established the experience architecture for Price Guide, considering how it could scale across multiple surfaces and support future capabilities. Rather than presenting transaction data alone, we focused on helping collectors make sense of market value. This included prioritizing median pricing to reduce the influence of outliers and designing comparisons across card conditions and parallels, where subtle variations can significantly affect value.</p>
-        <p>The resulting experience expanded beyond a standalone destination into card scanning, item pages, and My Collection, providing consistent access to pricing insights throughout the collecting journey.</p>
-        <p>Price Guide has become one of the highest-rated experiences for customer satisfaction, with collectors particularly valuing the comparison capabilities. Beyond the initial launch, the work established a reusable foundation for bringing market intelligence into multiple parts of the eBay collecting experience.</p>
+        <p>A trading card's value moves with recent sales, condition and small print variations called parallels. Collectors had to dig through sold listings themselves or use third-party sites built on eBay's data. And every price we showed would sit on two models, one identifying the card and one matching sales, and neither is always right.</p>
+        <p>A research workshop surfaced what collectors wanted, and its findings became the roadmap, with Price Guide as a foundation. I designed it as one component rather than a page, so card scanning, the item page and My Collection could all use it.</p>
       </div>
         <dl class="facts">
         <div><dt class="label">Role</dt><dd>Lead designer</dd></div>
@@ -633,36 +2140,173 @@ figcaption { font-family: var(--f-mono); font-size: 0.8125rem; color: var(--mute
       </div>
     </div>
 
-    <div class="carousel">
-      <div class="carousel-bar">
-        <span class="label count" aria-live="polite">1 / 1</span>
-        <div class="ctrl">
-          <button type="button" data-dir="-1" aria-label="Previous image">←</button>
-          <button type="button" data-dir="1" aria-label="Next image">→</button>
-        </div>
+    <div class="cs-more stacked">
+      <section class="cs-sec"><h2 class="label">Impact</h2><div class="sec-body"><div class="impact"><div><strong>~90%</strong><span>Satisfaction in a survey of Collector's IQ users. Users named price insights and Price Guide as the features they use most</span></div><div><strong>3</strong><span>Touchpoints share one Price Guide component. Card scanning, the item page and My Collection</span></div><div><strong>Parallels</strong><span>Among the most useful features. Based on what users report</span></div></div></div></section>
+      <section class="cs-sec"><h2 class="label">What I owned</h2><div class="sec-body dk"><div class="slide"><div class="wrap"><div class="owned"><ul><li>The experience architecture: Price Guide as one component that any touchpoint can use</li><li>The features built on it: comparing across grades and conditions, and comparing across parallels</li><li>Patterns that work across desktop web, mobile web and the apps</li><li>An audit of seven price experiences, and a workshop to share it and set principles for how prices are presented</li></ul></div>
+      </div></div></div></section>
+      <section class="cs-sec" id="price-guide-why"><h2 class="label">Why Price Guide</h2><div class="sec-body dk"><div class="slide"><div class="wrap">
+    <h2>Collectors were pricing cards by hand, and an earlier price guide hadn't replaced the raw data</h2>
+
+    <h3 class="sub-head">Customer problem</h3>
+    <ul class="section-list"><li>To price a card, collectors dug through past sales themselves to find comparable ones</li><li>Card values swing with condition, grade and small print variations called parallels</li><li>An earlier price guide got visits and Reddit recommendations, but it wasn't fully accurate, so many collectors still checked sales history for raw data. It was later retired</li></ul>
+    <aside class="defend"><span class="label">Why it mattered</span><p>A wrong price costs a collector real money when they buy or sell. Collectors kept checking raw sales because matching wasn't always accurate, so the design had to show what a price is based on and let them decide.</p></aside>
+
+    <h3 class="sub-head">Collectors check prices at three moments, and expect a consistent experience each time</h3>
+    <div class="columns3 moments">
+      <div class="dbox"><span class="moment-when">In the moment</span><h3>Should I buy or sell now?</h3><p>A quick price they can trust for this exact condition, for example while making a deal at a card show.</p></div>
+      <div class="dbox"><span class="moment-when">After the fact</span><h3>Should I sell or hold what I own?</h3><p>Today's value next to what they paid, and any outlier sales or spikes.</p></div>
+      <div class="dbox"><span class="moment-when">Planning ahead</span><h3>When should I act?</h3><p>Trends over time, and data even for cards that rarely sell.</p></div>
+    </div>
+    <p class="section-text">Research with collectors shaped the project, and my designs were tested with them along the way. The same collector moves through all three moments, often on different screens.</p>
+
+    <h3 class="sub-head">Product opportunities</h3>
+    <ul class="section-list"><li>eBay has one of the highest trading card sales volumes online, so it holds the data. Many third-party price sites build on its sales data</li><li>The restart came through My Collection, a tool for tracking what your cards are worth</li><li>A research workshop surfaced what collectors wanted, and its findings became the roadmap, with Price Guide as a foundation</li></ul>
+  
+      </div></div></div></section>
+      <section class="cs-sec" id="price-guide-challenges"><h2 class="label">Challenges</h2><div class="sec-body dk"><div class="slide"><div class="wrap">
+    <h2>Price experiences had no guiding principles, and the design system had no guidance for price graphs</h2>
+
+    <h3 class="sub-head">My audit showed that without guiding principles, the experience had fragmented</h3>
+    <p class="section-text">I audited the price experiences across the company, seven in all, comparing what each was for, how it matched sales, which data platform it used, what price it led with and how it charted it.</p>
+    <figure class="dshot"><a class="zoom" href="images/deck/price-audit.webp" target="_blank" rel="noopener"><img src="images/deck/price-audit.webp" alt="Audit table comparing seven price experiences by job to be done, matching method, data platform, leading price and graph. Internal tool names are blurred."></a><figcaption>Part of my audit. Internal tool names are blurred.</figcaption></figure>
+    <div class="find-row"><span><b>5</b>price graph variations</span><span><b>4</b>matching methods</span><span><b>2</b>data platforms</span><span><b>4</b>headline content variations</span><span><b>2</b>product definitions</span></div>
+
+    <h3 class="sub-head">Both numbers can be correct, and a collector still sees two prices</h3>
+    <div class="two-tools">
+      <div class="two-tools-text">
+        <div><h4 class="tt-head">The same card, in two tools</h4><p>A $180.27 median in one and a $131.51 average in the other. The screens also lead with different numbers and layouts.</p><p class="two-phones-note">Screens from two real tools at the time of the audit. Newer versions may differ.</p></div>
+        <div><h4 class="tt-head">What research showed</h4><p>Collectors noticed when one chart used the average and another the median, and it confused them. They expected the chart, the estimated value and the last sold price to read the same wherever Price Guide appears.</p></div>
       </div>
-      <div class="gallery" tabindex="0" aria-label="Project images">
-      <figure>
-        <div class="photo"><img src="images/price-guide-sizes.webp" alt="Market data for a Luka Dončić PSA 10 card on a phone and in a wide desktop panel: median sold price, last sold, a chart of weekly sales, prices for other PSA grades and recent sales"></div>
-        <figcaption>One layout that scales from phone to desktop, where the extra width makes room for more grades and recent sales.</figcaption>
-      </figure>
-      <figure>
-        <div class="photo"><img src="images/price-guide-item-page.webp" alt="Item page for a graded card with a market data row showing See insights, grade and PSA population, next to the market data screen it opens"></div>
-        <figcaption>On the item page: a market data row next to the price, and See insights opens the full picture before you buy.</figcaption>
-      </figure>
-      <figure>
-        <div class="photo"><img src="images/price-guide-scan.webp" alt="Card scanning flow: Scan cards in My eBay, an introduction to card parallels, the camera framing a graded card, and the resulting market data"></div>
-        <figcaption>From a scan: point the camera at a card and land on its market data.</figcaption>
-      </figure>
-      <figure>
-        <div class="photo"><img src="images/price-guide-collection.webp" alt="My Collection showing owned cards with their values, and the item details for one card with its price insights and a Create listing button"></div>
-        <figcaption>In My Collection: every card shows what it is worth, and its details lead straight to listing it.</figcaption>
-      </figure>
-    </div>
+      <div class="two-tools-shots">
+        <figure class="dshot"><img src="images/deck/price-mismatch-median.webp?v=2" alt="Market data screen for a card, leading with a median sold price of $180.27 and a chart."></figure>
+        <figure class="dshot"><img src="images/deck/price-mismatch-average.webp?v=2" alt="A second pricing tool showing the same card, leading with an average sold price of $131.51 and no chart."></figure>
+      </div>
     </div>
 
+    <h3 class="sub-head">The workshop made the problem visible, and teams agreed who owned what</h3>
+    <div class="principles-row">
+      <ul class="section-list"><li>I brought the audit into a pricing workshop, which set goals for consistent data and consistent tools</li><li>It led to a community of practice, where the teams agreed who is responsible, accountable, supporting, consulted and informed (a RASCI)</li><li>Product later aligned on one data source on the back end. That was their decision; the audit and workshop are where the problem became visible</li></ul>
+      <figure class="dshot"><img src="images/deck/price-workshop-board.webp" alt="The workshop board: sticky notes from the team clustered by theme, next to a frame listing the goals of the workshop."><figcaption>The workshop board, showing how team input was clustered by theme.</figcaption></figure>
+    </div>
 
-    <nav class="next" aria-label="Next story"><span class="label">Next</span><a href="#reading-app">Chinese reading app for kids →</a></nav>
+    <h3 class="sub-head">I synthesized the team's opinions into five principles for any pricing tool</h3>
+    <table class="principles">
+      <tbody>
+        <tr><th scope="row">Have unique user value</th><td><p>A pricing tool should serve a distinct purpose, even for the same job, instead of repeating an existing feature.</p></td></tr>
+        <tr><th scope="row">Utilize consistent and comprehensive data</th><td><p>Use the same data as every other pricing tool, including all relevant transactions.</p></td></tr>
+        <tr><th scope="row">Present data as objectively as possible</th><td><p>Show facts, not our interpretation of them, and show what every number is based on, such as how many sales and over what period ("median sold price over 90 days").</p>
+        <div class="before-after">
+          <div class="ba-real"><span class="ba-label">A judgment</span><p class="say">"This is a great price!"</p><p>Asks collectors to trust a verdict they can't check, from a system they had reason to doubt.</p></div>
+          <span class="ba-arrow" aria-hidden="true">→</span>
+          <div><span class="ba-label">A fact</span><p class="say">"Priced lower than 80% of listings."</p><p>Gives them the evidence and lets them decide what counts as good for them.</p></div>
+        </div>
+        <p class="two-phones-note">Both examples are workshop concepts, not shipped wording.</p></td></tr>
+        <tr><th scope="row">Enhance, not overshadow</th><td><p>Show the right data at the right moment, without flooding people or taking away the excitement of discovery.</p></td></tr>
+        <tr><th scope="row">Incorporate a feedback loop</th><td><p>Learn from passive and active feedback, and tie success metrics to the accuracy of the data.</p></td></tr>
+      </tbody>
+    </table>
+
+    <h3 class="sub-head">Where the design system stopped, I wrote the price graph guidance</h3>
+    <p class="section-text">Combo charts, tooltips, markers, large numbers, error and loading states, and data frequency, so price charts read the same everywhere.</p>
+    <figure class="dshot"><a class="zoom" href="images/deck/price-chart-guidance.webp" target="_blank" rel="noopener"><img src="images/deck/price-chart-guidance.webp" alt="Chart guidance file with sections for combo chart, tooltip, marker, large number, error state, loading state and data frequency, each showing the current treatment and a proposal."></a></figure>
+  
+      </div></div></div></section>
+      <section class="cs-sec" id="price-guide-decisions"><h2 class="label">Decisions</h2><div class="sec-body dk"><div class="slide"><div class="wrap">
+    <h2>What I decided, from the number we lead with to how it adapts by platform</h2>
+
+    <h3 class="sub-head">What price should we anchor to? The median, so one odd sale can't set the price</h3>
+    <ul class="constraints three-col">
+      <li><b>Last sold</b><p>Easy to understand, but a single unusual sale becomes the price.</p></li>
+      <li><b>Price range</b><p>Shows the spread, but one outlier stretches it.</p></li>
+      <li class="chosen"><span class="dtag yes">Chosen</span><b>Median sold price</b><p>One odd sale can't move it. Chosen with data science. Last sold still shows next to it, as context.</p></li>
+    </ul>
+
+    <h3 class="sub-head">What graph should we use? The median per day or week, which we could actually build</h3>
+    <ul class="constraints three-col">
+      <li><b>Every sale, clustered</b><p>A scatterplot of every sale. The most accurate, but too computation-heavy to be realistic.</p></li>
+      <li><b>Candlestick chart</b><p>Shows the spread over time, with the same computation problem.</p></li>
+      <li class="chosen"><span class="dtag yes">Chosen</span><b>Median per day or week</b><p>Buildable, and resists outliers. The interval follows the time range, and recent sales stay listed below, which research found makes the chart more trustworthy.</p></li>
+    </ul>
+    <h4 class="minor-head">Comparative audit</h4>
+    <p class="section-text">To set how the chart behaves, I compared how Apple Stocks, Seeking Alpha, StockX, Yahoo Finance and CamelCamelCamel handle time labels and data frequency.</p>
+    <figure class="dshot"><a class="zoom" href="images/deck/price-chart-comparison-full.webp" target="_blank" rel="noopener"><img src="images/deck/price-chart-comparison-full.webp" alt="Comparison of chart behavior in Apple Stocks, Seeking Alpha, StockX, Yahoo Finance and CamelCamelCamel, with screenshots and notes on pros and cons for each, above a summary table."></a></figure>
+
+    <h3 class="sub-head">Be open about uncertainty: an unsure match, thin data, or a price that looks wrong</h3>
+    <p class="section-text">Data science raised accuracy and matching rate over time, but never to perfect, so I designed for the model we actually had.</p>
+    <div class="pg-split three">
+      <div><h3 class="sub-head">When the match is uncertain</h3><p class="beat-sub">Card identification returns a confidence score. I helped shape how the experience responds to it.</p>
+        <ul class="constraints dstack">
+          <li><span class="dtag yes">High</span><b>Show the result</b><p>The match appears right away.</p></li>
+          <li><span class="dtag part">Medium</span><b>Ask to confirm</b><p>Shows the match and asks the collector to confirm it.</p></li>
+          <li><span class="dtag no">Low</span><b>Ask to pick</b><p>Shows possible matches and asks the collector to choose.</p></li>
+        </ul></div>
+      <div><h3 class="sub-head">When sales are thin</h3><p class="beat-sub">When few cards have sold, we show the closest data we have.</p>
+        <ul class="constraints dstack">
+          <li><b>Active listings</b><p>Asking prices give a starting point when few cards have sold.</p></li>
+          <li><b>An adjacent condition</b><p>Prices for the next grade or condition up or down.</p></li>
+          <li><b>A different parallel</b><p>Prices for other versions of the same card.</p></li>
+        </ul></div>
+      <div><h3 class="sub-head">When the price looks wrong</h3><p class="beat-sub">Collectors can tell us, right where they see the price.</p>
+        <ul class="constraints dstack">
+          <li><b>Ask in context</b><p>I designed the prompt "Does this price info look accurate?", with a thumbs up or down next to the price.</p></li>
+          <li><b>Review before use</b><p>Responses go to data science. Data science and engineering decided to review them before they can inform the model, because user input can be wrong too.</p></li>
+        </ul></div>
+    </div>
+
+    <h3 class="sub-head">Built to scale: one component, so Price Guide could show up wherever collectors need it</h3>
+    <p class="section-text">I designed Price Guide as a component that any touchpoint can host, instead of a one-off page. That's what let it spread beyond its first home.</p>
+    <div class="touch-stack" tabindex="0" aria-label="Price Guide across touchpoints. Scroll sideways to see all three.">
+      <figure><img src="images/deck/price-touch-scan.webp" alt="Card scanning: a phone camera framing a graded Luka Dončić card, next to the market data screen it opens, with a $600.00 median sold price and a price chart."><figcaption><b>Card scanning:</b> point the camera at a card and land on its market data.</figcaption></figure>
+      <figure><img src="images/deck/price-touch-item.webp" alt="Item page on desktop and mobile web, with the same market data component open over the listing, showing grade comparison, the price chart and recent sales."><figcaption><b>Item page:</b> the entry point follows the item page's existing framework and opens the same component.</figcaption></figure>
+      <figure><img src="images/deck/price-touch-collection.webp" alt="My Collection item on desktop and in the app, with market data in the page next to the card, including the owner's purchase price on the chart."><figcaption><b>My Collection:</b> every card shows what it's worth.</figcaption></figure>
+    </div>
+
+    <h3 class="sub-head">Adjust for platform: as the feature scaled, I identified the need for a dedicated page</h3>
+    <p class="section-text">A dedicated page would help people navigate, and reduce the information load on the modal. Collectors jump between grades and parallels, and that gets deep fast.</p>
+    <div class="before-after">
+      <div><span class="ba-label">Desktop web</span><p>Exploring a grade or parallel can open in a new tab. The original listing stays where it was.</p></div>
+      <span class="ba-arrow" aria-hidden="true">→</span>
+      <div class="ba-real"><span class="ba-label">Native apps</span><p>The same exploration stacks screen on screen, and the way back to the original listing gets lost.</p></div>
+    </div>
+    <div class="two-lists">
+      <div><b>The dedicated page, on web</b><p>I proposed a catalog page. Product preferred another direction at first, and I accepted that call. I then introduced a catalog model in Price Across Parallels, which another designer finished. It shipped on web, where selecting a parallel opens that card's catalog page.</p></div>
+      <div><b>The way back, in the apps</b><p>I identified the missing route back to the original listing and raised it. Another designer designed the return entry point, and it shipped.</p></div>
+    </div>
+  
+      </div></div></div></section>
+      <section class="cs-sec" id="price-guide-outcome"><h2 class="label">Outcome</h2><div class="sec-body dk"><div class="slide"><div class="wrap">
+    <h2>Users name it among the features they use most, and it now runs across the collecting journey</h2>
+    <div class="stats three">
+      <div class="stat"><span class="big">~90%</span><span class="what">Satisfaction in a June survey of Collector's IQ users</span><span class="dscope">The score is for Collector's IQ as a whole. Most of its content is Price Guide insights, and users named price insights and Price Guide as the features they use most</span></div>
+      <div class="stat"><span class="big">3</span><span class="what">Touchpoints, one component</span><span class="dscope">Card scanning, the item page and My Collection</span></div>
+      <div class="stat"><span class="big word">Very positive</span><span class="what">Feedback on comparisons</span><span class="dscope">Comparing by grade was well received; comparing parallels is among the most valued features</span></div>
+    </div>
+    <p class="label">Survey figure rounded. The accuracy feedback loop is in place but hasn't changed the model yet.</p>
+  
+      </div></div></div></section>
+      <section class="cs-sec" id="price-guide-change"><h2 class="label">What I'd change now</h2><div class="sec-body dk"><div class="slide"><div class="wrap">
+    <h2>Right for the requirements at the time, and since outgrown</h2>
+    <p class="section-text">I designed for what we were asked to build: a few features, in one component any touchpoint could host. It held up across three touchpoints.</p>
+    <ol class="numbered4 two">
+      <li><b>Split the light and full versions</b><span>As features piled up, Price Guide became heavy, especially in a modal, which isn't made for that much interaction. The dedicated page shipped on web. I'd bring the full insights to a dedicated page in the apps too, and make the popup a lighter preview that draws people in and offers the way to the full view.</span></li>
+      <li><b>Navigation gets simpler</b><span>With a dedicated page, the navigation problem in the app gets much easier to design for.</span></li>
+      <li><b>Think in products, not just items</b><span>An item is the one card you own; the product is what it is. We can own the same card, but yours has more scratches, so condition, history and purchase price differ. On web, parallels now open a catalog page, but most experiences still attach data to the item. I'd organize the rest like a catalog too.</span></li>
+      <li><b>Move past tabs</b><span>The layout uses tabs, and we can't keep adding a tab for every new insight. The information architecture has to change as features grow.</span></li>
+    </ol>
+  
+      </div></div></div></section>
+      <section class="cs-sec" id="price-guide-learned"><h2 class="label">What I learned</h2><div class="sec-body dk"><div class="slide"><div class="wrap">
+    <h2>I couldn't wait for a perfect model, so I designed for the one we had</h2>
+    <div class="columns3">
+      <div class="dbox"><h3>What worked</h3><p>Being honest about uncertainty: facts over verdicts, a median that resists outliers, and states that change with confidence.</p></div>
+      <div class="dbox"><h3>What I'd keep doing</h3><p>Designing the foundation as a component early, so new touchpoints get the same experience without a redesign.</p></div>
+      <div class="dbox"><h3>What's still open</h3><p>Whether accuracy feedback can be trusted enough to improve the model, and how the structure grows past tabs.</p></div>
+    </div>
+  
+      </div></div></div></section>
+    </div>
+
+    <nav class="next" aria-label="Next story"><span class="label">Next</span><a href="#grading">Trading card grading before shipment →</a></nav>
   </div>
 </article>
 
@@ -670,7 +2314,10 @@ figcaption { font-family: var(--f-mono); font-size: 0.8125rem; color: var(--mute
 <article data-view="reading-app" hidden>
   <div class="wrap">
     <figure class="cs-cover">
-      <div class="photo"><img src="images/reading-app.webp" alt="Chinese reading app on iPhone: the lesson map with a pink bear, and a lesson asking which tile is the character for what"></div>
+      <div class="clip clip-pink portrait">
+        <div class="device"><video src="images/reading-app-loop.mp4" poster="images/reading-app-loop-poster.webp" muted loop playsinline autoplay preload="metadata" aria-label="Screen recording of the reading app: the lesson map, then a lesson asking which tile is the character for I, then picking its sound"></video></div>
+            <button class="clip-toggle" type="button">Pause</button>
+      </div>
     </figure>
     <div class="cs-hero">
       <div class="tags"><span class="tag">Personal</span><span class="tag">Product design</span></div>
@@ -681,7 +2328,7 @@ figcaption { font-family: var(--f-mono); font-size: 0.8125rem; color: var(--mute
         <p>I questioned that approach. Instead of teaching characters in a fixed sequence and hoping children could eventually read a book, what if we started with the book and worked backward?</p>
         <p>I developed a simple three-step learning method—introduce, recall, recognize—and tested it on paper before building the app. From there, I designed a system that breaks books into their component characters and determines a learning sequence based on frequency, usefulness, and opportunities to form words and sentences. The goal wasn't simply to recognize more characters, but to make each new character useful as quickly as possible, reinforcing what children already knew while building toward reading an actual book.</p>
         <p>That thinking shaped the entire experience, from how lessons are generated to how young children navigate independently. Rather than treating curriculum, interaction design, and learning progression as separate problems, I designed them as parts of one connected system.</p>
-        <p>The early results have been encouraging. One of my kids has learned around 50 characters and started reading a real book, while my three-year-old can navigate lessons independently. It's a small experiment with two children, not a formal study, but seeing them progress from recognizing individual characters to reading something meaningful has been some of the most rewarding feedback I've received as a designer.</p>
+        <p>My kid learned around 50 characters in a month and started reading a real book, while my three-year-old can navigate lessons independently. It's a small experiment with two children, not a formal study.</p>
       </div>
         <dl class="facts">
         <div><dt class="label">Role</dt><dd>Solo: curriculum, design and build</dd></div>
@@ -721,7 +2368,10 @@ figcaption { font-family: var(--f-mono); font-size: 0.8125rem; color: var(--mute
 <article data-view="explorations" hidden>
   <div class="wrap">
     <figure class="cs-cover">
-      <div class="photo"><img src="images/backgammon.webp" alt="Backgammon Rounds on iPhone: a wooden board in landscape, playing against the computer"></div>
+      <div class="clip clip-gold landscape">
+        <div class="device"><video src="images/backgammon-loop.mp4" poster="images/backgammon-loop-poster.webp" muted loop playsinline autoplay preload="metadata" aria-label="Screen recording of Backgammon Rounds: starting a game against the computer and playing a turn"></video></div>
+        <button class="clip-toggle" type="button">Pause</button>
+      </div>
     </figure>
     <div class="cs-hero">
       <div class="tags"><span class="tag">Personal</span><span class="tag">Game design</span></div>
@@ -745,15 +2395,7 @@ figcaption { font-family: var(--f-mono); font-size: 0.8125rem; color: var(--mute
       </div>
     </div>
 
-    <figure class="cs-demo">
-      <div class="clip clip-gold landscape">
-        <div class="device"><video src="images/backgammon-demo.mp4" poster="images/backgammon-demo-poster.webp" muted loop playsinline autoplay preload="metadata" aria-label="Screen recording of a game against the computer"></video></div>
-        <button class="clip-toggle" type="button">Pause</button>
-      </div>
-      <figcaption>A game against the computer: pick a side, roll, move your checkers, then watch the bot take its turn.</figcaption>
-    </figure>
-
-    <nav class="next" aria-label="Next story"><span class="label">Next</span><a href="#grading">Trading card grading before shipment →</a></nav>
+    <nav class="next" aria-label="Next story"><span class="label">Next</span><a href="#ai-workflows">AI assistant for project briefs →</a></nav>
   </div>
 </article>
 </main>
@@ -777,7 +2419,11 @@ figcaption { font-family: var(--f-mono); font-size: 0.8125rem; color: var(--mute
     var id = (location.hash || '#home').slice(1);
     var target = views.find(function (v) { return v.dataset.view === id; });
     var anchor = null;
-    if (!target) { target = views[0]; if (homeAnchors[id] || document.getElementById(id)) anchor = document.getElementById(id); }
+    if (!target) {
+      var el = document.getElementById(id), inCase = el && el.closest('article[data-view]');
+      if (inCase) { target = inCase; anchor = el; }
+      else { target = views[0]; if (homeAnchors[id] || el) anchor = el; }
+    }
     views.forEach(function (v) { v.hidden = v !== target; });
     document.body.dataset.view = target.dataset.view;
     if (anchor) anchor.scrollIntoView({ block: 'start' }); else window.scrollTo(0, 0);
