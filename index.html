@@ -1208,6 +1208,7 @@ figcaption { font-family: var(--f-mono); font-size: 0.8125rem; color: var(--mute
 .graph-photo .shift-graph { width: 80%; height: auto; display: block; background: #fff; border-radius: 14px; box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1); }
 .thumb.graph-photo .shift-graph { width: 86%; }
 .clip-pink { background-image: url(images/bg-pink.webp); }
+.clip-coral { background-image: url(images/bg-coral.webp); }
 
 /* ---- layout patterns ---- */
 .dk :is(.dflow, .tpl) { align-items: stretch; }
@@ -1335,6 +1336,32 @@ figcaption { font-family: var(--f-mono); font-size: 0.8125rem; color: var(--mute
 .dk .band-device.landscape-device { height: auto; width: 78%; aspect-ratio: auto; border-radius: 6% / 13%; padding: 8px; }
 .dk .band-device.landscape-device video { height: auto; border-radius: 5% / 11%; }
 @media (max-width: 760px) { .dk .pair-figs .dshot { flex: 1 1 100%; } .dk .pair-figs .dshot img { height: auto; width: 100%; } .dk .band-device.landscape-device { width: 92%; } }
+/* BEGIN GRADING NARRATIVE */
+/* Grading workstream narrative: scoped to this case. */
+[data-view="grading"] .grading-detail { margin: 26px 0 40px; border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; }
+[data-view="grading"] .grading-detail summary { cursor: pointer; font-weight: 600; }
+[data-view="grading"] .grading-detail[open] summary { margin-bottom: 24px; }
+[data-view="grading"] .grading-enrollment { margin: 26px 0; padding: 24px; border: 1px solid var(--line); border-radius: 12px; }
+[data-view="grading"] .grading-arrow { align-self: center; text-align: center; color: var(--muted); }
+[data-view="grading"] .grading-enrollment figcaption { margin-top: 18px; color: var(--muted); font-size: 14px; }
+[data-view="grading"] .grading-reuse { background: var(--surface, #f5f5f5); border-radius: 12px; padding: 20px 24px; margin: 24px 0 0; }
+[data-view="grading"] .grading-reuse p { margin: 8px 0 0; }
+[data-view="grading"] .grading-offer { display: grid; grid-template-columns: 1fr auto 1fr; gap: 20px; margin: 24px 0; }
+[data-view="grading"] .stats .big { overflow-wrap: anywhere; }
+@media(max-width:760px) {
+ [data-view="grading"] .grading-enrollment { padding: 16px; }
+ [data-view="grading"] .grading-offer { grid-template-columns: 1fr; gap: 8px; }
+ [data-view="grading"] .grading-arrow { transform: rotate(90deg); padding: 2px; }
+}
+[data-view="grading"] .grading-flow-scroll { overflow-x: auto; }
+[data-view="grading"] .grading-flowchart { display: block; width: 100%; min-width: 820px; height: auto; font-family: var(--f-display, sans-serif); }
+[data-view="grading"] .grading-flow-lines path { fill: none; stroke: #64707c; stroke-width: 1.6; stroke-linejoin: round; marker-end: url(#grading-flow-arrow); }
+[data-view="grading"] .grading-flow-lines .grading-flow-skip { stroke-dasharray: 5 4; }
+[data-view="grading"] .grading-flow-nodes rect { fill: #edf5fb; stroke: #bed2e2; }
+[data-view="grading"] .grading-flow-nodes .grading-flow-case { fill: #fff4db; stroke: #dfca9b; }
+[data-view="grading"] .grading-flow-labels { fill: #263642; font-size: 13px; font-weight: 600; text-anchor: middle; dominant-baseline: middle; }
+[data-view="grading"] .grading-flow-branches { fill: #465765; font-size: 12px; font-weight: 600; }
+/* END GRADING NARRATIVE */
 </style>
 
 <header class="site-head">
@@ -1364,7 +1391,7 @@ figcaption { font-family: var(--f-mono); font-size: 0.8125rem; color: var(--mute
       <div class="work-list">
         <a class="work" href="#ai-workflows">
           <div class="txt">
-            <h3>AI assistant for project briefs</h3>
+            <p class="label proj-label">AI Project Assistant</p><h3>Making project decisions easier to find and follow</h3>
             <div class="tags"><span class="tag">eBay</span><span class="tag">AI tools</span></div>
             <p>Designed and built an AI project assistant that consolidates decisions from Slack, meetings, email and docs into one brief, and surfaces cross-team dependencies at kickoff.</p>
             <p class="evidence">Cut time gathering context and summarizing decisions by ~90% in initial testing</p>
@@ -1373,7 +1400,7 @@ figcaption { font-family: var(--f-mono); font-size: 0.8125rem; color: var(--mute
         </a>
         <a class="work" href="#ai-toolkit">
           <div class="txt">
-            <h3>How my use of AI evolved</h3>
+            <p class="label proj-label">AI Design Toolkit</p><h3>Making everyday design work easier with AI</h3>
             <div class="tags"><span class="tag">eBay</span><span class="tag">AI tools</span></div>
             <p>Built Figma plugins, AI skills that check the Figma file, and coded service templates, each shaped by what AI could do at the time and a limited AI budget.</p>
             <p class="evidence">Cut localized mockups from up to a week to ~10 min<br>Cut a new service's first designs from 1–2 days to ~5 min</p>
@@ -1382,10 +1409,10 @@ figcaption { font-family: var(--f-mono); font-size: 0.8125rem; color: var(--mute
         </a>
         <div class="work has-clip">
           <div class="txt">
-            <h3><a href="#price-guide">Price Guide for trading cards</a></h3>
+            <p class="label proj-label">Price Guide</p><h3><a href="#price-guide">Helping collectors make sense of what a card is worth</a></h3>
             <div class="tags"><span class="tag">eBay</span><span class="tag">Product design</span></div>
             <p>Designed the foundation of eBay's Price Guide as one component, plus the comparison features, so it could run in card scanning, the item page and My Collection.</p>
-            <p class="evidence">Launched · ~90% satisfaction with Collector's IQ, where users name Price Guide among their most-used features</p>
+            <p class="evidence">Launched · ~90% satisfaction with Collector's IQ, where users name Price Across Parallels and Price Guide among their most-used features</p>
           </div>
           <div class="thumb clip clip-lilac portrait">
             <div class="device"><video src="images/price-guide-loop.mp4" poster="images/price-guide-loop-poster.webp" muted loop playsinline autoplay preload="metadata" aria-label="Screen recording of scanning a graded card and browsing its Price Guide"></video></div>
@@ -1394,16 +1421,19 @@ figcaption { font-family: var(--f-mono); font-size: 0.8125rem; color: var(--mute
         </div>
         <a class="work" href="#grading">
           <div class="txt">
-            <h3>Trading card grading before shipment</h3>
+            <p class="label proj-label">Trading Card Grading</p><h3>Growing grading into a service others could build on</h3>
             <div class="tags"><span class="tag">eBay</span><span class="tag">Product design</span></div>
             <p>Led eBay's card grading service from first version to launch, aligned 11 teams on one experience, and set up the foundation later services were built on.</p>
             <p class="evidence">Launched with 2×+ the attachment rate of a typical service<br>Tripled attachment in the Best Offer flow</p>
           </div>
-          <div class="thumb photo"><img src="images/grading-flow-v2.webp" alt="eBay item page, PSA grading modal, and the choice to send the card to the PSA Vault or home"></div>
+          <div class="thumb clip clip-coral portrait">
+            <div class="device"><video src="images/grading-loop.mp4?v=5" poster="images/grading-loop-poster.webp?v=5" muted loop playsinline autoplay preload="metadata" aria-label="The same item page with different services: a trading card with PSA grading, a handbag with Authenticity Guarantee, and a laptop with a protection plan"></video></div>
+            <button class="clip-toggle" type="button">Pause</button>
+          </div>
         </a>
         <div class="work has-clip">
           <div class="txt">
-            <h3><a href="#reading-app">Chinese reading app for kids</a></h3>
+            <p class="label proj-label">Chinese Reading App</p><h3><a href="#reading-app">Helping my kids read the Chinese books they already love</a></h3>
             <div class="tags"><span class="tag">Personal</span><span class="tag">Product design</span></div>
             <p>Designed and built a Chinese reading app for my kids, with a curriculum that teaches characters backward from books we already own.</p>
             <p class="evidence">My 5-year-old learned ~50 characters in a month</p>
@@ -1415,7 +1445,7 @@ figcaption { font-family: var(--f-mono); font-size: 0.8125rem; color: var(--mute
         </div>
         <div class="work has-clip">
           <div class="txt">
-            <h3><a href="#explorations">Ad-free backgammon game</a></h3>
+            <p class="label proj-label">Backgammon Rounds</p><h3><a href="#explorations">Building the backgammon game I wanted to play</a></h3>
             <div class="tags"><span class="tag">Personal</span><span class="tag">Game design</span></div>
             <p>I heard about backgammon on a podcast, got tired of the ads in every app, and built my own, with difficulty levels, ways to play and board designs. It's now on the App Store as Backgammon Rounds.</p>
             <p class="evidence">Published on the App Store and Google Play</p>
@@ -1431,13 +1461,16 @@ figcaption { font-family: var(--f-mono); font-size: 0.8125rem; color: var(--mute
 
 
     <div class="section" id="about">
-      <div class="section-head"><h2>Why I make things</h2></div>
+      <div class="section-head"><h2>A little about me</h2></div>
       <div class="about-grid">
         <div class="statement">
-          <p>My kids recently made two dolls. They colored the fabric with acrylic markers, I helped cut it out, and we stuck the pieces together with iron-on tape. One has uneven eyes. The other is a cat wearing a crown. They sleep with them every night. Before that, they made a book about a unicorn's party. The plot doesn't quite hold together, and they ask me to read it again and again.</p>
-          <p>Watching them reminded me of how I drew as a kid: hours with a pencil, trying to get what was in my head onto paper. As an adult I rarely feel that. There's always pressure to spend time on something productive, whether or not it brings any joy.</p>
-          <p>I think about this a lot as a parent right now. AI could translate every Chinese book for my kids. But reading it themselves, and stepping into the culture on their own, is something a translation can't give them. I want them to grow up using these tools to make things, not just to consume them.</p>
-          <p>I try to work that way too. When I built their reading app, AI helped me explore visual directions quickly, so I could spend more time on the part I'm proud of: how the lessons work and build on each other, and why it teaches from books we already own. That's the kind of tool I like building: one that handles the polish, so people can spend their time on the part that's theirs.</p>
+          <p>I used to fold my kids' clothes after every laundry load. But whenever they needed something, they'd pull everything apart, undoing all that work.</p>
+          <p>Eventually, I wondered why I was folding everything in the first place.</p>
+          <p>So I stopped. I kept everything organized as before, just without the folding. My kids could still find what they needed, and I saved myself some time.</p>
+          <p>I find myself making little changes like this all the time. Some work, others don't, but I enjoy experimenting and figuring out why.</p>
+          <p>That curiosity carries into my work as a product designer. I'm drawn to complex, established products, where years of decisions have shaped how things work. I enjoy finding patterns, questioning assumptions, and making things simpler without losing what makes them useful.</p>
+          <p>I also enjoy working with people who challenge my thinking. I don't always have the right answer, and that's part of what makes collaboration interesting.</p>
+          <p>Ultimately, I want to make things easier for people, designing around how they naturally behave rather than asking them to adapt. To me, the best design is often the kind you barely notice.</p>
         </div>
         <div class="hello">
           <h3>Say hello</h3>
@@ -1453,15 +1486,20 @@ figcaption { font-family: var(--f-mono); font-size: 0.8125rem; color: var(--mute
 <article data-view="grading" hidden>
   <div class="wrap">
     <figure class="cs-cover">
-      <div class="photo"><img src="images/grading-flow-v2.webp" alt="eBay item page, PSA grading modal, and the choice to send the card to the PSA Vault or home"></div>
+      <div class="clip clip-coral portrait">
+        <div class="device"><video src="images/grading-loop.mp4?v=5" poster="images/grading-loop-poster.webp?v=5" muted loop playsinline autoplay preload="metadata" aria-label="The same item page with different services: a trading card with PSA grading, a handbag with Authenticity Guarantee, and a laptop with a protection plan"></video></div>
+        <button class="clip-toggle" type="button">Pause</button>
+      </div>
     </figure>
     <div class="cs-hero">
       <div class="tags"><span class="tag">eBay</span><span class="tag">Product design</span></div>
-      <h1>Trading card grading before shipment</h1>
+      <p class="label proj-label">Trading Card Grading</p>
+      <h1>Growing grading into a service others could build on</h1>
       <div class="cs-body">
         <div class="story-text">
-        <p>Collectors pay services like PSA to authenticate and grade trading cards, because a high grade can significantly raise a card's value. But a buyer had to wait for the card to arrive, apply to a grader separately, package it, send it off and wait again. I was asked to build grading into the purchase itself.</p>
-        <p>I owned grading end to end, from enrollment through the post-purchase experience. The harder question was how to ship it while another designer was still working out a framework for all additional services. I worked with them so grading could launch without waiting for that framework, and without building something we'd throw away.</p>
+        <p>In March 2025, we launched grading as part of the eBay purchase. Grading lets collectors have a card’s condition professionally assessed and scored—a high grade can significantly increase its value. Buyers could now choose that service during purchase, with their card moving through authentication and grading before reaching them. I led the end-to-end experience, bringing 11 teams together across the buyer and seller journey.</p>
+        <p>The launch was the beginning of a longer workstream. As we expanded the service, I kept returning to the same touchpoints and encountering questions that extended beyond grading. Other services needed to appear in those places too, but the existing patterns didn’t fully account for how they could work together.</p>
+        <p>That became a question I carried through the work: how could I use what we were learning from grading to improve services more broadly, while keeping each launch moving?</p>
       </div>
         <dl class="facts">
         <div><dt class="label">Role</dt><dd>Lead designer</dd></div>
@@ -1472,42 +1510,43 @@ figcaption { font-family: var(--f-mono); font-size: 0.8125rem; color: var(--mute
       </div>
     </div>
 
-    <div class="cs-more stacked">
-      <section class="cs-sec"><h2 class="label">Impact</h2><div class="sec-body"><div class="impact"><div><strong>2×+</strong><span>Grading's attachment rate is at least twice a typical service's. Exact rates stay confidential</span></div><div><strong>3×</strong><span>Attachment rate in the Best Offer flow. After I brought grading into the offer flow</span></div><div><strong>2</strong><span>Interaction patterns established for services. Best Offer is live; the cart pattern hasn't launched</span></div><div><strong>1</strong><span>Dedicated workstream for the service framework. With its own designer</span></div></div></div></section>
-      <section class="cs-sec"><h2 class="label">What I owned</h2><div class="sec-body dk"><div class="slide"><div class="wrap"><div class="owned"><ul><li>Grading end to end, from enrollment through the post-purchase experience for buyers and sellers</li><li>A grading experience designed to scale to future services, tested against future use cases</li><li>The map of how every service appears at every touchpoint, and coded templates for anyone who works on services</li><li>The Best Offer extension</li></ul></div>
-      </div></div></div></section>
-      <section class="cs-sec" id="grading-why"><h2 class="label">Why grading</h2><div class="sec-body dk"><div class="slide"><div class="wrap">
-    <h2>A high grade can raise a card's value, but getting one meant a second project after the purchase</h2>
+<div class="cs-more stacked">
+<section class="cs-sec"><h2 class="label">At a glance</h2><div class="sec-body"><div class="impact">
+<div><strong>2×+</strong><span>Grading attachment compared with a typical service</span></div>
+<div><strong>3×</strong><span>Grading attachment in the offer flow after the extension</span></div>
+<div><strong>11 teams</strong><span>Aligned across the buyer and seller experience</span></div>
+</div></div></section>
+<section class="cs-sec" id="grading-launch"><h2 class="label">The starting point</h2><div class="sec-body dk"><div class="slide"><div class="wrap">
+<h2>What did the first launch change?</h2>
 
-    <h3 class="sub-head">Customer problem</h3>
-    <ul class="section-list"><li>A buyer waited for the card to arrive, applied to a grader separately, packed it, sent it off and waited again</li><li>Each step was the buyer's to manage, after the purchase was already over</li></ul>
-
-    <h3 class="sub-head">The real barrier was trust, not just effort</h3>
-    <p class="section-text">Before launch, research walked 7 buyers who had all used a grading service through the prototype. Card condition was everyone's top concern, because they'd be sending a card to a grader without seeing it. What separated those open to the service from those who weren't was how much risk they'd accept. Convenience alone wasn't enough. Responses to the prototype itself were very positive, and people wanted more clarity on timing and on what was happening at the grader.</p>
-
-    <h3 class="sub-head">With grading in the purchase</h3>
-    <p class="section-text">The buyer chooses grading when they buy. The seller ships the card, it's authenticated and graded, and the buyer receives the graded card without ever packing it.</p>
-    <div class="ba-flows">
+<p class="lede">Previously, the buyer received the card and arranged grading separately. Bringing that choice into the purchase connected enrollment, seller instructions, authentication, grading, tracking, and delivery in one experience.</p>
+<div class="ba-flows">
       <figure class="dshot"><span class="ba-label">Before</span><img src="images/deck/grading-flow-before.webp?v=3" alt="Before: the seller ships the card to the buyer, the buyer receives it and submits it to the grader, who checks authenticity and condition and grades it, then the buyer receives the graded card."><figcaption>Grading was a separate project after delivery.</figcaption></figure>
       <figure class="dshot"><span class="ba-label">After</span><img src="images/deck/grading-flow-after.webp?v=3" alt="With grading in the purchase: the seller ships the card to the grader, who checks authenticity and condition and grades it, and the buyer receives the graded card."><figcaption>Grading is chosen at purchase.</figcaption></figure>
     </div>
-  
-      </div></div></div></section>
-      <section class="cs-sec" id="grading-challenges"><h2 class="label">Challenges</h2><div class="sec-body dk"><div class="slide"><div class="wrap">
-    <h2>No pattern to follow, a framework still in progress, and pages with several owners</h2>
+<p class="section-text">Research also showed the limit of convenience: some buyers were uncomfortable sending a card for grading before inspecting it themselves. For the MVP, we focused on buyers willing to trust that process. Reducing the risk for more cautious buyers remained further work.</p>
 
-    <h3 class="sub-head">Added services had no consistent pattern, and a framework was still in progress</h3>
-    <p class="section-text">eBay had many added services, and they were inconsistent. The most recent used a checkbox. Another designer was working on a framework for all of them, on a timeline that overlapped ours, and grading couldn't wait for it.</p>
+</div></div></div></section>
+<section class="cs-sec" id="grading-challenges"><h2 class="label">Challenges</h2><div class="sec-body dk"><div class="slide"><div class="wrap">
+<h2>What made that growth difficult?</h2>
 
-    <h3 class="sub-head">It had to scale to future services, on an unsure roadmap</h3>
-    <p class="section-text">We knew more services could follow, but not which ones or when. So the design couldn't be built around a specific list. It had to leave room for options we couldn't fully define yet.</p>
+<h3 class="sub-head">Existing patterns didn’t cover what was coming next.</h3>
+<p class="section-text">At the start, there were examples of how services appeared in the purchase, but no established framework. As I designed grading and explored future combinations of items and services, I found cases those patterns didn’t address. We needed a way forward for grading while making those gaps visible for the broader service work.</p>
+<h3 class="sub-head">The experience needed room to grow.</h3>
+<p class="section-text">The MVP offered basic grading, but enrollment needed to accommodate additional choices over time. I had to keep the first experience straightforward without building a structure that would become limiting as the service expanded.</p>
+<h3 class="sub-head">There was no shared reference for the full experience.</h3>
+<p class="section-text">Each service had its own documentation. Finding the relevant designs was difficult, and for some longstanding services, the documentation was outdated or missing. Before I could understand how grading should fit, I had to piece together how services already worked across the buyer and seller journey.</p>
 
-    <h3 class="sub-head">Some buyers wouldn't trust grading a card they hadn't seen</h3>
-    <p class="section-text">Research found people who reacted very positively, and people who were more conservative about sending a card to a grader sight unseen. Ease alone wouldn't win over the second group.</p>
+</div></div></div></section>
+<section class="cs-sec" id="grading-foundations"><h2 class="label">Foundations</h2><div class="sec-body dk"><div class="slide"><div class="wrap">
+<h2>What foundations did I put in place?</h2>
 
-    <h3 class="sub-head">Every touchpoint had to be found, and every new service would repeat that work</h3>
-    <p class="section-text">The hardest part wasn't disagreement. It was working out everywhere grading had to show up, when one page could have several owners. On order details, Payments owned the page, Trust owned refunds and Tracking owned shipping, and messages often repeated each other. I mapped the journey by the page each person sees at each stage, which told me the requirements and the pages I needed to design: 14 order states across 9 post-purchase touchpoints, for buyers and sellers.</p>
-    <figure class="jd-fig">
+<h3 class="sub-head">A shared view of how services work</h3>
+<p class="section-text">Each service had its own documentation, and some of it was outdated or missing. I brought the existing experiences into a shared reference showing how services appeared across the buyer and seller journey.</p>
+<p class="section-text">The documentation supported more than grading. Other teams used it to align their service experiences, and it helped inform the development of the broader service framework.</p>
+<p class="section-text">For grading, mapping 14 order states across 9 post-purchase touchpoints made the scope concrete. The buyer and seller maps below show where I designed for new states and where the experience used existing patterns.</p>
+<details class="grading-detail"><summary>Explore the buyer and seller journey maps</summary>
+<figure class="jd-fig">
       <figcaption>Buyer journey</figcaption>
     <div class="svc-map-wrap" tabindex="0" aria-label="Buyer journey. Scroll sideways on small screens."><table class="st-map">
       <thead><tr><th scope="col">Stage</th><th scope="col">Step</th><th scope="col">State</th><th scope="col">Item page</th><th scope="col">Selection nudge</th><th scope="col">Checkout</th><th scope="col">Confirmation</th><th scope="col">Order details</th><th scope="col">Service details</th><th scope="col">Tracking</th><th scope="col">Email</th><th scope="col">Buyer's concern</th></tr></thead>
@@ -1535,7 +1574,7 @@ figcaption { font-family: var(--f-mono); font-size: 0.8125rem; color: var(--mute
     <p class="jd-legend"><span class="jd d"></span>Designed for this state <span class="jd e"></span>Existing pattern <span class="jd-t">PSA</span>Handled by PSA</p>
     <p class="jd-foot">Purchase pages were designed for Buy It Now, auction plus Buy It Now, and auction listings.</p>
     </figure>
-    <figure class="jd-fig">
+<figure class="jd-fig">
       <figcaption>Seller journey</figcaption>
     <div class="svc-map-wrap" tabindex="0" aria-label="Seller journey. Scroll sideways on small screens."><table class="st-map">
       <thead><tr><th scope="col">Stage</th><th scope="col">Step</th><th scope="col">State</th><th scope="col">Seller Hub order</th><th scope="col">Fulfillment</th><th scope="col">Order details</th><th scope="col">Tracking</th><th scope="col">Email</th></tr></thead>
@@ -1558,95 +1597,134 @@ figcaption { font-family: var(--f-mono); font-size: 0.8125rem; color: var(--mute
     </table></div>
     <p class="jd-legend"><span class="jd d"></span>Designed for this state <span class="jd e"></span>Existing pattern <span class="jd-t">PSA</span>Handled by PSA</p>
     </figure>
-    <p class="section-text">Every service runs through these same pages. Gathering the screens for a new one took about 2 weeks from scratch, or 1–2 days with my Figma templates.</p>
+</details>
+<h3 class="sub-head">Enrollment with room for another choice</h3>
+<p class="section-text">For the original launch, we tested configuration on a single page against a stepped flow. The stepped version was less overwhelming, especially on mobile, where selected and unselected options became difficult to review on one page.</p>
+<p class="section-text">I also tested the structure against hypothetical configurations. The item’s existing state changed which services were relevant, so the flow needed to adapt the available choices as well as the steps.</p>
+<figure class="grading-enrollment" aria-labelledby="grading-enrollment-caption">
+  <div class="grading-flow-scroll" tabindex="0" aria-label="Enrollment flowchart. Scroll horizontally on smaller screens.">
+    <svg class="grading-flowchart" viewBox="0 0 1120 465" role="img" aria-labelledby="grading-flow-title grading-flow-description">
+      <title id="grading-flow-title">Enrollment branches based on item eligibility</title>
+      <desc id="grading-flow-description">The purchase starts with an eligibility check. In case A, the buyer can add service A, select an additional option, and check out, or skip straight to checkout. In case B, the buyer can skip service B or add it and choose between Option 1, which goes straight to checkout, and Option 2, which adds an additional step.</desc>
+      <defs>
+        <marker id="grading-flow-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto">
+          <path d="M1 1l6 3-6 3" fill="none" stroke="#64707c" stroke-width="1.3" stroke-linejoin="round"/>
+        </marker>
+      </defs>
 
-    <h3 class="sub-head">Seller instructions had to do two jobs</h3>
-    <p class="section-text">Sellers mainly need to know where to ship. But grading can take a long time and buyers may ask sellers for updates, so sellers also need context.</p>
+      <g class="grading-flow-lines">
+        <path d="M156 228H180V102H216"/>
+        <path d="M156 228H180V312H216"/>
+        <path d="M351 102H390"/>
+        <path d="M351 312H390"/>
+        <path d="M535 102H565V62H755"/>
+        <path d="M910 62H970"/>
+        <path class="grading-flow-skip" d="M535 102H565V160H1034V88"/>
+        <path d="M535 312H620"/>
+        <path d="M765 312H970"/>
+        <path d="M692 338V380H755"/>
+        <path d="M910 380H938V328H970"/>
+        <path class="grading-flow-skip" d="M535 312H565V433H1034V338"/>
+      </g>
 
-    <h3 class="sub-head">Layouts had no answer for several items and services</h3>
-    <p class="section-text">Each service counted as its own item, so a card plus grading showed as 2 in the item count. The layouts also had no answer for one item with two services, one service shared across items, or an order mixing items with and without services.</p>
+      <g class="grading-flow-nodes">
+        <rect x="18" y="202" width="138" height="52" rx="12"/>
+        <rect class="grading-flow-case" x="216" y="76" width="135" height="52" rx="12"/>
+        <rect class="grading-flow-case" x="216" y="286" width="135" height="52" rx="12"/>
+        <rect x="390" y="76" width="145" height="52" rx="12"/>
+        <rect x="390" y="286" width="145" height="52" rx="12"/>
+        <rect x="755" y="36" width="155" height="52" rx="12"/>
+        <rect x="620" y="286" width="145" height="52" rx="12"/>
+        <rect x="755" y="354" width="155" height="52" rx="12"/>
+        <rect x="970" y="36" width="128" height="52" rx="12"/>
+        <rect x="970" y="286" width="128" height="52" rx="12"/>
+      </g>
 
-    <h3 class="sub-head">There was no pattern for a service in the cart</h3>
-    <p class="section-text">We limit services to one per item. When a buyer selects a service, even clicking "Add to cart" takes them straight to checkout, so nobody had established what a service looks like once it's in a cart.</p>
+      <g class="grading-flow-labels">
+        <text x="87" y="228">Start purchase</text>
+        <text x="283.5" y="102">Eligibility case A</text>
+        <text x="283.5" y="312">Eligibility case B</text>
+        <text x="462.5" y="102">Add service A</text>
+        <text x="462.5" y="312">Add service B</text>
+        <text x="832.5" y="62">Additional option</text>
+        <text x="692.5" y="312">Choose an option</text>
+        <text x="832.5" y="380">Additional option</text>
+        <text x="1034" y="62">Checkout</text>
+        <text x="1034" y="312">Checkout</text>
+      </g>
 
-    <h3 class="sub-head">There was no pattern for adding a service in Best Offer</h3>
-    <p class="section-text">We uncovered this after the MVP launched, and at first we weren't sure how significant the flow was. Once an offer was accepted, payment processed automatically, so most offer buyers skipped the point where they could enroll. The few who did attach grading hadn't set up auto-checkout yet, so they still saw the option at checkout.</p>
-
-    <h3 class="sub-head">Complimentary and optional services looked unrelated</h3>
-    <p class="section-text">Working on the cart raised a question nobody had asked me to answer: what happens when a complimentary service and an optional one sit side by side? The same service could look like two different things.</p>
-  
-      </div></div></div></section>
-      <section class="cs-sec" id="grading-decisions"><h2 class="label">Decisions</h2><div class="sec-body dk"><div class="slide"><div class="wrap">
-    <h2>What I decided, from how to ship without the framework to what I raised with other teams</h2>
-
-    <h3 class="sub-head">Don't wait for the framework, and don't build something to throw away</h3>
-    <p class="section-text">I worked with the designer on the framework so grading could launch ahead of it without conflicting with it. I took the existing checkbox pattern and adapted it for grading, rather than inventing another pattern while one was being defined.</p>
-
-    <h3 class="sub-head">A stepper, tested against services that didn't exist yet</h3>
-    <p class="section-text">For the original launch, we tested showing configuration options on one page against a stepper. The stepper won because it was less overwhelming, especially on mobile, where selections on one page got mixed in with unselected options and people had to scroll to check them. We also tested the design against hypothetical future use cases, so the structure would hold up once there was more to choose.</p>
-    <p class="section-text">Launch needed only basic grading, but the experience had a place for an added configuration step. When PSA Vault arrived, choosing where the card goes became that step.</p>
-    <figure class="dshot"><img src="images/deck/grading-modal-scaling.webp" alt="Three steps of the enrollment modal: the PSA grading intro, a generic additional configuration step with options, and the choice to send the card to the PSA Vault or ship to an address."><figcaption>The intro, the generic configuration step, and how Vault fills it.</figcaption></figure>
-
-    <h3 class="sub-head">Launch for the buyers more willing to trust the process</h3>
-    <p class="section-text">We didn't try to solve for trust in the MVP. We decided to target people who were already comfortable with the process, and discussed ways to reduce the risk for everyone else. Those haven't been a priority yet.</p>
-
-    <div class="tpl-split"><div><h3 class="sub-head">Turn the touchpoint work into coded templates for anyone who touches services</h3>
-    <p class="section-text">This is separate from the grading experience. I mapped every service across every page, then built templates in code with a service library behind them. They're meant to help not just my team, but anyone who works on services. A new service's first end-to-end designs take about 5 minutes.</p>
-      <p class="tpl-link"><a href="#ai-toolkit-s3">See how I built the templates, and the other views →</a></p></div>
-      <figure class="tpl-one"><img src="images/deck/grading-templates-focus.webp" alt="Service template tool in Focus layout: the Grading only item page shown full width in a browser frame, with filters for journey, category, service, buying format and platform."><figcaption><b>User flows, focus.</b> Browse one service's pages as a buyer would.</figcaption></figure></div>
-
-    <h3 class="sub-head">Seller instructions: I argued for less, and accepted more</h3>
-    <div class="two-lists">
-      <div><b>What I proposed</b><p>Keep shipping instructions focused on the seller's task, where to ship, and share grading details later. I checked with Legal and learned that the detail was a business preference, not a legal requirement.</p></div>
-      <div><b>What shipped</b><p>The business chose more detail up front. There was a fair reason: grading takes a long time, and buyers may ask sellers for updates, so sellers need context. I went with that decision.</p></div>
-    </div>
-
-    <h3 class="sub-head">Follow the flawed pattern to ship, and make the flaw visible</h3>
-    <p class="section-text">We had to follow the item count to launch, and fixing the layouts wasn't in my scope. It also shouldn't block grading. So I made initial concepts with Payments showing those cases, and told the teams involved what they'd need to resolve so grading could adopt it.</p>
-
-    <h3 class="sub-head">Lay out how a service appears in the cart</h3>
-    <p class="section-text">I designed the interaction pattern for a service once it's added to the cart, including several items and services together.</p>
-
-    <h3 class="sub-head">Bring the choice to offer review</h3>
-    <p class="section-text">I designed the pattern for adding a service in the offer flow, and introduced grading at offer review, in a placement we could adjust based on how it performed.</p>
-
-    <h3 class="sub-head">Test how complimentary and optional services display together</h3>
-    <p class="section-text">This wasn't part of the brief. While working on the cart pattern, we tested ways to show the two side by side, and I shared what we learned with the program owner.</p>
-  
-      </div></div></div></section>
-      <section class="cs-sec" id="grading-outcome"><h2 class="label">Outcome</h2><div class="sec-body dk"><div class="slide"><div class="wrap">
-    <h2>Each challenge led to a decision, and each decision to a result</h2>
-    <div class="stats four">
-      <div class="stat"><span class="big">2×+</span><span class="what">Grading's attachment rate is at least twice a typical service's</span><span class="dscope">Which I'd credit to a strong fit with what buyers wanted, and how we highlighted the benefits</span></div>
-      <div class="stat"><span class="big">3×</span><span class="what">Attachment rate in the Best Offer flow</span><span class="dscope">Compared with before grading was in the offer flow</span></div>
-      <div class="stat"><span class="big">2</span><span class="what">Interaction patterns established for services</span><span class="dscope">Best Offer is live. The cart pattern is agreed but hasn't launched</span></div>
-      <div class="stat"><span class="big">1</span><span class="what">Dedicated workstream for the service framework</span><span class="dscope">With its own designer</span></div>
-    </div>
-  
-      </div></div></div></section>
-      <section class="cs-sec" id="grading-change"><h2 class="label">What I'd change now</h2><div class="sec-body dk"><div class="slide"><div class="wrap">
-    <h2>With what I know now, I'd push further on trust, every way of buying, and the cart</h2>
-    <ol class="numbered4 two">
-      <li><b>Plan for every way people buy</b><span>We launched in the regular buying flow, and only later addressed that automatic payment kept most offer buyers from ever seeing grading. I'd map every purchase path at the start, not just the main one.</span></li>
-      <li><b>Get services into the cart</b><span>Buyers grading several cards have to buy them individually, because a service skips the cart and goes straight to checkout. It was the right scope for launch, and I'd push to launch the cart pattern next.</span></li>
-      <li><b>Go further on trust</b><span>Research showed the real barrier was sending a card to a grader without seeing it. Ease alone wasn't enough for many people. I'd look harder at what reduces that risk, like better photos or a card review.</span></li>
-      <li><b>Build the map as a tool sooner</b><span>I wanted the service map to be something people could browse, but it stayed in Figma. Coded templates now do much of what I had in mind, and I'd have started earlier.</span></li>
-    </ol>
-  
-      </div></div></div></section>
-      <section class="cs-sec" id="grading-learned"><h2 class="label">What I learned</h2><div class="sec-body dk"><div class="slide"><div class="wrap">
-    <h2>Every new pattern shows you something about the old ones</h2>
-    <div class="columns3">
-      <div class="dbox"><h3>What worked</h3><p>Testing the structure against services that didn't exist yet, so launch stayed small without boxing in what came next.</p></div>
-      <div class="dbox"><h3>What surprised me</h3><p>Work that hasn't launched can still be useful. Designing the cart pattern showed us how complimentary and optional services were being presented, and the program owner plans to act on it.</p></div>
-      <div class="dbox"><h3>What I'd keep doing</h3><p>Using a few concrete concepts to show a problem outside my scope, and following a flawed pattern to ship while making sure the right people know about the flaw.</p></div>
-    </div>
-  
-      </div></div></div></section>
-    </div>
-
-    <nav class="next" aria-label="Next story"><span class="label">Next</span><a href="#reading-app">Chinese reading app for kids →</a></nav>
+      <g class="grading-flow-branches">
+        <text x="584" y="51">Yes</text>
+        <text x="584" y="150">No · skip service</text>
+        <text x="581" y="301">Yes</text>
+        <text x="805" y="301">Option 1</text>
+        <text x="705" y="369">Option 2</text>
+        <text x="584" y="422">No · skip service</text>
+      </g>
+    </svg>
   </div>
+  <figcaption id="grading-enrollment-caption">Illustrative enrollment flow. Eligibility determines which options appear, and the buyer’s choice determines whether an additional step is needed.</figcaption>
+</figure>
+<div class="grading-reuse"><span class="label">Outcome · PSA Vault</span><p>When PSA Vault was introduced, choosing whether to send the graded card to storage or to the buyer fit the additional step in the enrollment structure.</p></div>
+
+</div></div></div></section>
+<section class="cs-sec" id="grading-offers"><h2 class="label">Expanding the experience</h2><div class="sec-body dk"><div class="slide"><div class="wrap">
+<h2>How did grading reach buyers using offers?</h2>
+
+<p class="lede">After the MVP, we found grading attachment in offer-based purchases was far below the regular flow. Once an offer was accepted, payment processed automatically for most buyers, skipping the checkout step where they could choose grading.</p>
+<p class="section-text">I designed a pattern for adding a service in the offer flow, bringing grading into offer review before payment. Buyers could also select grading on the item page before making an offer.</p>
+<div class="offer-flow" role="group" aria-label="Offer flow with a service step before payment"><figure class="dshot"><img src="images/deck/grading-offer-1.webp" alt="Set offer amount screen: Buy It Now price $250.00, the buyer’s offer of $250 and a number pad." loading="lazy"><figcaption><b>1 · Set the offer</b> Buyers enter their offer amount.</figcaption></figure><figure class="dshot"><img src="images/deck/grading-offer-2.webp" alt="Make your offer review screen with a highlighted Additional services row above Pay with, Delivery, Ship to, Discounts and Total." loading="lazy"><figcaption><b>2 · Review the offer</b> Additional services now appear in offer review, before payment.</figcaption></figure><figure class="dshot"><img src="images/deck/grading-offer-3.webp" alt="A bottom sheet over the review screen with a placeholder service module and Add service and No thanks buttons." loading="lazy"><figcaption><b>3 · Choose the service</b> Buyers add the service or skip it.</figcaption></figure><figure class="dshot"><img src="images/deck/grading-offer-4.webp" alt="Make your offer review screen showing the added service name and price in Additional services, with the total updated." loading="lazy"><figcaption><b>4 · Send with the service</b> The service and its price are part of the offer.</figcaption></figure></div>
+<div class="grading-reuse"><span class="label">Outcome · Offers</span><p>Grading attachment in the offer flow tripled after the extension. The result showed why expansion also meant considering different ways people buy, not only adding service options.</p></div>
+
+</div></div></div></section>
+<section class="cs-sec" id="grading-beyond"><h2 class="label">Beyond grading</h2><div class="sec-body dk"><div class="slide"><div class="wrap">
+<h2>How did I help close the gaps beyond grading?</h2>
+
+<h3 class="sub-head">Bringing missing cases into the framework work</h3>
+<p class="section-text">I explored combinations of items and services that the existing patterns couldn’t accommodate and shared those cases with partner teams. My grading work and these explorations helped establish the need for a dedicated service-framework workstream, with a designer assigned to develop it.</p>
+<p class="section-text">A card with grading counted as two items in the existing layout. I worked with Payments on initial concepts for more complex relationships, including one item with multiple services and orders mixing items with and without services. Grading could launch within the existing experience while these cases informed the broader framework work.</p>
+<h3 class="sub-head">Designing the service-in-cart pattern</h3>
+<p class="section-text">I designed how services could appear in the cart, including orders containing multiple items and services. The work also surfaced a related problem: complimentary and paid versions of a service looked unrelated.</p>
+<p class="section-text">Testing showed that bringing their visual treatment closer helped people recognize them as the same type of service, while keeping the free option clear. I shared those findings with the program owner to inform their service presentation.</p>
+<p class="cs-note">The cart pattern has not launched; the research findings informed further work in another program.</p>
+
+</div></div></div></section>
+<section class="cs-sec" id="grading-tools"><h2 class="label">Building on the reference</h2><div class="sec-body dk"><div class="slide"><div class="wrap">
+<h2>How could this work make the next service easier?</h2>
+
+<div class="tpl-split"><div>
+<p class="section-text">The shared reference also became a starting point for a separate tool-building effort. I built coded journey templates and a service library so I could carry the existing structure into new service designs.</p>
+<p class="section-text">The templates are in my own use; they are intended for others who work on services. The documentation’s cross-team use and the templates’ potential reach are different stages of this work.</p>
+<p class="tpl-link"><a href="#ai-toolkit-s3">Explore the coded service templates →</a></p>
+</div><figure class="tpl-one"><img src="images/deck/grading-templates-focus.webp" alt="Service template tool in Focus layout: the Grading only item page shown full width in a browser frame, with filters for journey, category, service, buying format and platform."><figcaption><b>User flows, focus.</b> Browse one service's pages as a buyer would.</figcaption></figure></div>
+
+</div></div></div></section>
+<section class="cs-sec" id="grading-outcome"><h2 class="label">Outcomes</h2><div class="sec-body dk"><div class="slide"><div class="wrap">
+<h2>What did the work achieve?</h2>
+
+<div class="stats four">
+<div class="stat"><span class="big">2×+</span><span class="what">Grading attachment compared with a typical service</span><span class="dscope">Launched service performance. Exact rates remain confidential.</span></div>
+<div class="stat"><span class="big">3×</span><span class="what">Grading attachment in the offer flow</span><span class="dscope">After the offer-flow extension, compared with its prior attachment rate.</span></div>
+<div class="stat"><span class="big">Cross-team use</span><span class="what">Service guidance used beyond my team</span><span class="dscope">Supporting consistent proposals and informing framework development.</span></div>
+<div class="stat"><span class="big">1 workstream</span><span class="what">Dedicated service-framework effort</span><span class="dscope">My work helped make the missing cases visible. Another designer owned the framework development.</span></div>
+</div>
+<p class="section-text">The work delivered a service with strong adoption and a structure that accommodated a later storage option. Its wider contribution was a shared reference, a proposed cart pattern, and concrete use cases that helped other teams develop the service framework.</p>
+
+</div></div></div></section>
+<section class="cs-sec" id="grading-learned"><h2 class="label">Learnings and next steps</h2><div class="sec-body dk"><div class="slide"><div class="wrap">
+<h2>What did I learn, and what would I improve next?</h2>
+
+<p class="lede">What I’m proudest of is the reach beyond the immediate launch. Work on one service gave me a way to improve the shared guidance and bring unresolved cases into a broader framework effort, while continuing to deliver grading.</p>
+<div class="columns3">
+<div class="dbox"><h3>Test the structure before every option is known</h3><p>Exploring different item states and configurations helped keep the first launch focused while leaving room for later choices.</p></div>
+<div class="dbox"><h3>Make the next service easier to understand</h3><p>A shared reference can support teams beyond the original project. I’d turn that map into a browsable tool earlier.</p></div>
+<div class="dbox"><h3>Keep working on the unresolved experience</h3><p>I’d continue improving services in the cart and explore ways to reduce the risk felt by buyers who want to inspect a card before grading it.</p></div>
+</div>
+
+</div></div></div></section>
+</div>
+<nav class="next" aria-label="Next story"><span class="label">Next</span><a href="#reading-app">Helping my kids read the Chinese books they already love →</a></nav>
+</div>
 </article>
 
 <!-- =================================================================== AI WORKFLOWS -->
@@ -1657,7 +1735,8 @@ figcaption { font-family: var(--f-mono); font-size: 0.8125rem; color: var(--mute
     </figure>
     <div class="cs-hero">
       <div class="tags"><span class="tag">eBay</span><span class="tag">AI tools</span></div>
-      <h1>AI assistant for project briefs</h1>
+      <p class="label proj-label">AI Project Assistant</p>
+      <h1>Making project decisions easier to find and follow</h1>
       <div class="cs-body">
         <div class="story-text">
         <p>Every project kept coming back to the same four questions: what was decided, who decided it, why, and what's still open. The answers existed, but they were spread across Slack, meetings, email and docs, so I'd ask around and piece the timeline together by hand.</p>
@@ -1675,9 +1754,9 @@ figcaption { font-family: var(--f-mono); font-size: 0.8125rem; color: var(--mute
 
 
     <div class="cs-more stacked">
-      <section class="cs-sec"><h2 class="label">Impact</h2><div class="sec-body"><div class="impact"><div><strong>~90%</strong><span>Less time gathering context and summarizing decisions. Average, initial testing with the immediate team</span></div><div><strong>Human-verified</strong><span>AI-generated project records. Sources, decision status, and review of missing information</span></div></div><p class="cs-note">Internal tool. Examples are simplified, with names and project details removed.</p></div></section>
+      <section class="cs-sec"><h2 class="label">Impact</h2><div class="sec-body"><div class="impact"><div><strong>~90%</strong><span>Less time gathering context and summarizing decisions. Average from initial testing and feedback from the immediate team. Varies by person</span></div><div><strong>1 shared decision log</strong><span>Decisions, pending questions, and source links brought together from conversations across tools</span></div></div><p class="cs-note">Internal tool. Examples are simplified, with names and project details removed.</p></div></section>
       <section class="cs-sec" id="ai-workflows-s2"><h2 class="label">The problem</h2><div class="sec-body dk"><div class="slide"><div class="wrap">
-    <h2>The information existed. The decisions were hard to reconstruct.</h2>
+    <h2>Why was finding a decision so much work?</h2>
     <div class="problem">
       <div class="dbox">
         <span class="label">1 · What we needed to know</span>
@@ -1696,7 +1775,7 @@ figcaption { font-family: var(--f-mono); font-size: 0.8125rem; color: var(--mute
           <li><img src="images/deck/logos/microsoftoutlook.svg" alt="" width="22" height="22"><b>Outlook</b><span>Approvals and follow-ups</span></li>
           <li><img src="images/deck/logos/googledrive.svg" alt="" width="22" height="22"><b>Google Drive</b><span>Requirements and briefs</span></li>
         </ul>
-        <p class="how">So we asked around, opened each one, and rebuilt the timeline by hand.</p>
+        <p class="how">Finding an answer meant searching across tools and checking with teammates to piece together what had been decided.</p>
       </div>
       <div class="dbox fill">
         <span class="label">3 · Where it broke down</span>
@@ -1711,70 +1790,59 @@ figcaption { font-family: var(--f-mono); font-size: 0.8125rem; color: var(--mute
         </ol>
       </div>
     </div>
-  
+
       </div></div></div></section>
-      <section class="cs-sec" id="ai-workflows-c1"><h2 class="label">Consideration 1 of 5 · Audience</h2><div class="sec-body dk"><div class="slide"><div class="wrap">
-    <h2>Design for the people who don't have an agent</h2>
-    <p class="lede">With a limited AI budget, I was the one running the assistant. Most teammates would only ever read what it produced, so the output had to stand on its own.</p>
+      <section class="cs-sec" id="ai-workflows-c1"><h2 class="label">Requirements</h2><div class="sec-body dk"><div class="slide"><div class="wrap">
+    <h2>What would make this useful to the whole team?</h2>
+    <p class="lede">With a limited AI budget, I was the one running the assistant. Most teammates didn’t have an agent set up, so the output needed to be useful on its own.</p>
+    <span class="label req-label">What the output needed to do</span>
     <div class="columns3">
       <div class="dbox"><h3>Readable without AI</h3><p>A finished document, not something you have to query to understand.</p></div>
       <div class="dbox"><h3>In a format the team knows</h3><p>The existing design-brief template, already expected at kickoff and handoff, so people know where to look.</p></div>
       <div class="dbox"><h3>Easy to correct</h3><p>A doc anyone can edit, so the team can fix or add context the AI missed.</p></div>
     </div>
-    <aside class="defend"><span class="label">The tradeoff</span><p>An AI-native output would have been easier for me to build and query. A human-readable brief meant everyone could use it, with or without an agent.</p></aside>
-  
+    <div class="defend req-choice"><h3>Why I chose a shared document</h3><p>I chose an editable Google Doc in the team’s existing design-brief format, so teammates could find answers, correct mistakes, and add context without an agent of their own.</p></div>
+
       </div></div></div></section>
-      <section class="cs-sec" id="ai-workflows-s3b"><h2 class="label">Consideration 1 of 5 · Audience and budget</h2><div class="sec-body dk"><div class="slide"><div class="wrap">
-    <h2>A useful assistant also had to be affordable to run</h2>
+      <section class="cs-sec" id="ai-workflows-s3b"><h2 class="label">Efficiency and reuse</h2><div class="sec-body dk"><div class="slide"><div class="wrap">
+    <h2>How could the team stay informed without repeating the work?</h2>
+    <div class="lede-side">
+    <p class="lede">I chose scheduled updates to a shared brief so the team could reuse the same summary instead of generating it for every question. The tradeoff was freshness: the brief could fall behind between updates.</p>
+    <div class="credit"><span class="big">$150</span><div><b>Monthly AI usage credit</b><span>Billed by use, so every retrieval and summary drew on a limited budget.</span></div></div>
+    </div>
     <div class="budget3">
-      <div class="credit"><span class="big">$150</span><div><b>Monthly AI usage credit</b><span>Billed by use, so every retrieval and summary drew on a limited budget.</span></div></div>
+      
       <figure class="options">
         <span class="label">How often should the AI do the work?</span>
         <table>
           <thead>
-            <tr><th scope="col">Option</th><th scope="col">Up to date</th><th scope="col">Cost</th><th scope="col">Saved for the team</th></tr>
+            <tr><th scope="col">Option</th><th scope="col">Up to date</th><th scope="col">Affordable to run?</th><th scope="col">Saved for the team</th></tr>
           </thead>
           <tbody>
-            <tr><th scope="row">Every change<span>Continuous monitoring</span></th><td data-label="Up to date"><span class="m y">Yes</span>Always</td><td data-label="Cost"><span class="m n">No</span>Runs constantly</td><td data-label="Saved for the team"><span class="m y">Yes</span>Yes</td></tr>
-            <tr><th scope="row">Every question<span>Chat only</span></th><td data-label="Up to date"><span class="m y">Yes</span>When asked</td><td data-label="Cost"><span class="m n">No</span>Repeats the same work for every question</td><td data-label="Saved for the team"><span class="m n">No</span>Buried in chats</td></tr>
-            <tr class="chosen"><th scope="row">On a schedule<span>Saved as a shared brief</span> <span class="choice">My choice</span></th><td data-label="Up to date"><span class="m p">Partly</span>Can fall a step behind</td><td data-label="Cost"><span class="m y">Yes</span>Done once, reused</td><td data-label="Saved for the team"><span class="m y">Yes</span>Yes</td></tr>
+            <tr><th scope="row">Every change<span>Continuous monitoring</span></th><td data-label="Up to date"><span class="m y">Yes</span>Always</td><td data-label="Affordable to run?"><span class="m n">No</span>Runs constantly</td><td data-label="Saved for the team"><span class="m y">Yes</span>Yes</td></tr>
+            <tr><th scope="row">Every question<span>Chat only</span></th><td data-label="Up to date"><span class="m y">Yes</span>When asked</td><td data-label="Affordable to run?"><span class="m n">No</span>Repeats the same work for every question</td><td data-label="Saved for the team"><span class="m n">No</span>Buried in chats</td></tr>
+            <tr class="chosen"><th scope="row">On a schedule<span>Saved as a shared brief</span> <span class="choice">My choice</span></th><td data-label="Up to date"><span class="m p">Partly</span>Can fall a step behind</td><td data-label="Affordable to run?"><span class="m y">Yes</span>Done once, reused</td><td data-label="Saved for the team"><span class="m y">Yes</span>Yes</td></tr>
           </tbody>
         </table>
       </figure>
     </div>
-  
+
       </div></div></div></section>
-      <section class="cs-sec" id="ai-workflows-s3"><h2 class="label">Consideration 2 of 5 · Structure</h2><div class="sec-body dk"><div class="slide"><div class="wrap">
-    <h2>What goes where depends on who can see it</h2>
-    <div class="dflow wide-first">
-      <div class="dbox">
-        <h3>Connected through MCP</h3>
-        <ul class="tools">
-          <li><img src="images/deck/logos/slack.svg" alt="" width="26" height="26"><b>Slack</b><span>Threads</span></li>
-          <li><img src="images/deck/logos/zoom.svg" alt="" width="26" height="26"><b>Zoom</b><span>Transcripts</span></li>
-          <li><img src="images/deck/logos/microsoftoutlook.svg" alt="" width="26" height="26"><b>Outlook</b><span>Email</span></li>
-          <li><img src="images/deck/logos/googledrive.svg" alt="" width="26" height="26"><b>Google Drive</b><span>Docs</span></li>
-          <li><img src="images/deck/logos/figma.svg" alt="" width="26" height="26"><b>Figma</b><span>Design files</span></li>
-          <li><img src="images/deck/logos/search.svg" alt="" width="26" height="26"><b>Glean</b><span>Company search</span></li>
-          <li><img src="images/deck/logos/research.svg" alt="" width="26" height="26"><b>Research library</b><span>Internal studies</span></li>
-        </ul>
-      </div>
-      <span class="darrow" aria-hidden="true">→</span>
-      <div class="dbox fill">
-        <h3>Claude-powered assistant</h3>
-        <p>Retrieves, synthesizes, and identifies decisions and dependencies</p>
-      </div>
-      <span class="darrow" aria-hidden="true">→</span>
-      <div class="dstack">
-        <div class="dbox"><span class="who">Just me</span><h3>Answers</h3><p>Questions in the moment</p></div>
-        <div class="dbox"><span class="who team">Whole team</span><h3>Shared brief</h3><p>Only team-safe information, in Google Drive</p></div>
-        <div class="dbox"><span class="who">Just me</span><h3>Personal tracker</h3><p>Private context and my action items, in Cursor</p></div>
-      </div>
-    </div>
-  
-      </div></div></div></section>
-      <section class="cs-sec" id="ai-workflows-s4"><h2 class="label">The shared brief · sample output</h2><div class="sec-body dk"><div class="slide"><div class="wrap">
-    <h2>A brief the whole team can read, not a chat only I can see</h2>
+      <section class="cs-sec" id="ai-workflows-s5"><h2 class="label">Review workflow</h2><div class="sec-body dk"><div class="slide"><div class="wrap">
+    <h2>What does the assistant do, and what do I control?</h2>
+    <p class="lede">The assistant gathers the project history. In my setup, it doesn’t write into the shared document on its own: I review its findings privately, fill in missing context, and tell it what to update.</p>
+    <ol class="steps4" aria-label="Review workflow in four steps">
+      <li><span class="label">Step 1</span><b>Gather the context</b><p>The assistant searches project conversations and documents, then lists confirmed decisions, pending items, and questions.</p></li>
+      <li class="mine"><span class="label">Step 2 · My role</span><b>Review and clarify</b><p>I check the findings and answer its questions. Sometimes I add context from a conversation or follow-up it couldn’t access.</p></li>
+      <li class="mine"><span class="label">Step 3 · My role</span><b>Choose what to update</b><p>Once the decisions are clear, I tell the assistant which section of the design brief to update.</p></li>
+      <li><span class="label">Step 4</span><b>Write into the shared brief</b><p>The assistant applies the update to the specified section, where teammates can read and edit it.</p></li>
+    </ol>
+    <p>The assistant separates explicit decisions from pending discussions. When sources conflict or information is missing, it asks me to clarify rather than treating the summary as complete.</p>
+    <p>Testing also showed me that an updated brief can still look out of date: one contained October decisions but displayed an August update date. Checking the document’s freshness remains part of my review.</p>
+    <p class="quietline">Sources it can search: Slack, Zoom, Outlook, Google Drive, Figma, company search and the internal research library.</p>
+
+    <h3 class="subhead">An example shared brief</h3>
+    <p class="quietline">This fictional example shows how the brief is structured. Real project content is confidential.</p>
     <div class="sample">
       <div class="paper" tabindex="0" aria-label="Sample design brief for a fictional project">
         <span class="doc-org">Brightleaf</span>
@@ -1874,89 +1942,72 @@ figcaption { font-family: var(--f-mono); font-size: 0.8125rem; color: var(--mute
         <p class="doc-foot">Fictional sample · Brightleaf and this project are not real</p>
       </div>
       <div class="sample-side">
-        <span class="label">What every brief contains</span>
+        <span class="label">Inside this example brief</span>
         <ul class="contains">
+          <li><b>Decision log</b> with date, who decided, and status</li>
+          <li><b>Pending items</b>, with who still has to decide</li>
+          <li><b>Source references</b> to the design file, requirements, tickets and research</li>
           <li>Context, scope and constraints</li>
           <li>Problem, hypotheses and success signals</li>
-          <li><b>Decision log</b> with date, who decided, and status</li>
-          <li>Alignment sessions and action items</li>
-          <li>Risks, dependencies and roles</li>
-          <li>Schedule and resources</li>
+          <li>Alignment sessions, risks, roles and schedule</li>
         </ul>
-        <p class="disclaimer">This sample shows the structure and the kinds of information a brief includes. It uses a fictional project and company. No recording is available because the real tool works with sensitive internal data.</p>
+      
       </div>
     </div>
-  
+
       </div></div></div></section>
-      <section class="cs-sec" id="ai-workflows-s7"><h2 class="label">Consideration 3 of 5 · Trust</h2><div class="sec-body dk"><div class="slide"><div class="wrap">
-    <h2>A citation makes an answer traceable. It doesn't make it correct.</h2>
-    <div>
-      <span class="label">What I learned: three different kinds of "up to date"</span>
-      <div class="fresh" style="margin-top:10px">
-        <div class="dbox"><b>Sources last scanned</b><p>When the assistant last read the conversations</p></div>
-        <div class="dbox"><b>Brief last refreshed</b><p>One real brief still showed its August date, with October decisions inside</p></div>
-        <div class="dbox"><b>Decisions last confirmed</b><p>When a person last checked them</p></div>
+            <section class="cs-sec" id="ai-workflows-c5"><h2 class="label">Personalization</h2><div class="sec-body dk"><div class="slide"><div class="wrap">
+    <h2>Could someone else use this in their own workflow?</h2>
+    <p class="lede">As I started sharing the skills, I realized other teams would bring different projects, templates, and ways of working. I kept those preferences separate from the shared skills, so people could use the same capabilities with their own context.</p>
+    <figure class="pers" aria-label="Assistant: shared skills and personal context and preferences">
+      <span class="pers-title">Assistant</span>
+      <div class="pers-row">
+        <div class="pers-card">
+          <span class="pers-kicker">Shared capabilities</span>
+          <h3>Shared skills</h3>
+          <ul><li>Gather context</li><li>Summarize decisions</li><li>Save lessons and preferences</li></ul>
+        </div>
+        <div class="pers-link"><svg width="26" height="30" viewBox="-14 -16 28 32" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M-12 0a12 12 0 0 1 21-8M9-14v6H3"/><path d="M12 0a12 12 0 0 1-21 8M-9 14V8h6"/></svg><span class="pers-arrow" aria-hidden="true"></span><span class="pers-link-label">Save learned preferences</span></div>
+        <div class="pers-card sage">
+          <span class="pers-kicker">Individual guidance</span>
+          <h3>Personal context &amp; preferences</h3>
+          <ul><li>Project context</li><li>Preferred templates</li><li>Working preferences</li></ul>
+          <p class="pers-note">Including when to act or ask first</p>
+        </div>
+      </div>
+    </figure>
+    <p class="inpractice">A learning skill saves corrections and preferences from our conversations in readable, editable files, so they can guide future work. Saved preferences include which actions happen automatically and which need my approval. The shared skills can be passed along, while each person’s context and preferences stay their own.</p>
+
+      </div></div></div></section>
+      <section class="cs-sec" id="ai-workflows-s8"><h2 class="label">Early impact</h2><div class="sec-body dk"><div class="slide"><div class="wrap">
+    <h2>What changed when people started using it?</h2>
+    <div class="impact2">
+      <div class="metric"><span class="big">~90% less time</span><span class="what">Gathering project context and summarizing decisions.</span><span class="dscope">Initial testing and feedback from my immediate team. Varies by person.</span></div>
+      <div class="story">
+        <p>A colleague generated a project summary directly in her Figma file and said it worked beautifully. She was also surprised it surfaced relevant projects alongside her own. Then she asked whether it could summarize a single section instead of the whole file. I suggested she try, and it worked.</p>
+        <p>Her experiment showed that the skill could adapt to how she organized her work, without needing a separate version built for her.</p>
       </div>
     </div>
-    <span class="label">How I designed the review · illustrative example</span>
-    <div class="dflow">
-      <div class="dbox"><h3>AI-generated summary</h3><p>A decision appears to favor the shared framework, but the available discussions don't show final approval.</p></div>
-      <span class="darrow" aria-hidden="true">→</span>
-      <div class="dbox"><h3>Linked evidence</h3><p>The original discussions and documents</p></div>
-      <span class="darrow" aria-hidden="true">→</span>
-      <div class="dbox"><h3>Human verification</h3><p>Review the source, confirm the decision, or add context that was never written down.</p></div>
+    <div class="caught">
+      <h3 class="subhead">What it caught early</h3>
+      <p>The assistant surfaced adjacent use cases that didn’t follow an existing content framework, giving the team a chance to decide whether to align or make an exception. It also highlighted a timing dependency between two workstreams, prompting a conversation before either blocked the other.</p>
     </div>
-    <p class="inpractice"><b>It leaves a blank rather than guess.</b> When it filled in a project summary, it listed only the meetings it could find a source for, and it left the owner field empty because nothing named an owner.</p>
-  
+
       </div></div></div></section>
-      <section class="cs-sec" id="ai-workflows-s5"><h2 class="label">Consideration 4 of 5 · Human in the loop</h2><div class="sec-body dk"><div class="slide"><div class="wrap">
-    <h2>The AI records decisions. People make them.</h2>
-    <div class="decide">
-      <ol class="dc-main">
-        <li class="dc-step"><span class="label">Start</span><b>A source mentions something that sounds decided</b></li>
-        <li class="dc-step"><span class="label">Check 1</span><b>Did someone state it as decided, or approve it?</b><span class="dc-out">If not, it stays pending</span></li>
-        <li class="dc-step"><span class="label">Check 2</span><b>Do sources disagree?</b><span class="dc-out">If so, the latest is current; the rest is history</span></li>
-        <li class="dc-step"><span class="label">Check 3</span><b>It asks me to confirm</b><span class="dc-out">Until I do, it stays pending</span></li>
-        <li class="dc-step dc-end"><span class="label">Result</span><b>Recorded as decided</b></li>
-      </ol>
-      <div class="dc-pending"><span class="label">Pending</span><p>Anything not yet decided stays open, with the next step and who owns it.</p></div>
-    </div>
-  
-      </div></div></div></section>
-      <section class="cs-sec" id="ai-workflows-c5"><h2 class="label">Consideration 5 of 5 · Learning</h2><div class="sec-body dk"><div class="slide"><div class="wrap">
-    <h2>It keeps what I correct</h2>
-    <p class="lede">I built a learning skill so the assistant carries lessons forward instead of starting fresh each time.</p>
+      <section class="cs-sec" id="ai-workflows-s9"><h2 class="label">Learnings and next steps</h2><div class="sec-body dk"><div class="slide"><div class="wrap">
+    <h2>What did I learn, and what would I improve next?</h2>
+    <p class="lede">Getting the skills to work in my setup was only the beginning. Sharing them showed me how much the experience depends on getting started, fitting someone’s workflow, and knowing when information needs checking.</p>
     <div class="columns4">
-      <div class="dbox"><h3>My corrections</h3><p>When I fix something, it saves the lesson for next time.</p></div>
-      <div class="dbox"><h3>My preferences</h3><p>Format and level of detail I want in a brief.</p></div>
-      <div class="dbox"><h3>What counts as a decision</h3><p>Sharper at telling decisions from discussion.</p></div>
-      <div class="dbox"><h3>Project context</h3><p>People, roles, terms and history it shouldn't rediscover.</p></div>
+      <div class="dbox"><h3>Getting set up</h3><p>Agent setup is still a hurdle for many designers. I'm considering setup links and tips for using our internal agent to troubleshoot.</p></div>
+      <div class="dbox"><h3>More formats</h3><p>Testing how the skills behave with other teams' formats and setups.</p></div>
+      <div class="dbox"><h3>Freshness</h3><p>Finding a cheap way to spot changes, without monitoring every discussion or spending the budget on work nobody asked for.</p></div>
+      <div class="dbox"><h3>Incomplete sources</h3><p>Some decisions happen in conversations the assistant can't see, so the brief still depends on people adding them.</p></div>
     </div>
-    <p class="inpractice"><b>Lessons live in a file it reads every time,</b> so they're readable and editable, not hidden inside the model.</p>
-  
-      </div></div></div></section>
-      <section class="cs-sec" id="ai-workflows-s8"><h2 class="label">Impact · Initial testing, immediate team</h2><div class="sec-body dk"><div class="slide"><div class="wrap">
-    <h2>From manual reconstruction to reusable context</h2>
-    <div class="stats solo"><div class="stat"><span class="big">~90%</span><span class="what">Average reduction in time spent gathering project context and summarizing decisions</span><span class="dscope">Initial testing; varies by person</span></div></div>
-    <span class="label">What it caught early</span>
-    <div class="caught2"><div class="dbox"><p>Adjacent use cases that didn't follow an existing content framework. The team decided whether to align or make an exception.</p></div>
-        <div class="dbox"><p>A timing dependency between two workstreams, which prompted a conversation before either blocked the other.</p></div></div>
-    <p class="inpractice"><b>It also gives the team shared access, decision visibility and traceability.</b></p>
-  
-      </div></div></div></section>
-      <section class="cs-sec" id="ai-workflows-s9"><h2 class="label">What I learned and what's next</h2><div class="sec-body dk"><div class="slide"><div class="wrap">
-    <h2>AI can organize project knowledge. Keeping it trustworthy takes design.</h2>
-    <div class="columns3">
-      <div class="dbox"><h3>What worked</h3><p>Answers, a persistent brief and a personal tracker gave the same information the right form for each use.</p></div>
-      <div class="dbox"><h3>What still needs work</h3><p>Incomplete sources, stale information, and telling generated findings apart from human-confirmed decisions.</p></div>
-      <div class="dbox"><h3>What's next</h3><p>Broader team adoption, freshness indicators, and spotting changes cheaply, without monitoring every discussion or spending the AI budget on work nobody asked for.</p></div>
-    </div>
-    <p class="quote">AI can do a lot of the information gathering. People still need to own the decisions.</p>
-  
+
       </div></div></div></section>
     </div>
 
-    <nav class="next" aria-label="Next story"><span class="label">Next</span><a href="#ai-toolkit">How my use of AI evolved →</a></nav>
+    <nav class="next" aria-label="Next story"><span class="label">Next</span><a href="#ai-toolkit">Making everyday design work easier with AI →</a></nav>
   </div>
 </article>
 
@@ -1964,12 +2015,93 @@ figcaption { font-family: var(--f-mono); font-size: 0.8125rem; color: var(--mute
 <article data-view="ai-toolkit" hidden>
   <div class="wrap">
     <figure class="cs-cover">
-      <div class="photo graph-photo"><svg class="shift-graph" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Roughly where my design work happened: mostly in Figma in January 2026, shifting to mostly AI agents and code by now"><style>.sg-x{font:600 30px var(--f-display);fill:var(--muted);letter-spacing:.04em}.sg-l{font:600 38px var(--f-display)}</style><line x1="340" y1="140" x2="340" y2="690" stroke="var(--line)" stroke-width="2"/><line x1="800" y1="140" x2="800" y2="690" stroke="var(--line)" stroke-width="2"/><line x1="1260" y1="140" x2="1260" y2="690" stroke="var(--line)" stroke-width="2"/><line x1="240" y1="690" x2="1360" y2="690" stroke="var(--ink)" stroke-width="2"/><path d="M340 222 C570 222 570 378 800 378 C1030 378 1030 612 1260 612" fill="none" stroke="#A259FF" stroke-width="9" stroke-linecap="round"/><path d="M340 638 C570 638 570 482 800 482 C1030 482 1030 248 1260 248" fill="none" stroke="var(--ink)" stroke-width="9" stroke-linecap="round"/><circle cx="340" cy="222" r="11" fill="#A259FF"/><circle cx="800" cy="378" r="11" fill="#A259FF"/><circle cx="1260" cy="612" r="11" fill="#A259FF"/><circle cx="340" cy="638" r="11" fill="var(--ink)"/><circle cx="800" cy="482" r="11" fill="var(--ink)"/><circle cx="1260" cy="248" r="11" fill="var(--ink)"/><text x="340" y="752" text-anchor="middle" class="sg-x">Jan 2026</text><text x="800" y="752" text-anchor="middle" class="sg-x">Mid 2026</text><text x="1260" y="752" text-anchor="middle" class="sg-x">Now</text><text x="1290" y="624" class="sg-l" fill="#A259FF">Figma</text><text x="1290" y="242" class="sg-l" fill="var(--ink)">AI agents</text><text x="1290" y="288" class="sg-l" fill="var(--ink)">and code</text></svg></div>
+      <div class="photo graph-photo"><svg class="shift-graph" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Roughly where my design work happened: mostly in Figma in January 2026, shifting to mostly AI agents and code by now"><style>.sg-x{font:600 30px var(--f-display);fill:var(--muted);letter-spacing:.04em}.sg-l{font:600 38px var(--f-display)}
+/* Project-title hierarchy: label (small), story headline (largest), description (quiet). */
+.proj-label { margin: 0; }
+.work .txt p.proj-label { font-size: 0.6875rem; color: var(--muted); max-width: none; margin-bottom: -4px; }
+.cs-hero .proj-label { display: block; margin: 4px 0 -6px; }
+
+/* AI assistant restructure (COPY-001 to 004, 2026-11-06) */
+.dk .defend h3 { margin: 0; }
+.dk .subhead { margin-top: 36px; }
+.dk .quietline { color: var(--muted); max-width: 52em; font-size: 0.9375rem; }
+.dk .steps4 { list-style: none; padding: 0; margin: 8px 0 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; }
+.dk .steps4 li { position: relative; display: grid; gap: 6px; align-content: start; padding: 16px 18px; border: 1px solid var(--line); background: var(--paper, transparent); }
+.dk .steps4 li + li { border-left: 0; }
+.dk .steps4 li + li::before { content: ""; position: absolute; left: -7px; top: 26px; width: 12px; height: 12px; border-top: 1px solid var(--ink); border-right: 1px solid var(--ink); transform: rotate(45deg); background: var(--paper); }
+.dk .steps4 li.mine { background: var(--hl-soft, rgba(0,0,0,0.035)); }
+.dk .steps4 li.mine .label { color: var(--ink); }
+.dk .steps4 p { margin: 0; }
+.dk .rel { margin: 8px 0 0; display: grid; gap: 14px; }
+.dk .rel-row { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 14px; align-items: stretch; }
+.dk .rel-op, .dk .rel-row .darrow { align-self: center; }
+.dk .rel-loop { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; padding: 12px 16px; border: 1px dashed var(--line); }
+.dk .rel figcaption { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+@media (max-width: 760px) {
+  .dk .steps4 { grid-template-columns: 1fr; }
+  .dk .steps4 li + li { border-left: 1px solid var(--line); border-top: 0; }
+  .dk .steps4 li + li::before { left: 24px; top: -7px; transform: rotate(135deg); }
+  .dk .rel-row { grid-template-columns: 1fr; }
+  .dk .rel-op, .dk .rel-row .darrow { justify-self: center; }
+  .dk .rel-row .darrow { transform: rotate(90deg); }
+}
+
+/* COPY-005/006 + LAYOUT-001 to 003 (2026-11-06) */
+.dk .problem .tools { margin-top: 16px; gap: 12px; }
+.dk .problem .tools li { row-gap: 0; line-height: 1.3; }
+.dk .problem .tools li span { margin-top: 0; }
+.dk .req-label { margin-top: 16px; display: block; }
+.dk .req-choice { margin-top: 20px; }
+.dk .lede-side { display: grid; grid-template-columns: minmax(0, 1fr) minmax(260px, 0.75fr); gap: 32px; align-items: start; }
+.dk .lede-side .credit { justify-self: stretch; max-width: none; }
+.dk .pers { margin: 8px 0 0; padding: 26px 28px; border: 1.5px solid #deded8; border-radius: 22px; background: #fafaf8; display: grid; gap: 20px; }
+.dk .pers-title { font-family: var(--f-serif, Georgia, serif); font-size: 1.5rem; color: #292c28; }
+.dk .pers-row { display: grid; grid-template-columns: minmax(0, 1fr) 150px minmax(0, 1fr); gap: 0; align-items: stretch; }
+.dk .pers-card { background: #fff; border: 1.5px solid #dedfd8; border-radius: 16px; padding: 22px 26px; display: grid; gap: 10px; align-content: start; box-shadow: 0 8px 32px rgba(37,37,37,0.045); }
+.dk .pers-card.sage { background: #f0f3ed; border-color: #d6ddcf; }
+.dk .pers-kicker { font: 600 0.6875rem/1 var(--f-mono, Arial, sans-serif); letter-spacing: 0.16em; text-transform: uppercase; color: #7b7e75; }
+.dk .pers-card.sage .pers-kicker { color: #6d7a61; }
+.dk .pers-card h3 { margin: 0; padding-bottom: 12px; border-bottom: 1px solid #e8e9e3; font-weight: 400; font-size: 1.4rem; }
+.dk .pers-card ul { list-style: none; margin: 4px 0 0; padding: 0 0 0 20px; display: grid; gap: 14px; color: #50564c; }
+.dk .pers-note { margin: -6px 0 0 20px; color: #7b8474; font-size: 0.875rem; }
+.dk .pers-link { display: grid; justify-items: center; align-content: center; gap: 8px; color: #657561; padding: 0 10px; text-align: center; }
+.dk .pers-arrow { width: 100%; height: 2px; background: #657561; position: relative; }
+.dk .pers-arrow::after { content: ""; position: absolute; right: 0; top: -4px; width: 8px; height: 8px; border-top: 1.8px solid #657561; border-right: 1.8px solid #657561; transform: rotate(45deg); }
+.dk .pers-link-label { font-size: 0.8125rem; line-height: 1.3; }
+.dk .pers-foot { display: grid; gap: 2px; }
+.dk .pers-foot span { color: #7b7e75; }
+.dk .impact2 { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(220px, 0.8fr); gap: 40px; align-items: start; }
+.dk .impact2 .story { order: -1; }
+.dk .impact2 .metric { display: grid; gap: 6px; padding: 20px 22px; border: 1px solid var(--line); border-radius: 12px; }
+.dk .impact2 .story p { margin: 0 0 12px; max-width: 40em; }
+.dk .caught .subhead { margin-top: 8px; }
+.dk .caught p { max-width: 52em; }
+@media (max-width: 760px) {
+  .dk .lede-side, .dk .impact2 { grid-template-columns: 1fr; gap: 20px; }
+  .dk .impact2 .story { order: 0; }
+  .dk .pers { padding: 20px 16px; }
+  .dk .pers-row { grid-template-columns: 1fr; }
+  .dk .pers-link { padding: 12px 0; grid-template-columns: auto auto; justify-content: center; align-items: center; }
+  .dk .pers-arrow { display: none; }
+}
+
+/* Stacked section-text paragraphs: only the first tucks under the heading. */
+.dk .section-text + .section-text { margin-top: 1em; }
+.dk .section-text + .tpl-link { margin-top: 1em; }
+
+/* Offer flow: four phone screens in a row (2×2 on phones). */
+.dk .offer-flow { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; margin: 28px 0 8px; }
+.dk .offer-flow .dshot { align-content: start; }
+.dk .offer-flow .dshot img { border: 1px solid var(--line); border-radius: 16px; box-shadow: none; }
+.dk .offer-flow figcaption b { display: block; color: var(--ink); font-weight: 600; margin-bottom: 2px; }
+@media (max-width: 760px) { .dk .offer-flow { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 16px; } }
+</style><line x1="340" y1="140" x2="340" y2="690" stroke="var(--line)" stroke-width="2"/><line x1="800" y1="140" x2="800" y2="690" stroke="var(--line)" stroke-width="2"/><line x1="1260" y1="140" x2="1260" y2="690" stroke="var(--line)" stroke-width="2"/><line x1="240" y1="690" x2="1360" y2="690" stroke="var(--ink)" stroke-width="2"/><path d="M340 222 C570 222 570 378 800 378 C1030 378 1030 612 1260 612" fill="none" stroke="#A259FF" stroke-width="9" stroke-linecap="round"/><path d="M340 638 C570 638 570 482 800 482 C1030 482 1030 248 1260 248" fill="none" stroke="var(--ink)" stroke-width="9" stroke-linecap="round"/><circle cx="340" cy="222" r="11" fill="#A259FF"/><circle cx="800" cy="378" r="11" fill="#A259FF"/><circle cx="1260" cy="612" r="11" fill="#A259FF"/><circle cx="340" cy="638" r="11" fill="var(--ink)"/><circle cx="800" cy="482" r="11" fill="var(--ink)"/><circle cx="1260" cy="248" r="11" fill="var(--ink)"/><text x="340" y="752" text-anchor="middle" class="sg-x">Jan 2026</text><text x="800" y="752" text-anchor="middle" class="sg-x">Mid 2026</text><text x="1260" y="752" text-anchor="middle" class="sg-x">Now</text><text x="1290" y="624" class="sg-l" fill="#A259FF">Figma</text><text x="1290" y="242" class="sg-l" fill="var(--ink)">AI agents</text><text x="1290" y="288" class="sg-l" fill="var(--ink)">and code</text></svg></div>
       <figcaption class="cs-note graph-cap">Roughly where my design work happened, by stage.</figcaption>
     </figure>
     <div class="cs-hero">
       <div class="tags"><span class="tag">eBay</span><span class="tag">AI tools</span></div>
-      <h1>How my use of AI evolved</h1>
+      <p class="label proj-label">AI Design Toolkit</p>
+      <h1>Making everyday design work easier with AI</h1>
       <div class="cs-body">
         <div class="story-text">
         <p>As the tools matured, I went from small Figma plugins, to AI skills that work on the Figma file, to designing in code. Each step was shaped by what AI could do at the time, what designers had access to, and a limited AI budget.</p>
@@ -2236,7 +2368,7 @@ figcaption { font-family: var(--f-mono); font-size: 0.8125rem; color: var(--mute
       </div></div></div></section>
     </div>
 
-    <nav class="next" aria-label="Next story"><span class="label">Next</span><a href="#price-guide">Price Guide for trading cards →</a></nav>
+    <nav class="next" aria-label="Next story"><span class="label">Next</span><a href="#price-guide">Helping collectors make sense of what a card is worth →</a></nav>
   </div>
 </article>
 
@@ -2250,7 +2382,8 @@ figcaption { font-family: var(--f-mono); font-size: 0.8125rem; color: var(--mute
     </figure>
     <div class="cs-hero">
       <div class="tags"><span class="tag">eBay</span><span class="tag">Product design</span></div>
-      <h1>Price Guide for trading cards</h1>
+      <p class="label proj-label">Price Guide</p>
+      <h1>Helping collectors make sense of what a card is worth</h1>
       <div class="cs-body">
         <div class="story-text">
         <p>A trading card's value moves with recent sales, condition and small print variations called parallels. Collectors had to dig through sold listings themselves or use third-party sites built on eBay's data. And every price we showed would sit on two models, one identifying the card and one matching sales, and neither is always right.</p>
@@ -2266,7 +2399,7 @@ figcaption { font-family: var(--f-mono); font-size: 0.8125rem; color: var(--mute
     </div>
 
     <div class="cs-more stacked">
-      <section class="cs-sec"><h2 class="label">Impact</h2><div class="sec-body"><div class="impact"><div><strong>~90%</strong><span>Satisfaction in a survey of Collector's IQ users. Users named price insights and Price Guide as the features they use most</span></div><div><strong>3</strong><span>Touchpoints share one Price Guide component. Card scanning, the item page and My Collection</span></div><div><strong>Parallels</strong><span>Among the most useful features. Based on what users report</span></div></div></div></section>
+      <section class="cs-sec"><h2 class="label">Impact</h2><div class="sec-body"><div class="impact"><div><strong>~90%</strong><span>Satisfaction in a survey of Collector's IQ users. Users named Price Across Parallels and Price Guide as the features they use most</span></div><div><strong>3</strong><span>Touchpoints share one Price Guide component. Card scanning, the item page and My Collection</span></div><div><strong>Parallels</strong><span>Among the most useful features. Based on what users report</span></div></div></div></section>
       <section class="cs-sec"><h2 class="label">What I owned</h2><div class="sec-body dk"><div class="slide"><div class="wrap"><div class="owned"><ul><li>The experience architecture: Price Guide as one component that any touchpoint can use</li><li>The features built on it: comparing across grades and conditions, and comparing across parallels</li><li>Patterns that work across desktop web, mobile web and the apps</li><li>An audit of seven price experiences, and a workshop to share it and set principles for how prices are presented</li></ul></div>
       </div></div></div></section>
       <section class="cs-sec" id="price-guide-why"><h2 class="label">Why Price Guide</h2><div class="sec-body dk"><div class="slide"><div class="wrap">
@@ -2343,7 +2476,7 @@ figcaption { font-family: var(--f-mono); font-size: 0.8125rem; color: var(--mute
     <ul class="constraints three-col">
       <li><b>Last sold</b><p>Easy to understand, but a single unusual sale becomes the price.</p></li>
       <li><b>Price range</b><p>Shows the spread, but one outlier stretches it.</p></li>
-      <li class="chosen"><span class="dtag yes">Chosen</span><b>Median sold price</b><p>One odd sale can't move it. Chosen with data science. Last sold still shows next to it, as context.</p></li>
+      <li class="chosen"><span class="dtag yes">Chosen</span><b>Median sold price</b><p>One odd sale can't move it. I recommended it, and my PM agreed it with data science. Last sold still shows next to it, as context.</p></li>
     </ul>
 
     <h3 class="sub-head">What graph should we use? The median per day or week, which we could actually build</h3>
@@ -2402,7 +2535,7 @@ figcaption { font-family: var(--f-mono); font-size: 0.8125rem; color: var(--mute
       <section class="cs-sec" id="price-guide-outcome"><h2 class="label">Outcome</h2><div class="sec-body dk"><div class="slide"><div class="wrap">
     <h2>Users name it among the features they use most, and it now runs across the collecting journey</h2>
     <div class="stats three">
-      <div class="stat"><span class="big">~90%</span><span class="what">Satisfaction in a June survey of Collector's IQ users</span><span class="dscope">The score is for Collector's IQ as a whole. Most of its content is Price Guide insights, and users named price insights and Price Guide as the features they use most</span></div>
+      <div class="stat"><span class="big">~90%</span><span class="what">Satisfaction in a June survey of Collector's IQ users</span><span class="dscope">The score is for Collector's IQ as a whole. Most of its content is Price Guide insights, and users named Price Across Parallels and Price Guide as the features they use most</span></div>
       <div class="stat"><span class="big">3</span><span class="what">Touchpoints, one component</span><span class="dscope">Card scanning, the item page and My Collection</span></div>
       <div class="stat"><span class="big word">Very positive</span><span class="what">Feedback on comparisons</span><span class="dscope">Comparing by grade was well received; comparing parallels is among the most valued features</span></div>
     </div>
@@ -2431,7 +2564,7 @@ figcaption { font-family: var(--f-mono); font-size: 0.8125rem; color: var(--mute
       </div></div></div></section>
     </div>
 
-    <nav class="next" aria-label="Next story"><span class="label">Next</span><a href="#grading">Trading card grading before shipment →</a></nav>
+    <nav class="next" aria-label="Next story"><span class="label">Next</span><a href="#grading">Growing grading into a service others could build on →</a></nav>
   </div>
 </article>
 
@@ -2446,7 +2579,8 @@ figcaption { font-family: var(--f-mono); font-size: 0.8125rem; color: var(--mute
     </figure>
     <div class="cs-hero">
       <div class="tags"><span class="tag">Personal</span><span class="tag">Product design</span></div>
-      <h1>Chinese reading app for kids</h1>
+      <p class="label proj-label">Chinese Reading App</p>
+      <h1>Helping my kids read the Chinese books they already love</h1>
       <div class="cs-body">
         <div class="story-text">
         <p>My kids speak Chinese, but they couldn't read it, and the apps and materials I tried didn't fit them. So I started from a book we already own, called Mama, and worked backward to the characters a child needs to read it.</p>
@@ -2509,7 +2643,7 @@ figcaption { font-family: var(--f-mono); font-size: 0.8125rem; color: var(--mute
       </div></div></div></section>
     </div>
 
-    <nav class="next" aria-label="Next"><span class="label">Next</span><a href="#explorations">Ad-free backgammon game →</a></nav>
+    <nav class="next" aria-label="Next"><span class="label">Next</span><a href="#explorations">Building the backgammon game I wanted to play →</a></nav>
   </div>
 </article>
 
@@ -2524,7 +2658,8 @@ figcaption { font-family: var(--f-mono); font-size: 0.8125rem; color: var(--mute
     </figure>
     <div class="cs-hero">
       <div class="tags"><span class="tag">Personal</span><span class="tag">Game design</span></div>
-      <h1>Ad-free backgammon game</h1>
+      <p class="label proj-label">Backgammon Rounds</p>
+      <h1>Building the backgammon game I wanted to play</h1>
       <div class="cs-body">
         <div class="story-text">
           <p>I first became curious about backgammon after hearing about it on a podcast, and built my own app to learn it.</p>
@@ -2537,7 +2672,7 @@ figcaption { font-family: var(--f-mono); font-size: 0.8125rem; color: var(--mute
         <dl class="facts">
           <div><dt class="label">Role</dt><dd>Solo: design and build</dd></div>
           <div><dt class="label">Team</dt><dd>Just me</dd></div>
-          <div><dt class="label">Built with</dt><dd>Flutter, Claude Code, Cursor</dd></div>
+          <div><dt class="label">Built with</dt><dd>Flutter, Claude Code, VS Code</dd></div>
           <div><dt class="label">Status</dt><dd>Live on iOS and Android</dd></div>
         </dl>
       </div>
@@ -2563,7 +2698,7 @@ figcaption { font-family: var(--f-mono); font-size: 0.8125rem; color: var(--mute
       </div></div></div></section>
     </div>
 
-    <nav class="next" aria-label="Next story"><span class="label">Next</span><a href="#ai-workflows">AI assistant for project briefs →</a></nav>
+    <nav class="next" aria-label="Next story"><span class="label">Next</span><a href="#ai-workflows">Making project decisions easier to find and follow →</a></nav>
   </div>
 </article>
 </main>
