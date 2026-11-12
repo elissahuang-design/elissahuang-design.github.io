@@ -2851,4 +2851,14 @@ figcaption { font-family: var(--f-mono); font-size: 0.8125rem; color: var(--mute
   document.querySelectorAll('[data-thumb]').forEach(function (t) { t.innerHTML = thumbs[t.dataset.thumb]; });
 })();
 </script>
+<!-- Visit tracking: GoatCounter (free, no cookies, no personal data). Each case study is counted as its own page
+     (/#grading, /#price-guide …), and ?ref= on a link (résumé, LinkedIn) shows up as the visit's source.
+     Stats: https://lazyjasmine.goatcounter.com once the account exists. -->
+<script>window.goatcounter = { path: function () { return location.pathname + (location.hash || ''); } };</script>
+<script data-goatcounter="https://lazyjasmine.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+<script>
+window.addEventListener('hashchange', function () {
+  if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: location.pathname + location.hash, title: document.title });
+});
+</script>
 </html>
